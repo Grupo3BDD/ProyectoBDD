@@ -16,6 +16,6 @@ class User(AbstractUser):
         return '{} {} / {}'.format(self.first_name, self.last_name, self.username)
     
     def get_image(self):
-        if self.image:
-            return '{}{}'.format(MEDIA_URL, self.image)
+        if self.imagen:
+            return '{}{}'.format(MEDIA_URL, self.imagen)
         return '{}{}'.format(STATIC_URL, 'img/usuario.png')

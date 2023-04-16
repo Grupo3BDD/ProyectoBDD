@@ -64,7 +64,7 @@ class UpdateUserForm(forms.ModelForm):
 class CreateUserForm(UserCreationForm):
 
     password1 = forms.CharField(
-        label='CONTRASEÑA: ',
+        label='Contraseña',
         widget=forms.PasswordInput(
             attrs={'class': 'form-control', 'autocomplete': 'off'}),
         required=True,
@@ -72,7 +72,7 @@ class CreateUserForm(UserCreationForm):
 
     )
     password2 = forms.CharField(
-        label='CONFIRMAR CONTRASEÑA: ',
+        label='Confirmar Contraseña',
         widget=forms.PasswordInput(
             attrs={'class': 'form-control', 'autocomplete': 'off'}),
         required=True,
@@ -118,7 +118,7 @@ class CreateUserForm(UserCreationForm):
 class RegistroForm(UserCreationForm):
 
     password1 = forms.CharField(
-        label='CONTRASEÑA: ',
+        label='Contraseña',
         widget=forms.PasswordInput(
             attrs={'class': 'form-control', 'autocomplete': 'off'}),
         required=True,
@@ -126,7 +126,7 @@ class RegistroForm(UserCreationForm):
 
     )
     password2 = forms.CharField(
-        label='CONFIRMAR CONTRASEÑA: ',
+        label='Confirmar Contraseña',
         widget=forms.PasswordInput(
             attrs={'class': 'form-control', 'autocomplete': 'off'}),
         required=True,

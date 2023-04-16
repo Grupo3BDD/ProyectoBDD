@@ -37,9 +37,9 @@ class SignUp(user_authenticate,CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context['title'] = 'Register'
+        context['title'] = 'Crear Cuenta Nueva'
         context['messages.success'] = 'BIENVENIDO'
-        context['info'] = 'Registrar' 
+        context['info'] = 'Crear Cuenta' 
         context['users_list'] = User.objects.exists()
 
         return context
@@ -100,6 +100,41 @@ def login_view(request):
             messages.error(request, 'Usuario o contraseña no validos')
 
     return render(request, "users/login.html", {
-        'title':'LOGIN',
+        'title':'Iniciar Sesion',
        
     })
+
+###-- APARTADO PARA CAMBIAR LA CONTRASEÑA DE UN USUARIO --##
+class ChangePassword(View):
+    template_name ='users/change_password.html'
+    form_class = ChangePasswordForm
+    success_url = reverse_lazy('index')
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {
+            'form':self.form_class, 
+            'title': 'Cambiar Contraseña',
+            'info': 'Cambiar Contraseña'
+            })
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            user = User.objects.filter(pk = request.user.pk)
+            if user.exists():
+                user = user.first()
+                user.set_password(form.cleaned_data.get('password1'))
+                contra = form.cleaned_data.get('password1')
+                user.save()
+                user = authenticate(username=request.user.username, password=contra)
+                login(self.request, user)
+
+                return redirect(self.success_url)
+            return redirect(self.success_url)
+        else:
+            form = self.form_class(request.POST)
+            return render(request, self.template_name, {
+            'form':form, 
+            'title': 'Cambiar Contraseña',
+            'info': 'Cambiar Contraseña'
+            })

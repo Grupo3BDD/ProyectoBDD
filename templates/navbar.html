@@ -1,86 +1,111 @@
 {% load static %}
 
-<div class="container">
+{% block css %}
+<style>
+  .menu a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
+
+<div class="container menu">
   {% if user.is_authenticated %}
   <nav style="margin-top: 2rem;">
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Puesto</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
-              </ul>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+        </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Actividades</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
-              </ul>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+        </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Asignacion</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
-              </ul>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+        </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Edificios</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Administracion de Edificios y Salones</a></li>
-                
-              </ul>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Administracion de Edificios y Salones</a></li>
+
+        </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Pensum</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
-              </ul>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+        </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Usuarios</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
-              </ul>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+        </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Seguridad</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Perfil</a></li>
-                <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
-                <li><a class="dropdown-item" href="#">Administracion de roles y permisos</a></li>
-              </ul>
+        <ul class="dropdown-menu">          
+          <li><a class="dropdown-item" href="{% url 'users:update_password' %}">Cambiar Contraseña</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de roles y permisos</a></li>
+        </ul>
       </li>
-    </ul> 
+    </ul>
 
   </nav>
   {% endif %}
   <header
-    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="margin-bottom: 5rem;">
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+    style="margin-bottom: 5rem;">
     <div class="col-md-3 mb-2 mb-md-0">
       <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
         Inicio
       </a>
     </div>
 
-    
-    
+
+
 
 
     <div class="col-md-3 text-end">
       {% if not user.is_authenticated %}
-        <a href="{% url 'users:login' %}" class="btn btn-outline-primary me-2">Iniciar Sesion</a>      
-        <a href="{% url 'users:signup' %}" class="btn btn-primary">Crear Cuenta</a>
+      <a href="{% url 'users:login' %}" class="btn btn-outline-primary me-2">Iniciar Sesion</a>
+      <a href="{% url 'users:signup' %}" class="btn btn-primary" style="color: white;">Crear Cuenta</a>
       {% else %}
-        <a href="{% url 'users:logout' %}" class="nav-link px-2">Cerrar Sesion</a>
+      <div class="dropdown">
+        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{{ user.get_image }}" class="rounded-pill"  height="25rem">
+        </button>
+        
+        
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Perfil</a></li>
+          <li><a class="dropdown-item" href="{% url 'users:logout' %}">Cerrar Sesion</a></li>
+          
+        </ul>
+      </div>
+
+      
+
+      
       {% endif %}
     </div>
   </header>

@@ -9,8 +9,9 @@ app_name = 'users'
 
 urlpatterns = [
 
-    path('signUp/', views.SignUp.as_view(), name = 'signup'),
+    path('sign-up/', views.SignUp.as_view(), name = 'signup'),
     path('accounts/login/',views.login_view, name='login'),
     path('logout/',views.logout_view, name='logout'),
+    path('users/change_password/', login_required(views.ChangePassword.as_view()), name='update_password'),
 
 ]

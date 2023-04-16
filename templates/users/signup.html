@@ -4,13 +4,15 @@
 
 
 {% block content %}
-<div class="col-8 ">
-    <div class="card" style="margin-top: 2rem;">
-        <div class="card-body">
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="card" style="margin-top: 2rem;">
+            <h5 class="card-header">CREAR CUENTA NUEVA</h5>
+            <div class="card-body">
 
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% for field in form %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
 
                     <div class="form-group" style="margin-bottom: 1rem;">
 
@@ -24,20 +26,23 @@
 
                     </div>
                     {% if field.errors %}
-                        {{ field.errors }}
+                    {{ field.errors }}
                     {% endif %}
-                {% endfor %}
+                    {% endfor %}
 
-                <br>
+                    <br>
 
-                <button type="submit" class="btn btn-lg btn-dark ">{{info}}</button>
+                    <button type="submit" class="btn btn-lg btn-dark ">{{info}}</button>
 
 
-            </form>
+                </form>
+            </div>
         </div>
+
     </div>
 
 </div>
+
 
 
 
