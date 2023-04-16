@@ -4,8 +4,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 
-# Modulos
-from .models import User
+# Modelos
+from django.contrib.auth.models import User
+from .models import Perfil
+from django.db.models import Q 
 
 # LIBRERIAS PARA EL CRUD
 from django.views.generic import CreateView, UpdateView, DeleteView, View
@@ -21,7 +23,7 @@ from django.contrib.auth import authenticate
 from .decoradores import *
 
 # FORMS
-from .forms import RegistroForm, UpdateUserForm, ChangePasswordForm, CreateUserForm, ChangeUserForm
+from .forms import RegistroForm,  ChangePasswordForm
 
 # Create your views here.
 
@@ -40,12 +42,16 @@ class SignUp(user_authenticate,CreateView):
         context['title'] = 'Crear Cuenta Nueva'
         context['messages.success'] = 'BIENVENIDO'
         context['info'] = 'Crear Cuenta' 
+        
         context['users_list'] = User.objects.exists()
 
         return context
 
     def form_valid(self, form):
         form.save()
+        user = User.objects.last()
+        profile = Perfil.objects.create(usuario=user)
+
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
         user = authenticate(username=username, password=password)
@@ -111,10 +117,12 @@ class ChangePassword(View):
     success_url = reverse_lazy('index')
 
     def get(self, request, *args, **kwargs):
+        
         return render(request, self.template_name, {
             'form':self.form_class, 
             'title': 'Cambiar Contraseña',
-            'info': 'Cambiar Contraseña'
+            'info': 'Cambiar Contraseña',
+            'perfil':Perfil.objects.get(pk=request.user.pk)
             })
 
     def post(self, request, *args, **kwargs):
@@ -136,5 +144,17 @@ class ChangePassword(View):
             return render(request, self.template_name, {
             'form':form, 
             'title': 'Cambiar Contraseña',
-            'info': 'Cambiar Contraseña'
+            'info': 'Cambiar Contraseña',
+            'perfil':Perfil.objects.get(pk=request.user.pk)
             })
+        
+
+###-- Acceder al perfil del usuario que esta registrado --###
+def detailUserRegister(request,pk):
+    perfil = Perfil.objects.get(pk=pk)
+    template_name = 'users/perfil.html'
+    context = {
+        'perfil':perfil,
+        'title': f'Perfil de Usuario {perfil.usuario}'
+    }
+    return render(request, template_name, context)

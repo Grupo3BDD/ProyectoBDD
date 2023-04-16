@@ -17,25 +17,23 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Puesto</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de puestos</a></li>          
         </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Actividades</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Cursos</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de laboratorios de cursos</a></li>
+          <li><a class="dropdown-item" href="#">Control de edicion de actas</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Asignacion</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+          <li><a class="dropdown-item" href="#">Control de asignacion de cursos</a></li>
+          <li><a class="dropdown-item" href="#">Asignacion de cursos</a></li>
+          <li><a class="dropdown-item" href="#">Consultar notas de cursos</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
@@ -48,9 +46,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Pensum</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Cursos</a></li>
+          <li><a class="dropdown-item" href="#">Administracion de Carreras</a></li>          
         </ul>
       </li>
       <li class="nav-item dropdown">
@@ -92,12 +89,12 @@
       {% else %}
       <div class="dropdown">
         <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ user.get_image }}" class="rounded-pill"  height="25rem">
+          <img src="{{ perfil.get_image }}" class="rounded-pill"  height="25rem" alt="...">
         </button>
         
         
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Perfil</a></li>
+          <li><a class="dropdown-item" href="{% url 'users:perfil' perfil.id %}">Perfil</a></li>
           <li><a class="dropdown-item" href="{% url 'users:logout' %}">Cerrar Sesion</a></li>
           
         </ul>

@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.users'
+    'apps.users',
+    'apps.actividades',
+    'apps.asignaciones',
+    'apps.cargas',
+    'apps.edificios',
+    'apps.pensum',
+    'apps.puestos'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +58,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'proyecto.urls'
 
-AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {
@@ -114,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 style="text-align: center;">Informacion basica sobre <span>{{perfil}}</span></h2>
+        </div>
+        <div class="col">
+            <p style="text-align: center;">{{user.username}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
