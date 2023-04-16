@@ -21,13 +21,11 @@
                         {{ field }}
 
                         {% if field.errors %}
-                        {{ field.errors }}
+                            {{ field.errors }}
                         {% endif %}
 
                     </div>
-                    {% if field.errors %}
-                    {{ field.errors }}
-                    {% endif %}
+                   
                     {% endfor %}
 
                     <br>

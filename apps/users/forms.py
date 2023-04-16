@@ -9,7 +9,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
-
 ### -- FORMULARIO PARA CREAR Y REGISTRAR USUARIOS--#
 class RegistroForm(UserCreationForm):
     username = forms.CharField(
@@ -43,13 +42,14 @@ class RegistroForm(UserCreationForm):
 
 
     )
+
     def clean_username(self):
-            username = self.cleaned_data.get('username')
+        username = self.cleaned_data.get('username')
 
-            if User.objects.filter(username=username).exists():
-                raise forms.ValidationError('El username ya se encuentra en uso')
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError('El username ya se encuentra en uso')
 
-            return username
+        return username
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -58,31 +58,28 @@ class RegistroForm(UserCreationForm):
             raise forms.ValidationError('El email ya se encuentra en uso')
 
         return email
-    
 
     class Meta:
         model = User
 
         fields = [
             'first_name',
-            'last_name',            
-            
+            'last_name',
+            'email',
+            'username'
+
         ]
 
         labels = {
             'first_name': 'Nombre',
-            'last_name': 'Apellido',                                
+            'last_name': 'Apellido',
         }
 
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),            
-            
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+
         }
-
-        
-
-
 
 
 ### -- FORMULARIO PARA CAMBIAR LA CONTRASEÑA --###
@@ -111,4 +108,3 @@ class ChangePasswordForm(forms.Form):
         if password1 != password2:
             raise forms.ValidationError('Contraseña no coinciden')
         return password2
-
