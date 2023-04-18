@@ -89,12 +89,12 @@
       {% else %}
       <div class="dropdown">
         <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ perfil.get_image }}" class="rounded-pill"  height="25rem" alt="...">
+          <img src="{% static 'img/usuario.png' %}" class="rounded-pill"  height="25rem" alt="...">
         </button>
         
         
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="{% url 'users:perfil' perfil.id %}">Perfil</a></li>
+          <li><a class="dropdown-item" href="{% url 'users:perfil' user.id %}">Perfil</a></li>
           <li><a class="dropdown-item" href="{% url 'users:logout' %}">Cerrar Sesion</a></li>
           
         </ul>

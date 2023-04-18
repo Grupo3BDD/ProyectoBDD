@@ -25,6 +25,8 @@ from .decoradores import *
 # FORMS
 from .forms import RegistroForm,  ChangePasswordForm
 
+# SETTINGS OF PROJECT
+from proyecto.settings import MEDIA_URL, STATIC_URL
 # Create your views here.
 
 
@@ -49,8 +51,8 @@ class SignUp(user_authenticate,CreateView):
 
     def form_valid(self, form):
         form.save()
-        user = User.objects.last()
-        profile = Perfil.objects.create(usuario=user)
+        #user = User.objects.last()
+        #profile = Perfil.objects.create(usuario=user)
 
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
@@ -115,14 +117,16 @@ class ChangePassword(View):
     template_name ='users/change_password.html'
     form_class = ChangePasswordForm
     success_url = reverse_lazy('index')
+    
 
     def get(self, request, *args, **kwargs):
+        
         
         return render(request, self.template_name, {
             'form':self.form_class, 
             'title': 'Cambiar Contraseña',
             'info': 'Cambiar Contraseña',
-            'perfil':Perfil.objects.get(pk=request.user.pk)
+            
             })
 
     def post(self, request, *args, **kwargs):
@@ -141,20 +145,24 @@ class ChangePassword(View):
             return redirect(self.success_url)
         else:
             form = self.form_class(request.POST)
+            
             return render(request, self.template_name, {
             'form':form, 
             'title': 'Cambiar Contraseña',
             'info': 'Cambiar Contraseña',
-            'perfil':Perfil.objects.get(pk=request.user.pk)
+            
             })
         
 
 ###-- Acceder al perfil del usuario que esta registrado --###
 def detailUserRegister(request,pk):
-    perfil = Perfil.objects.get(pk=pk)
+    
+    
+        
     template_name = 'users/perfil.html'
     context = {
-        'perfil':perfil,
-        'title': f'Perfil de Usuario {perfil.usuario}'
+        'perfil': Perfil.objects.get(pk=pk),
+        'title': f'Perfil de Usuario'
     }
+    
     return render(request, template_name, context)
