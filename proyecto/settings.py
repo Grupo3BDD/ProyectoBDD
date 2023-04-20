@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'apps.asignaciones',
     'apps.cargas',
     'apps.edificios',
-    'apps.pensum',
-    'apps.puestos'
+    'apps.pensum'    
 ]
 
 MIDDLEWARE = [

@@ -4,8 +4,7 @@ from .models import Perfil, Rol, Puesto, PaisOrigen, TipoDocumento
 from django.contrib.auth.models import Permission
 
 # Register your models here.
-class PerfilAdmin(admin.ModelAdmin):
-    #,'noPersonal'
+class PerfilAdmin(admin.ModelAdmin):    
     fields=('usuario','tipo_usuario','profesion','acronimo','tipoDocumento','noDocumentoIdentificacion','certificado_nacimiento','telefono','pais_origen','estado','imagen','rol','puesto')
     list_display=('__str__','fecha_creacion', 'noPersonal')
 

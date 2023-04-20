@@ -88,12 +88,17 @@ class Perfil(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+        if(self.usuario.first_name == ''):
+            return '{}'.format(self.usuario)
         return '{} {}'.format(self.usuario.first_name, self.usuario.last_name)
 
     def get_image(self):
         if self.imagen:
             return '{}{}'.format(MEDIA_URL, self.imagen)
         return '{}{}'.format(STATIC_URL, 'img/usuario.png')
+    
+    def get_username(self):
+        return '{}'.format(self.usuario)
 
 
 def set_escala(sender, instance, *args, **kwargs):
