@@ -13,10 +13,8 @@ from django.contrib.auth.models import User
 from proyecto.settings import MEDIA_URL, STATIC_URL
 
 def index(request):
-    template = 'index.html'   
-    user = User.objects.last()
-    print(user.id)
-    
+    template = 'index.html'  
+
     context = {
         'title':'Inicio',
         
