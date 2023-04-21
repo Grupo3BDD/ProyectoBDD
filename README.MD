@@ -18,7 +18,7 @@ venv\scripts\activate
 
 ```
 
-## _Por si tienen docker
+## _Por si tienen docker_
 > Dentro de la carpeta que se encuentre el archivo docker-compose.yml
 ```sh
 docker compose up -d
