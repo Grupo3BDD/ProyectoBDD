@@ -3,10 +3,11 @@
 from django.shortcuts import render
 
 # Modelos
-from apps.users.models import Perfil
+from apps.users.models import User
 from django.db.models import Q 
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+
 
 
 # SETTINGS OF PROJECT
