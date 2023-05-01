@@ -6,9 +6,10 @@ import datetime
 
 
 # MODELO
-from django.contrib.auth.models import User
+
 from django.db.models.signals import pre_save, post_save
 from django.db import transaction
+from django.contrib.auth.models import AbstractUser
 
 # SETTINGS OF PROJECT
 from proyecto.settings import MEDIA_URL, STATIC_URL
@@ -53,7 +54,7 @@ class TipoDocumento(models.Model):
         return self.tipoDocumento
 
 
-class Perfil(models.Model):
+class User(AbstractUser):
     tipo_usuario = [
         ('Usuario', 'Usuario'),
         ('Docente', 'Docente'),
@@ -64,8 +65,7 @@ class Perfil(models.Model):
         ('Acta', 'Acta'),
         ('Folio', 'Folio')
     ]
-
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    
     tipo_usuario = models.CharField(
         choices=tipo_usuario, default='Usuario', null=True, blank=True, max_length=100)
     profesion = models.CharField(max_length=75, null=True, blank=True)
@@ -88,9 +88,9 @@ class Perfil(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        if(self.usuario.first_name == ''):
-            return '{}'.format(self.usuario)
-        return '{} {}'.format(self.usuario.first_name, self.usuario.last_name)
+        if(self.first_name == ''):
+            return '{}'.format(self.username)
+        return '{} {}'.format(self.first_name, self.last_name)
 
     def get_image(self):
         if self.imagen:
@@ -98,7 +98,7 @@ class Perfil(models.Model):
         return '{}{}'.format(STATIC_URL, 'img/usuario.png')
     
     def get_username(self):
-        return '{}'.format(self.usuario)
+        return '{}'.format(self.username)
 
 
 def set_escala(sender, instance, *args, **kwargs):
@@ -121,27 +121,18 @@ def set_noPersonal(sender, instance, *args, **kwargs):
 
     if not instance.noPersonal:
 
-        for per in Perfil.objects.all():
+        for per in User.objects.all():
             if (per.noPersonal != codigo):
                 print('Generando codigo nuevo')
                 codigo = '{}{}'.format(year, str(uuid.uuid4())[:5])
 
         instance.noPersonal = codigo
 
-def set_addUserPerfil(sender, instance,*args,**kwargs):
-    # Despues de haber creado el usuario automaticamente se crea un perfil de usuario
-    try:
-        with transaction.atomic():
-            usuarioId = instance.id 
-            usId = get_object_or_404(User, id=usuarioId)
-            per = Perfil(usuario=usId)
-            per.save()
-    except Exception as e:
-        print(str(e))
 
-post_save.connect(set_addUserPerfil,sender=User)
 
-pre_save.connect(set_noPersonal, sender=Perfil)
+
+
+pre_save.connect(set_noPersonal, sender=User)
 
 pre_save.connect(set_escala, sender=Puesto)
 
