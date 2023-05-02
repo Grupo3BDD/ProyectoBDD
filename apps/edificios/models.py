@@ -1,6 +1,9 @@
 
 from django.db import models
 
+# Tiempo
+from datetime import datetime
+
 
 # Create your models here.
 class Edificio(models.Model):
@@ -12,6 +15,9 @@ class Edificio(models.Model):
 
     def __str__(self):
         return self.nombreEdificio
+
+    def get_created_at(self):
+        return self.fecha_creacion.strftime('%d-%m-%Y')
 
 
 class Clasificacion(models.Model):
