@@ -1,5 +1,7 @@
 {% load static %}
 
+{% url 'edificios:Edificio' as Edificio%}
+
 {% block css %}
 <style>
   .menu a{
@@ -39,7 +41,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Edificios</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de Edificios y Salones</a></li>
+          <li><a class="dropdown-item" href="{{Edificio}}">Administracion de Edificios y Salones</a></li>
 
         </ul>
       </li>

@@ -57,6 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'proyecto.urls'
 
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {

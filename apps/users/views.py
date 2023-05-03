@@ -5,8 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 
 # Modelos
-from django.contrib.auth.models import User
-from .models import Perfil
+from .models import User
 from django.db.models import Q 
 
 # LIBRERIAS PARA EL CRUD
@@ -161,7 +160,7 @@ def detailUserRegister(request,pk):
         
     template_name = 'users/perfil.html'
     context = {
-        'perfil': Perfil.objects.get(pk=pk),
+        'perfil': User.objects.get(pk=pk),
         'title': f'Perfil de Usuario'
     }
     

@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+{% if edificio_list %}
+
+<div class="row" style="margin-top: 5rem;">  
+  <div class="d-flex justify-content-center">
+    
+    <h2>{{ message }}</h2>
+
+  </div>
+</div>
+<div class="row">
+  <div class="d-flex justify-content-center">
+    {% include 'edificios/snippets/breadcrumb.html'%}
+
+  </div>
+
+</div>
+
+
+
+<div class="row">
+
+  <!--BOTONES DE AGREGAR, BUSCAR-->
+  <div class="row">
+
+    <div class="col">
+      <div class="d-flex justify-content-start">
+        <a class="btn btn-dark" href="{% url 'edificios:Crear'%}">Agregar: </a>
+      </div>
+    </div>
+
+    
+
+    
+  </div>
+
+  <!--APARTADO DONDE SE MUESTRA EL LISTADO DE EDIFICIOS-->
+  <div class="row" style="margin-top: 2rem;">
+    <div class="col">
+      <table class="table table-hover caption-top ">
+        <div class="d-flex justify-content-end">
+          {% include 'edificios/snippets/edificioBuscar.html' with query=query %}
+
+        </div>
+        
+        <thead>          
+          <tr>
+            <th scope="col">Nombre del edificio</th>
+            <th scope="col">Cantidad de salones</th>
+            <th scope="col">Niveles</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Fecha de creación</th>
+
+          </tr>
+
+
+
+        </thead>
+        <tbody>
+          {% for edificio in edificio_list %}
+          <tr>
+            <td scope="row">{{edificio.nombreEdificio}}</td>
+            <td>{{edificio.cantidadSalones}}</td>
+            <td> {{edificio.niveles}}</td>
+            <td>{{edificio.estado}}</td>
+
+            
+            <td>{{edificio.get_created_at}}</td>
+
+            <td>
+              <a class="btn btn-outline-dark" href="{% url 'edificios:Detalle' edificio.id %}">Mostrar</a>
+              <a class="btn btn-outline-dark" href="{% url 'edificios:Actualizar' edificio.id %}">Editar</a>
+              <a class="btn btn-outline-dark" href="{% url 'edificios:Eliminar' edificio.id %}">Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+      
+      <nav aria-label="...">
+        <ul class="pagination">
+
+          
+          {% if page_obj.has_previous %}
+          <li class="page-item activate">
+            <a class="page-link" href="?page={{page_obj.previous_page_number }}">Previous</a>
+          </li>
+          {%else%}
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          {% endif %}
+
+
+          
+          
+          
+          {% for num in page_obj.paginator.page_range %}
+            {% if num == page_obj.number%}
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">{{num}}</a>
+            </li>
+          
+            {% else %}
+            <li class="page-item" aria-current="page">
+              <a class="page-link" href="?page={{num}}">{{num}}</a>
+            </li>
+            {% endif %}
+
+          {% endfor%}
+
+          
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" >Next</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+</div>
+
+{% else%}
+
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
+      <h2>No se ha encontrado ningún edificio</h2>
+      <a class="btn btn btn-outline-dark" href="{% url 'edificios:Crear' %}"  style="margin-left: 0.5rem;">Agregar</a>
+
+
+     
+      
+      
+    </div>
+  </div>
+</div>
+
+
+{% endif %}
+
+
+{% endblock %}

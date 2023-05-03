@@ -1,0 +1,12 @@
+<td scope="row">{{edificio.nombreEdificio}}</td>
+<td>{{edificio.cantidadSalones}}</td>
+<td>{{edificio.niveles}}</td>
+<td>{{edificio.estado}}</td>
+
+<td>{{edificio.get_created_at}}</td>
+
+<td>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:Detalle' edificio.id %}">Mostrar</a>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:Actualizar' edificio.id %}">Editar</a>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:Eliminar' edificio.id %}">Eliminar</a>
+</td>

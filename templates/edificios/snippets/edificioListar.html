@@ -1,0 +1,38 @@
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    {% if edificio_list %}
+    <table class="table table-hover caption-top ">
+
+
+      <thead>
+        <tr>
+          <th scope="col">Nombre del edificio</th>
+          <th scope="col">Cantidad de Salones</th>
+          <th scope="col">Niveles</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha de creación</th>
+
+        </tr>
+
+
+
+      </thead>
+      <tbody>
+        {% for object in edificio_list %}
+        <tr>
+          {% include 'edificios/snippets/edificio.html' with edificio=object %}
+
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="h5">
+      No se ha encontrado registro del edificio buscado
+      <a href="{% url 'edificios:Edificio' %}" class="btn btn-primary">Regresar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

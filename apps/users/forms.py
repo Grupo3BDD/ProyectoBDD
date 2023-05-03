@@ -3,7 +3,7 @@
 from django import forms
 
 # MODELOS
-from django.contrib.auth.models import User
+from .models import User
 
 # LIBRERIA QUE SE ENCARGA DE CREAR USUARIOS
 from django.contrib.auth.forms import UserCreationForm
