@@ -1,0 +1,8 @@
+<td scope="row">{{clasificacion.tipo_salon_uso}}</td>
+<td>{{clasificacion.estado}}</td>
+
+<td>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:DetalleClasificacion' clasificacion.id %}">Mostrar</a>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:ActualizarClasificacion' clasificacion.id %}">Editar</a>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:EliminarClasificacion' clasificacion.id %}">Eliminar</a>
+</td>

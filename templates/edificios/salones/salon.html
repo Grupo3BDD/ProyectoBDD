@@ -5,7 +5,7 @@
 {% block content %}
 
 
-{% if edificio_list %}
+{% if salon_list %}
 
 <div class="row" style="margin-top: 5rem;">  
   <div class="d-flex justify-content-center">
@@ -16,7 +16,7 @@
 </div>
 <div class="row">
   <div class="d-flex justify-content-center">
-    {% include 'edificios/snippets/breadcrumb.html'%}
+    {% include 'edificios/salones/snippets/breadcrumb.html'%}
 
   </div>
 
@@ -31,11 +31,13 @@
 
     <div class="col">
       <div class="d-flex justify-content-start">
-        <a class="btn btn-dark" href="{% url 'edificios:Crear'%}">Crear: </a>
-      </div>
-    </div>
+        <a class="btn btn-dark" href="{% url 'edificios:CrearSalon'%}">Crear: </a>
 
-    
+        <a class="btn btn-outline-dark" href="{% url 'edificios:Clasificacion' %}">Clasificaciones</a>
+
+      </div>
+
+    </div>
 
     
   </div>
@@ -45,40 +47,39 @@
     <div class="col">
       <table class="table table-hover caption-top ">
         <div class="d-flex justify-content-end">
-          {% include 'edificios/snippets/edificioBuscar.html' with query=query %}
+          {% include 'edificios/salones/snippets/salonBuscar.html' with query=query %}
 
         </div>
         
         <thead>          
           <tr>
-            <th scope="col">Nombre del edificio</th>
-            <th scope="col">Cantidad de salones</th>
-            <th scope="col">Niveles</th>
+            <th scope="col">Nombre del Salon</th>
+            <th scope="col">Edificio</th>
+            <th scope="col">Clasificación</th>
+            <th scope="col">Capacidad</th>
             <th scope="col">Habilitado</th>
             <th scope="col">Fecha de creación</th>
             <th scope="col">Opciones</th>
 
           </tr>
 
-
-
         </thead>
         <tbody>
-          {% for edificio in edificio_list %}
+          {% for salon in salon_list %}
           <tr>
-            <td scope="row">{{edificio.nombreEdificio}}</td>
-            <td>{{edificio.cantidadSalones}}</td>
-            <td> {{edificio.niveles}}</td>
-            <td>{{edificio.estado}}</td>
+            <td scope="row">{{salon.edificio}}{{salon.nombreSalon}}</td>
+            <td>{{salon.edificio}}</td>
+            <td> {{salon.clasificacion}}</td>
+            <td>{{salon.capacidadEstudiantes}} estudiantes</td>
+            <td>{{salon.estado}}</td>
 
-            
-            <td>{{edificio.get_created_at}}</td>
+            <td>{{salon.get_created_at}}</td>
 
             <td>
-              <!--<a class="btn btn-outline-dark" href="{% url 'edificios:Detalle' edificio.id %}">Mostrar</a>-->
-              <a class="btn btn-outline-dark" href="{% url 'edificios:Actualizar' edificio.id %}">Editar</a>
-              <a class="btn btn-outline-dark" href="{% url 'edificios:Eliminar' edificio.id %}">Eliminar</a>
-              <a class="btn btn-outline-dark" href="{% url 'edificios:Salon' %}">Administrar salones</a>
+              <!--<a class="btn btn-outline-dark" href="{% url 'edificios:DetalleSalon' salon.id %}">Mostrar</a>-->
+              <a class="btn btn-outline-dark" href="{% url 'edificios:ActualizarSalon' salon.id %}">Editar</a>
+              <a class="btn btn-outline-dark" href="{% url 'edificios:EliminarSalon' salon.id %}">Eliminar</a>
+
             </td>
           </tr>
           {% endfor %}
@@ -99,6 +100,8 @@
             <a class="page-link">Previous</a>
           </li>
           {% endif %}
+
+
 
 
           {% for num in page_obj.paginator.page_range %}
@@ -127,8 +130,14 @@
           </li>
           {% endif %}
 
+
+
         </ul>
       </nav>
+
+      <div class="d-flex justify-content-start">
+        <a class="btn btn-outline-dark" href="{% url 'edificios:Edificio' %}">Regresar</a>
+        </div>
 
     </div>
   </div>
@@ -140,8 +149,8 @@
 <div class="row">
   <div class="col-12">
     <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
-      <h2>No se ha encontrado ningún edificio</h2>
-      <a class="btn btn btn-outline-dark" href="{% url 'edificios:Crear' %}"  style="margin-left: 0.5rem;">Crear</a>
+      <h2>No se ha encontrado ningún salón</h2>
+      <a class="btn btn btn-outline-dark" href="{% url 'edificios:CrearSalon' %}"  style="margin-left: 0.5rem;">Crear</a>
 
 
      

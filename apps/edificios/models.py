@@ -39,3 +39,6 @@ class Salon(models.Model):
     def __str__(self):
         return '{}{}'.format(self.edificio.nombreEdificio,self.nombreSalon)
 
+    def get_created_at(self):
+        return self.fecha_creacion.strftime('%d-%m-%Y')
+
