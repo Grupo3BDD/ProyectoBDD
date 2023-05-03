@@ -1,0 +1,8 @@
+<h1><a href="{%url 'carga:carga-create' %}">Crear nueva carga</a></h1>
+
+%for c in carga %
+
+<p>{{ c.nombre }} <a href="{%url 'carga:carga-update' c.pk%}">Editar</a><a href="{%url 'carga:carga-delete' c.pk %}">Eliminar</a></p>
+
+{% endfor %}
+
