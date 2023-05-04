@@ -9,7 +9,7 @@
 {% block content %}
 <div class="card" style="margin-top: 2.5rem;">
     <div class="card-body">
-        <a href="{% url 'edificios:Edificio'%}">Regresar</a>
+        <a href="{% url 'edificios:Salon'%}">Regresar</a>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
@@ -23,12 +23,19 @@
 
             </div>
 
+            <!--</div style="margin-bottom:1rem">-->
+            {% if field.name == 'clasificacion' %}
+            <div>
+                <a href="{% url 'edificios:CrearClasificacion'%}" >AGREGAR OTRA CLASIFICACION</a>
+            </div>
+
+            {% endif %}
             {% endfor %}
 
             <br>
             
             <button type="submit" class="btn  btn-dark ">{{message}}</button>
-            <a href="{% url 'edificios:Edificio'%}">CANCELAR</a>
+            <a href="{% url 'edificios:Salon'%}">CANCELAR</a>
             
 
         </form>

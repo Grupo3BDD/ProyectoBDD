@@ -1,0 +1,13 @@
+<td scope="row">{{salon.nombreSalon}}</td>
+<td>{{salon.edificio}}</td>
+<td>{{salon.clasificacion}}</td>
+<td>{{salon.capacidadEstudiantes}}</td>
+<td>{{salon.estado}}</td>
+<td>{{salon.get_created_at}}</td>
+
+<td>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:DetalleSalon' salon.id %}">Mostrar</a>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:ActualizarSalon' salon.id %}">Editar</a>
+    <a class="btn btn-outline-dark" href="{% url 'edificios:EliminarSalon' salon.id %}">Eliminar</a>
+</td>
+

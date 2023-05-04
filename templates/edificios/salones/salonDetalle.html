@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+<div class="row" style="margin-top: 3rem;">
+    <div class="col">
+        <div class="d-flex justify-content-center" >
+            <div class="h1">{{message}}</div>
+           
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="d-flex justify-content-center" >
+            {% include 'edificios/salones/snippets/breadcrumb.html'%}
+
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    
+    <div class="col-6">
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Nombre del Salon:  </span>
+            <span class="p2" style="color: red;">{{salon.nombreSalon}}</span>
+        </div>
+
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Edificio: </span>
+            <span class="p2" style="color: red;"><br>{{salon.edificio}}</span>
+        </div>
+
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Clasificacion: </span>
+            <span class="p2" style="color: red;">{{salon.clasificacion}}</span>
+        </div>
+
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Capacidad: </span>
+            <span class="p2" style="color: red;">{{salon.capacidadEstudiantes}}</span>
+        </div>
+
+
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Estado:</span>
+            <span class="p2" style="color: red;">{{salon.estado}}</span>
+        </div>
+
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Fecha de creación: </span>
+            <span class="p2" style="color: red;">{{salon.fecha_creacion}}</span>
+        </div>
+
+    </div>
+    <div class="col-6">
+        <div class="d-flex justify-content-center" >
+            <img src="{{product.get_image}}" height="300rem">
+
+        </div>
+        
+        
+    </div>
+
+</div>
+
+
+
+
+
+<div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 3rem;">
+    <a class="btn btn-dark" type="button" href="{% url 'edificios:Salon' %}" >Regresar</a>
+
+</div>
+{% endblock %}

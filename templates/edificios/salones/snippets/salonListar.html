@@ -1,0 +1,39 @@
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    {% if salon_list %}
+    <table class="table table-hover caption-top ">
+
+
+      <thead>
+        <tr>
+          <th scope="col">Nombre del Salon</th>
+          <th scope="col">Edificio</th>
+          <th scope="col">Clasificacion</th>
+            <th scope="col">Capacidad</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha de creación</th>
+
+        </tr>
+
+
+
+      </thead>
+      <tbody>
+        {% for object in salon_list %}
+        <tr>
+          {% include 'edificios/salones/snippets/salon.html' with salon=object %}
+
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="h5">
+      No se ha encontrado registro del salon buscado
+      <a href="{% url 'edificios:Salon' %}" class="btn btn-primary">Regresar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

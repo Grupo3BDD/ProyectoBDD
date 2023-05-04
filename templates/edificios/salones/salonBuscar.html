@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    <div class="d-flex justify-content-start">
+      {% include 'edificios/salones/snippets/breadcrumb.html'%}
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    {% include 'edificios/salones/snippets/salonBuscar.html' with query=query %}
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col">
+    <p>Resultados para: {{ query }} ({{ count }})</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    {% include 'edificios/salones/snippets/salonListar.html' %}
+  </div>
+</div>
+
+<div class="row">
+  <div>
+      <a class="btn btn-outline-dark" href="{% url 'edificios:Salon' %}">Regresar</a>
+  </div>
+
+</div>
+
+
+{% endblock %}

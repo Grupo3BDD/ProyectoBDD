@@ -1,0 +1,35 @@
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    {% if clasificacion_list %}
+    <table class="table table-hover caption-top ">
+
+
+      <thead>
+        <tr>
+          <th scope="col">Nombre Clasificación</th>
+          <th scope="col">Estado</th>
+
+        </tr>
+
+
+
+      </thead>
+      <tbody>
+        {% for object in clasificacion_list %}
+        <tr>
+          {% include 'edificios/clasificaciones/snippets/clasificacion.html' with clasificacion=object %}
+
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="h5">
+      No se ha encontrado registro de la clasificacion buscada
+      <a href="{% url 'edificios:Clasificacion' %}" class="btn btn-primary">Regresar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
