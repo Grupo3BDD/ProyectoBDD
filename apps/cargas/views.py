@@ -6,12 +6,22 @@ from django.views import generic
 from .models import Carga
 from .forms import CargaForm
 from django.views.generic import View
+from .utils import breadcrumb
+
 
 class CargaListView(generic.ListView):
     template_name = "cargas/carga_list.html"
     context_object_name = "carga"
-    def get_queryset(self):
-        return Carga.objects.all()
+    queryset = Carga.objects.all().order_by('-id')
+    paginate_by = 5
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['message'] = 'Administración de Edificios'
+        context['title'] = 'Edificios'
+        context['breadcrumb'] = breadcrumb()
+
+        return context
     
 
 class CargaCreateView(generic.CreateView):
@@ -19,7 +29,7 @@ class CargaCreateView(generic.CreateView):
     form_class = CargaForm
 
     def get_success_url(self):
-        return reverse("carga:carga-list")
+        return reverse("cargas:carga-list")
     
     def get_queryset(self):
         return Carga.objects.all()
@@ -28,7 +38,7 @@ class CargaDeleteView(generic.DeleteView):
     template_name = "cargas/carga_delete.html"
 
     def get_success_url(self):
-        return reverse("carga:carga-list")
+        return reverse("cargas:carga-list")
     
     def get_queryset(self):
         return Carga.objects.all()
@@ -39,7 +49,7 @@ class CargaUpdateView (generic.UpdateView):
     form_class = CargaForm
 
     def get_success_url(self):
-        return reverse("carga:carga-list")
+        return reverse("cargas:carga-list")
     
     def get_queryset(self):
         return Carga.objects.all()

@@ -21,7 +21,7 @@
 {% block content %}
 <div class="card" style="margin-top: 2.5rem;">
     <div class="card-body">
-        <a href="{% url 'carga:carga-list'%}">Regresar</a>
+        <a href="{% url 'cargas:carga-list'%}">Regresar</a>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}

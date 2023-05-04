@@ -5,7 +5,7 @@
 {% block content %}
 
 
-{% if carga_list %}
+{% if cargas_list %}
 
 <div class="row" style="margin-top: 5rem;">  
   <div class="d-flex justify-content-center">
@@ -31,7 +31,7 @@
 
     <div class="col">
       <div class="d-flex justify-content-start">
-        <a class="btn btn-dark" href="{% url 'carga:carga-create'%}">Agregar: </a>
+        <a class="btn btn-dark" href="{% url 'cargas:carga-create'%}">Agregar: </a>
       </div>
     </div>
 
@@ -72,8 +72,8 @@
             <td>{{carga.fecha_aprob}}</td>
 
             <td>
-              <a class="btn btn-outline-dark" href="{% url 'carga:carga-update' carga.id %}">Editar</a>
-              <a class="btn btn-outline-dark" href="{% url 'carga:carga-delete' carga.id %}">Eliminar</a>
+              <a class="btn btn-outline-dark" href="{% url 'cargas:carga-update' carga.id %}">Editar</a>
+              <a class="btn btn-outline-dark" href="{% url 'cargas:carga-delete' carga.id %}">Eliminar</a>
             </td>
           </tr>
           {% endfor %}
@@ -139,7 +139,7 @@
   <div class="col-12">
     <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
       <h2>No se ha encontrado ninguna carga</h2>
-      <a class="btn btn btn-outline-dark" href="{% url 'carga:carga-create' %}"  style="margin-left: 0.5rem;">Agregar</a>
+      <a class="btn btn btn-outline-dark" href="{% url 'cargas:carga-create' %}"  style="margin-left: 0.5rem;">Agregar</a>
 
 
      

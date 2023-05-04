@@ -1,12 +1,12 @@
-<td scope="row">{{carga.year}}</td>
-<td>{{carga.ciclo_acad}}</td>
-<td>{{edificio.estado}}</td>
-<td>{{edificio.fecha_envio}}</td>
-<td>{{edificio.fecha_aprob}}</td>
+<td scope="row">{{cargas.year}}</td>
+<td>{{cargas.ciclo_acad}}</td>
+<td>{{cargas.estado}}</td>
+<td>{{cargas.fecha_envio}}</td>
+<td>{{cargas.fecha_aprob}}</td>
 
-<td>{{carga.get_created_at}}</td>
+<td>{{cargas.get_created_at}}</td>
 
 <td>
-    <a class="btn btn-outline-dark" href="{% url 'carga:carga-update' carga.id %}">Editar</a>
-    <a class="btn btn-outline-dark" href="{% url 'carga:carga-delete' carga.id %}">Eliminar</a>
+    <a class="btn btn-outline-dark" href="{% url 'cargas:carga-update' cargas.id %}">Editar</a>
+    <a class="btn btn-outline-dark" href="{% url 'cargas:carga-delete' cargas.id %}">Eliminar</a>
 </td>
