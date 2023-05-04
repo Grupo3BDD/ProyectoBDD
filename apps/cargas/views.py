@@ -17,8 +17,8 @@ class CargaListView(generic.ListView):
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
-        context['message'] = 'Administración de Edificios'
-        context['title'] = 'Edificios'
+        context['message'] = 'Administración de Cargas'
+        context['title'] = 'Cargas'
         context['breadcrumb'] = breadcrumb()
 
         return context
