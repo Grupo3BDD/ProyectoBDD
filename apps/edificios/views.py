@@ -50,9 +50,6 @@ class EdificioList(ListView):
 
         return context
 
-
-
-
 ###-- MODULO QUE CREA A LOS EDIFICIOS--###
 class EdificioCreate(CreateView):
     model = Edificio
@@ -83,7 +80,6 @@ class EdificioUpdate(UpdateView):
         return context
 
     success_url = reverse_lazy('edificios:Edificio')
-
 
 
 ###-- MODULO QUE ELIMINA ALGUN EDIFICIO--###

@@ -1,6 +1,7 @@
 {% load static %}
 
 {% url 'edificios:Edificio' as Edificio%}
+{% url 'pensums:Curso' as Curso%}
 
 {% block css %}
 <style>
@@ -48,7 +49,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Pensum</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de Cursos</a></li>
+          <li><a class="dropdown-item" href="{{Curso}}">Administracion de Cursos</a></li>
           <li><a class="dropdown-item" href="#">Administracion de Carreras</a></li>          
         </ul>
       </li>
