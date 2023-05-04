@@ -1,0 +1,9 @@
+<td scope="row">{{curso.idCurso}}</td>
+<td>{{curso.nombreCurso}}</td>
+
+
+<td>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:DetalleCurso' curso.id %}">Mostrar</a>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:ActualizarCurso' curso.id %}">Editar</a>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:EliminarCurso' curso.id %}">Eliminar</a>
+</td>

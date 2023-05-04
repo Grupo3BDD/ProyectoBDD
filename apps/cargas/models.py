@@ -1,7 +1,11 @@
 from django.db import models
 
 class Carga(models.Model):
+<<<<<<< HEAD
+    year = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+=======
     year = models.DecimalField(max_digits=5, decimal_places=0)
+>>>>>>> 52b33dc9cd071236c943a40a899eb719b906e950
     ciclo_acad = models.CharField(max_length=255)
     
     estados = (

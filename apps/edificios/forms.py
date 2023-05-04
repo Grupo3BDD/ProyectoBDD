@@ -118,9 +118,6 @@ class salonForm(forms.ModelForm):
             'nombreSalon',
             'capacidadEstudiantes',
 
-
-
-
         ]
 
         labels = {
@@ -130,7 +127,6 @@ class salonForm(forms.ModelForm):
             'capacidadEstudiantes': 'Capacidad de estudiantes',
 
 
-
         }
 
         widgets = {
@@ -138,7 +134,6 @@ class salonForm(forms.ModelForm):
             'clasificacion': forms.Select(attrs={'class': 'form-control select2'}),
             'nombreSalon': forms.TextInput(attrs={'class': 'form-control'}),
             'capacidadEstudiantes': forms.TextInput(attrs={'class': 'form-control', 'type':'number'}),
-
 
         }
 
@@ -153,8 +148,6 @@ class editSalon(forms.ModelForm):
             'capacidadEstudiantes',
             'estado',
 
-
-
         ]
 
         labels = {
@@ -163,7 +156,6 @@ class editSalon(forms.ModelForm):
             'nombreSalon': 'Nombre del Salon',
             'capacidadEstudiantes': 'Capacidad de estudiantes',
             'estado': 'Habilitado',
-
 
         }
 

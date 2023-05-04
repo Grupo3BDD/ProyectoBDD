@@ -1,0 +1,34 @@
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    {% if curso_list %}
+    <table class="table table-hover caption-top ">
+
+
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nombre</th>
+        </tr>
+
+
+
+      </thead>
+      <tbody>
+        {% for object in curso_list %}
+        <tr>
+          {% include 'pensums/cursos/snippets/curso.html' with curso=object %}
+
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="h5">
+      No se ha encontrado registro del curso buscado
+      <a href="{% url 'pensums:Curso' %}" class="btn btn-primary">Regresar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

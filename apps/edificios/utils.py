@@ -5,7 +5,3 @@ def breadcrumb(edificios = True):
         {'title': 'Edificios', 'active': edificios, 'url': reverse('edificios:Edificio')}
     ]
 
-#def breadcrumb(salones = True):
-#    return [
-#        {'title': 'Salones', 'active': salones, 'url': reverse('edificios:Salon')}
-#    ]
