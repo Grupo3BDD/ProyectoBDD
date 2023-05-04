@@ -16,6 +16,7 @@ urlpatterns = [
     path('',include('apps.users.urls')),
     path('edificio/',include('apps.edificios.urls')),
     path('admin/', admin.site.urls),
+    path('carga/', include('apps.cargas.urls'))
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:    
