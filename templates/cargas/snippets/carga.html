@@ -7,5 +7,6 @@
 <td>{{carga.get_created_at}}</td>
 
 <td>
-    
+    <a class="btn btn-outline-dark" href="{% url 'carga:carga-update' carga.id %}">Editar</a>
+    <a class="btn btn-outline-dark" href="{% url 'carga:carga-delete' carga.id %}">Eliminar</a>
 </td>
