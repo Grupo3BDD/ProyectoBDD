@@ -52,6 +52,9 @@ class Carrera(models.Model):
     def __str__(self):
         return self.nombreCarrera
 
+    def get_created_at(self):
+        return self.fecha_creacion.strftime('%d-%m-%Y')
+
    
 class DetalleCarrera(models.Model):
     carreraId= models.ForeignKey(Carrera, null=False,blank=False,on_delete=models.CASCADE)

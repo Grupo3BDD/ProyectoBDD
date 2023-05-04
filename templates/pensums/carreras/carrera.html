@@ -51,8 +51,8 @@
         
         <thead>          
           <tr>
-            <th scope="col">Código</th>
             <th scope="col">Nombre</th>
+            <th scope="col">Encargado de área</th>
             <th scope="col">Fecha de creación</th>
             <th scope="col">Opciones</th>
           </tr>
@@ -61,8 +61,8 @@
         <tbody>
           {% for carrera in carrera_list %}
           <tr>
-            <td scope="row">{{carrera.idCarrera}}</td>
-            <td>{{carrera.nombreCarrera}}</td>
+            <td scope="row">{{carrera.nombreCarrera}}</td>
+            <td>{{carrera.encargado_area}}</td>
             <td>{{carrera.get_created_at}}</td>
 
             <td>
