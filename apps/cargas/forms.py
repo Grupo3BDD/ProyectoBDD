@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm, DateInput, NumberInput
-from cargas.models import Carga
+from .models import Carga
 
 class CargaForm(ModelForm):
     class Meta: 
