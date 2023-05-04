@@ -54,7 +54,7 @@ class editCurso(forms.ModelForm):
             'idCurso',
             'nombreCurso',
             'horasSemana',
-            #'carrera',
+            'carrera',
             'laboratorio',
             'codigo_lab',
             'horas_lab_sem',
@@ -67,7 +67,7 @@ class editCurso(forms.ModelForm):
             'idCurso': 'Código de curso',
             'nombreCurso': 'Nombre del curso',
             'horasSemana': 'Num. de horas a la semana',
-            #'carrera': 'Carrera',
+            'carrera': 'Carrera',
             'laboratorio': 'Con laboratorio',
             'codigo_lab': 'Código de laboratorio',
             'horas_lab_sem': 'Num. de horas a la semana',
@@ -80,7 +80,7 @@ class editCurso(forms.ModelForm):
             'idCurso': forms.TextInput(attrs={'class': 'form-control'}),
             'nombreCurso': forms.TextInput(attrs={'class': 'form-control'}),
             'horasSemana': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
-            #'carrera': forms.Select(attrs={'class': 'form-control select2'}),
+            'carrera': forms.CheckboxSelectMultiple(attrs = { 'type': 'checkbox'}),
             'codigo_lab': forms.TextInput(attrs={'class': 'form-control'}),
             'horas_lab_sem': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
             'valido_semestres': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
@@ -98,6 +98,8 @@ class carreraForm(forms.ModelForm):
             'duracionPeriodos',
             'clasificacion',
             'partida',
+            'tipo_ciclo',
+            #'encargado_area',
 
         ]
 
@@ -107,6 +109,7 @@ class carreraForm(forms.ModelForm):
             'duracionPeriodos': 'Duración de los períodos en minutos',
             'clasificacion':'Clasificación',
             'partida': 'Partida',
+            'tipo_ciclo': 'Tipo de ciclo académico'
 
         }
 
@@ -131,6 +134,7 @@ class editCarrera(forms.ModelForm):
             'clasificacion',
             'partida',
             'habilitado',
+            'tipo_ciclo',
 
         ]
 
@@ -141,6 +145,7 @@ class editCarrera(forms.ModelForm):
             'clasificacion':'Clasificación',
             'partida': 'Partida',
             'habilitado': 'Habilitado',
+            'tipo_ciclo': 'Tipo de ciclo académico'
 
         }
 
@@ -150,5 +155,6 @@ class editCarrera(forms.ModelForm):
             'duracionPeriodos': forms.TextInput(attrs={'class': 'form-control', 'type':'number'}),
             'clasificacion': forms.TextInput(attrs={'class': 'form-control'}),
             'partida': forms.TextInput(attrs={'class': 'form-control'}),
+
 
         }

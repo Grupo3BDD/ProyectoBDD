@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Carga(models.Model):
     year = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     year = models.DecimalField(max_digits=5, decimal_places=0)
