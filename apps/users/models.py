@@ -100,6 +100,28 @@ class User(AbstractUser):
     def get_username(self):
         return '{}'.format(self.username)
 
+class EncargadoArea(models.Model):
+    user = models.ForeignKey(User, blank=False,null=False,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.user.username
+
+class CoordinadorAcademico(models.Model):
+    user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.user.username
+    
+class Estudiante(models.Model):
+    user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.user.username
+
+class Docente(models.Model):
+    user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.user.username
+
+
+
 
 def set_escala(sender, instance, *args, **kwargs):
     # Asigna una Escala automaitca para la entidad Puesto

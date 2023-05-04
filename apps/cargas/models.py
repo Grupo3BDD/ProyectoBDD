@@ -1,9 +1,12 @@
+import datetime
 from django.db import models
 
+currentDateTime = datetime.datetime.now()
+date = currentDateTime.date()
+years = date.strftime("%Y")
 
 class Carga(models.Model):
-    year = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
-    year = models.DecimalField(max_digits=5, decimal_places=0)
+    year = models.IntegerField(default=years)
     ciclo_acad = models.CharField(max_length=255)
     
     estados = (
