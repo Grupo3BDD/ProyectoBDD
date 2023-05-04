@@ -70,7 +70,7 @@ class CursoCreate(CreateView):
 class CursoUpdate(UpdateView):
     model = Curso
     form_class = editCurso
-    template_name = 'pensums/cursos/cursosForm.html'
+    template_name = 'pensums/cursos/cursoForm.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -124,6 +124,99 @@ class CursoSearch(ListView):
         context['query'] = self.query()
         context['title'] = 'Buscar'
         context['count'] = context['curso_list'].count()
+        context['breadcrumb'] = breadcrumb()
+
+        return context
+
+###-- MODULO QUE ENLISTA A LAS CARRERAS-###
+class CarreraList(ListView):
+    template_name = 'pensums/carreras/carrera.html'
+    queryset = Carrera.objects.all().order_by('-id')
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['message'] = 'Administración de Carreras'
+        context['title'] = 'Carreras'
+        context['breadcrumb'] = breadcrumb()
+
+        return context
+
+###-- MODULO QUE CREA A LAS CARRERAS--###
+class CarreraCreate(CreateView):
+    model = Carrera
+    form_class = carreraForm
+    template_name = 'pensums/carreras/carreraForm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Agregar'
+        context['message'] = 'Crear'
+
+        return context
+
+    success_url = reverse_lazy('pensums:Carrera')
+
+
+###-- MODULO QUE MODIFICA ALGUNA CARRERA--###
+class CarreraUpdate(UpdateView):
+    model = Carrera
+    form_class = editCarrera
+    template_name = 'pensums/carreras/carreraForm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Editar'
+        context['message'] = 'Guardar'
+
+        return context
+
+    success_url = reverse_lazy('pensums:Carrera')
+
+
+###-- MODULO QUE ELIMINA ALGUNA CARRERA-###
+class CarreraDelete(DeleteView):
+    model = Carrera
+    template_name = 'pensums/carreras/carreraDelete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Eliminar'
+
+        return context
+
+    success_url = reverse_lazy('pensums:Carrera')
+
+###-- MODULO QUE DETALLA ALGUNA CARRERA--###
+class CarreraDetalle(DetailView):
+    model = Carrera
+    template_name = 'pensums/carreras/carreraDetalle.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Detalle'
+        context['message'] = 'Detalle'
+        context['breadcrumb'] = breadcrumb()
+
+        return context
+
+###-- MODULO QUE BUSCA CARRERAS--###
+class CarreraSearch(ListView):
+    template_name = 'pensums/carreras/carreraBuscar.html'
+
+    def get_queryset(self):
+        filters = Q(idCarrera__icontains=self.query())
+        return Carrera.objects.filter(filters)
+
+    def query(self):
+        return self.request.GET.get('q')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.query()
+        context['title'] = 'Buscar'
+        context['count'] = context['carrera_list'].count()
         context['breadcrumb'] = breadcrumb()
 
         return context

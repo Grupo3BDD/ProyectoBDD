@@ -13,7 +13,7 @@ class cursoForm(forms.ModelForm):
             'idCurso',
             'nombreCurso',
             'horasSemana',
-            #'carrera',
+            'carrera',
             'laboratorio',
             'codigo_lab',
             'horas_lab_sem',
@@ -25,7 +25,7 @@ class cursoForm(forms.ModelForm):
             'idCurso': 'Código de curso',
             'nombreCurso': 'Nombre del curso',
             'horasSemana': 'Num. de horas a la semana',
-            #'carrera':'Carrera',
+            'carrera':'Carrera',
             'laboratorio': 'Con laboratorio',
             'codigo_lab': 'Código de laboratorio',
             'horas_lab_sem': 'Num. de horas a la semana',
@@ -37,8 +37,7 @@ class cursoForm(forms.ModelForm):
             'idCurso': forms.TextInput(attrs={'class': 'form-control'}),
             'nombreCurso': forms.TextInput(attrs={'class': 'form-control'}),
             'horasSemana': forms.TextInput(attrs={'class': 'form-control', 'type':'number'}),
-            #'carrera':forms.Select(attrs={'class': 'form-control select2'}),
-            'laboratorio': forms.TextInput(attrs={'class': 'form-control', 'type':'number'}),
+            'carrera':forms.CheckboxSelectMultiple(attrs = { 'type': 'checkbox'}),
             'codigo_lab': forms.TextInput(attrs={'class': 'form-control'}),
             'horas_lab_sem': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
             'valido_semestres': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
@@ -82,9 +81,74 @@ class editCurso(forms.ModelForm):
             'nombreCurso': forms.TextInput(attrs={'class': 'form-control'}),
             'horasSemana': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
             #'carrera': forms.Select(attrs={'class': 'form-control select2'}),
-            'laboratorio': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
             'codigo_lab': forms.TextInput(attrs={'class': 'form-control'}),
             'horas_lab_sem': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
             'valido_semestres': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
+
+        }
+
+#Formulario para las Carreras
+class carreraForm(forms.ModelForm):
+    class Meta:
+        model = Carrera
+
+        fields = [
+            'idCarrera',
+            'nombreCarrera',
+            'duracionPeriodos',
+            'clasificacion',
+            'partida',
+
+        ]
+
+        labels = {
+            'idCarrera': 'Código de la carrera',
+            'nombreCarrera': 'Nombre de la carrera',
+            'duracionPeriodos': 'Duración de los períodos en minutos',
+            'clasificacion':'Clasificación',
+            'partida': 'Partida',
+
+        }
+
+        widgets = {
+            'idCarrera': forms.TextInput(attrs={'class': 'form-control'}),
+            'nombreCarrera': forms.TextInput(attrs={'class': 'form-control'}),
+            'duracionPeriodos': forms.TextInput(attrs={'class': 'form-control', 'type':'number'}),
+            'clasificacion': forms.TextInput(attrs={'class': 'form-control'}),
+            'partida': forms.TextInput(attrs={'class': 'form-control'}),
+
+        }
+
+#Formulario para la edición de Carreras
+class editCarrera(forms.ModelForm):
+    class Meta:
+        model = Carrera
+
+        fields = [
+            'idCarrera',
+            'nombreCarrera',
+            'duracionPeriodos',
+            'clasificacion',
+            'partida',
+            'habilitado',
+
+        ]
+
+        labels = {
+            'idCarrera': 'Código de la carrera',
+            'nombreCarrera': 'Nombre de la carrera',
+            'duracionPeriodos': 'Duración de los períodos en minutos',
+            'clasificacion':'Clasificación',
+            'partida': 'Partida',
+            'habilitado': 'Habilitado',
+
+        }
+
+        widgets = {
+            'idCarrera': forms.TextInput(attrs={'class': 'form-control'}),
+            'nombreCarrera': forms.TextInput(attrs={'class': 'form-control'}),
+            'duracionPeriodos': forms.TextInput(attrs={'class': 'form-control', 'type':'number'}),
+            'clasificacion': forms.TextInput(attrs={'class': 'form-control'}),
+            'partida': forms.TextInput(attrs={'class': 'form-control'}),
 
         }

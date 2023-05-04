@@ -17,4 +17,12 @@ urlpatterns = [
     path('curso/detalle/<int:pk>/', login_required(views.CursoDetalle.as_view()), name='DetalleCurso'),
     path('curso/buscar/', login_required(views.CursoSearch.as_view()), name='BuscarCurso'),
 
+    #Carreras
+    path('carrera/', login_required(views.CarreraList.as_view()), name='Carrera'),
+    path('carrera/crear/', login_required(views.CarreraCreate.as_view()), name='CrearCarrera'),
+    path('carrera/actualizar/<int:pk>/', login_required(views.CarreraUpdate.as_view()), name='ActualizarCarrera'),
+    path('carrera/eliminar/<int:pk>/', login_required(views.CarreraDelete.as_view()), name='EliminarCarrera'),
+    path('carrera/detalle/<int:pk>/', login_required(views.CarreraDetalle.as_view()), name='DetalleCarrera'),
+    path('carrera/buscar/', login_required(views.CarreraSearch.as_view()), name='BuscarCarrera'),
+
 ]

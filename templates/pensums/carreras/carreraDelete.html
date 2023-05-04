@@ -6,10 +6,10 @@
     <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
         <form method="post">
             {% csrf_token %}
-            <h2>¿Desea eliminar el curso <span>{{curso.nombreCurso}}</span> ?</h2>
+            <h2>¿Desea eliminar la carrera <span>{{carrera.nombreCarrera}}</span> ?</h2>
             <div class="boton">
                 <button class="btn btn-danger" type="submit">Sí, eliminar</button>
-                <a class="btn btn-default" href="{% url 'pensums:Curso' %}">Cancelar</a>
+                <a class="btn btn-default" href="{% url 'pensums:Carrera' %}">Cancelar</a>
             </div>
 
         </form>

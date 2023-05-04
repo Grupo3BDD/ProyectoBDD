@@ -1,0 +1,35 @@
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    {% if carrera_list %}
+    <table class="table table-hover caption-top ">
+
+
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Fecha de creación</th>
+        </tr>
+
+
+
+      </thead>
+      <tbody>
+        {% for object in carrera_list %}
+        <tr>
+          {% include 'pensums/carreras/snippets/carrera.html' with carrera=object %}
+
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="h5">
+      No se ha encontrado registro de la carrera buscada
+      <a href="{% url 'pensums:Carrera' %}" class="btn btn-primary">Regresar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

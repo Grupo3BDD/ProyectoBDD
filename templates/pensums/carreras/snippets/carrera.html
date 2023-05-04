@@ -1,0 +1,9 @@
+<td scope="row">{{carrera.idCarrera}}</td>
+<td>{{carrera.nombreCarrera}}</td>
+<td>{{carrera.get_created_at}}</td>
+
+<td>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:DetalleCarrera' carrera.id %}">Mostrar</a>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:ActualizarCarrera' carrera.id %}">Editar</a>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:EliminarCarrera' carrera.id %}">Eliminar</a>
+</td>
