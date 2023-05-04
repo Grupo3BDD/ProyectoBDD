@@ -10,13 +10,13 @@ from .utils import breadcrumb
 
 
 class CargaListView(generic.ListView):
-    template_name = "cargas/carga_list.html"
-    context_object_name = "carga"
+    template_name = "cargas/carga_list.html"    
     queryset = Carga.objects.all().order_by('-id')
     paginate_by = 5
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
+        
         context['message'] = 'Administración de Cargas'
         context['title'] = 'Cargas'
         context['breadcrumb'] = breadcrumb()
