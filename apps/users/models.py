@@ -88,7 +88,7 @@ class User(AbstractUser):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        if(self.first_name == ''):
+        if(self.first_name==''):
             return '{}'.format(self.username)
         return '{} {}'.format(self.first_name, self.last_name)
 
@@ -150,7 +150,26 @@ def set_noPersonal(sender, instance, *args, **kwargs):
 
         instance.noPersonal = codigo
 
+def set_tipoUser(sender,instance,*args,**kwargs):
+    try:
+        with transaction.atomic():
+            
+            userId = instance.id
+            idUser = get_object_or_404(User, id=userId)
 
+            if(instance.tipo_usuario == 'Docente'):
+                docente=Docente(user=idUser)
+                docente.save()
+                
+            elif(instance.tipo_usuario=='Estudiante'):
+                estudiante = Estudiante(user=idUser)
+                estudiante.save()
+            else:
+                # Definido como usurio
+                print("Es definido como usuario...")
+
+    except Exception as e:
+        print(str(e))
 
 
 
@@ -158,3 +177,4 @@ pre_save.connect(set_noPersonal, sender=User)
 
 pre_save.connect(set_escala, sender=Puesto)
 
+post_save.connect(set_tipoUser,sender=User)
