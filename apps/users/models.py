@@ -27,6 +27,14 @@ class Rol(models.Model):
     def __str__(self):
         return self.rol
 
+class Permiso(models.Model):
+    idrol = models.ForeignKey(Rol,on_delete=models.CASCADE)
+    permiso = models.CharField(max_length=75, null=False, blank=False, unique=True)
+    Descripcion = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.permiso
 
 class Puesto(models.Model):
     tipoPuesto = models.CharField(
@@ -67,7 +75,7 @@ class User(AbstractUser):
         ('Acta', 'Acta'),
         ('Folio', 'Folio')
     ]
-    
+    email = models.EmailField(unique=True)
     tipo_usuario = models.CharField(
         choices=tipo_usuario, default='Usuario', null=True, blank=True, max_length=100)
     profesion = models.CharField(max_length=75, null=True, blank=True)

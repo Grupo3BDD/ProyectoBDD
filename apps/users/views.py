@@ -6,7 +6,7 @@ from django.urls import reverse_lazy, reverse
 from django.http import Http404
 
 # Modelos
-from .models import User, Rol
+from .models import User, Rol, Permiso
 from django.db.models import Q
 
 # LIBRERIAS PARA EL CRUD
@@ -231,9 +231,17 @@ def listUsuario(request):
 
 def listPermiso(request):
     template_name = 'users/RolPermiso/listPermisoRol.html'
+    permiso = Permiso.objects.all().order_by('id')
+
+    paginator = Paginator(permiso,5)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context={
         'title':'Listado De Roles y Permiso',
         'permisos':request.path,
+        'permiso_list':permiso,
+        'page_obj':page_obj
         
     }
     return render(request,template_name,context)
