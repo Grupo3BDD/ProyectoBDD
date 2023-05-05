@@ -41,8 +41,8 @@ class Carrera(models.Model):
     clasificacion = models.CharField(max_length=20, null=True, blank=False)
     partida = models.CharField(max_length=20, null=True, blank=False)
     tipo_ciclo = models.CharField(choices=tipo_ciclo,default='Semestral',max_length=100)
-    encargado_area = models.ForeignKey(EncargadoArea, null=False, blank=False, on_delete=models.CASCADE)
-    coordinador_acad = models.ForeignKey(CoordinadorAcademico, null=False, blank=False, on_delete=models.CASCADE)
+    encargado_area = models.ForeignKey(EncargadoArea, on_delete=models.CASCADE)
+    coordinador_acad = models.ForeignKey(CoordinadorAcademico, on_delete=models.CASCADE)
     
 
     habilitado = models.BooleanField(default=True)
@@ -111,6 +111,8 @@ years = date.strftime("%Y")
 
 class Pensum(models.Model):
     codigo_pensum = models.CharField(max_length=60, null=False, blank=False,unique=True)
+    # Agregar a que carrera va este pensum
+    carreraId = models.ForeignKey(Carrera, null=False,blank=False,on_delete=models.CASCADE)
     year_inicio_vigencia = models.IntegerField(default=years)
     descripcion = models.CharField(max_length=200)
     cantidad_ciclo = models.IntegerField()
@@ -119,16 +121,29 @@ class Pensum(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.codigo_pensum
-    
-class Ciclo(models.Model):
-    tipociclo = models.CharField(max_length=70,null=False,blank=False)
+        return '{} '.format(self.codigo_pensum)
+
+class DetallePensumCurso(models.Model):
+    tipo_ciclo = [
+        ('Primer Ciclo', 'Primer Ciclo'),
+        ('Segundo Ciclo', 'Segundo Ciclo'),
+        ('Tercer Ciclo', 'Tercer Ciclo'),
+        ('Cuarto Ciclo', 'Cuarto Ciclo'),
+        ('Quinto Ciclo','Quinto Ciclo'),
+        ('Sexto Ciclo','Sexto Ciclo'),
+        ('Septimo Ciclo','Septimo Ciclo'),
+        ('Octavo Ciclo','Octavo Ciclo'),
+        ('Noveno Ciclo','Noveno Ciclo'),
+        ('Decimo Ciclo','Decimo Ciclo'),
+    ]
+    tipociclo = models.CharField(max_length=100,null=False,blank=False,choices=tipo_ciclo)
+
+    codePensum = models.ForeignKey(Pensum,on_delete=models.CASCADE)
+    cursoid = models.ForeignKey(Curso, on_delete=models.CASCADE)
     estado = models.BooleanField(default=True)
-    pen = models.ForeignKey(Pensum,blank=False,null=False,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.ciclo
-    
-class DetalleCiclo(models.Model):
-    ciclo = models.ForeignKey(Ciclo, null=False,blank=False, on_delete=models.CASCADE)
-    curso = models.ForeignKey(Curso,null=False,blank=False,on_delete=models.CASCADE)
+        return '{} {} {}'.format(self.cursoid.codigoCurso, self.cursoid.nombreCurso,self.codePensum)
+
+
+

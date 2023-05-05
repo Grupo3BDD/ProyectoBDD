@@ -1,13 +1,32 @@
 import datetime
 from django.db import models
 
+# Modelos
+from apps.pensum.models import Pensum,Carrera,Curso
+from apps.users.models import Docente
+
+# Obtener el año actual
 currentDateTime = datetime.datetime.now()
 date = currentDateTime.date()
 years = date.strftime("%Y")
 
 class Carga(models.Model):
     year = models.IntegerField(default=years)
-    ciclo_acad = models.CharField(max_length=255)
+    # Choice
+    tipo_ciclo = [
+        ('Primer Ciclo', 'Primer Ciclo'),
+        ('Segundo Ciclo', 'Segundo Ciclo'),
+        ('Tercer Ciclo', 'Tercer Ciclo'),
+        ('Cuarto Ciclo', 'Cuarto Ciclo'),
+        ('Quinto Ciclo','Quinto Ciclo'),
+        ('Sexto Ciclo','Sexto Ciclo'),
+        ('Septimo Ciclo','Septimo Ciclo'),
+        ('Octavo Ciclo','Octavo Ciclo'),
+        ('Noveno Ciclo','Noveno Ciclo'),
+        ('Decimo Ciclo','Decimo Ciclo'),
+    ]
+    ciclo_acad = models.CharField(choices=tipo_ciclo,max_length=100)
+    carreraId = models.ForeignKey(Carrera,on_delete=models.CASCADE)
     
     estados = (
         ('Solicitado', 'Solicitado'),
@@ -19,6 +38,15 @@ class Carga(models.Model):
     fecha_envio = models.DateField() 
     fecha_aprob = models.DateField()
 
-    def get_created_at(self):
-        return self.fecha_envio.strftime('%d-%m-%Y')
+    def __str__(self):
+        return '{} {}'.format(self.year,self.carreraId)
     
+class CargaAcademicaDetalle(models.Model):
+    cargaId = models.ForeignKey(Carga, blank=False, null=False, on_delete=models.CASCADE)
+    docenteId = models.ForeignKey(Docente,blank=False, null=False, on_delete=models.CASCADE)
+    pensum = models.ForeignKey(Pensum, on_delete=models.CASCADE)
+    cursoid = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    
+
+    def __str__(self):
+        return '{} {} {} {}'.format(self.cargaId, self.pensum,self.cursoid.nombreCurso,self.docenteId)
