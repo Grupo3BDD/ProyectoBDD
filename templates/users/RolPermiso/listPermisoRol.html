@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="row">
+    <div class="col-2">
+        {% include 'users/RolPermiso/navbar.html' %}
+
+    </div>
+    <div class="col">
+        {% if request.path == roles %}
+            {% include 'users/RolPermiso/Rol/rol.html'%}
+        {% else %}
+            {% if request.path == permisos %}
+                {% include 'users/RolPermiso/Permiso/permiso.html'%}
+            {% endif %}
+            
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock%}

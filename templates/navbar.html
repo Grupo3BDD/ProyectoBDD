@@ -21,19 +21,12 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Puesto</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de puestos</a></li>          
+          <li><a class="dropdown-item" href="{% url 'users:puesto' %}">Administracion de puestos</a></li>          
         </ul>
       </li>
+      
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Actividades</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de Cursos</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de laboratorios de cursos</a></li>
-          <li><a class="dropdown-item" href="#">Control de edicion de actas</a></li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Asignacion</a>
+        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Carga</a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Control de asignacion de cursos</a></li>
           <li><a class="dropdown-item" href="#">Asignacion de cursos</a></li>
@@ -58,16 +51,16 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Usuarios</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Administracion de Estudiantes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Docentes</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de Usuarios</a></li>
+          <li><a class="dropdown-item" href="{% url 'users:estudiante' %}">Administracion de Estudiantes</a></li>
+          <li><a class="dropdown-item" href="{% url 'users:docente'%}">Administracion de Docentes</a></li>
+          <li><a class="dropdown-item" href="{% url 'users:usuario' %}">Administracion de Usuarios</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Seguridad</a>
         <ul class="dropdown-menu">          
           <li><a class="dropdown-item" href="{% url 'users:update_password' %}">Cambiar Contraseña</a></li>
-          <li><a class="dropdown-item" href="#">Administracion de roles y permisos</a></li>
+          <li><a class="dropdown-item" href="{% url 'users:list_rolPermiso' %}">Administracion de roles y permisos</a></li>
         </ul>
       </li>
     </ul>

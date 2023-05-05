@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% if docente_list %}
+        <div class="row" style="margin-top: 2.5rem;">
+            <div class="d-flex justify-content-center">
+
+                <h2>{{ message }}</h2>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                {% include 'snippets/breadcrumb.html'%}
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-dark" href="#">Agregar: </a>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2rem;">
+            <div class="col">
+                <table class="table table-hover caption-top ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre Completo del Docente</th>
+                            <th scope="col">Correo Electronico</th>
+                            <th scope="col">Profesion</th>
+                            <th scope="col">No.Personal</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for docente in docente_list %}
+                            <tr>
+                                <td scope="row">{{docente}}</td>
+                                <td>{{docente.email}}</td>
+                                <td>{{docente.profesion}}</td>
+                                <td>{{docente.noPersonal}}</td>
+                                <td>{{docente.telefono}}</td>
+                                <td>
+                                    <ul class="nav flex-column">
+                                        {% for rols in docente.rol.all %}
+                                            <li class="nav-link disabled">{{rols.rol}}</li>
+                                        {% endfor %}
+                                    </ul>                                    
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Acciones
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Detalle</a></li>
+                                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                                        <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% include 'snippets/pages.html' %}
+            </div>
+        </div>
+    {% else %}
+    <div class="row justify-content-center">
+        <div class="col-4" style="text-align: center;">
+            <h5>En este momento no se ha agregado ningun Docente a la plataforma</h5>
+            <a href="#" class="btn btn-outline-dark">Crear Docente</a>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

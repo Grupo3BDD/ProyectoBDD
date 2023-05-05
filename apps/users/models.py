@@ -17,6 +17,8 @@ from django.shortcuts import  get_object_or_404
 
 # Create your models here.
 
+# Por hacer el apartado de permisos
+
 class Rol(models.Model):
     rol = models.CharField(max_length=75, null=False, blank=False, unique=True)
     Descripcion = models.TextField()
@@ -25,6 +27,14 @@ class Rol(models.Model):
     def __str__(self):
         return self.rol
 
+class Permiso(models.Model):
+    idrol = models.ForeignKey(Rol,on_delete=models.CASCADE)
+    permiso = models.CharField(max_length=75, null=False, blank=False, unique=True)
+    Descripcion = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.permiso
 
 class Puesto(models.Model):
     tipoPuesto = models.CharField(
@@ -65,7 +75,7 @@ class User(AbstractUser):
         ('Acta', 'Acta'),
         ('Folio', 'Folio')
     ]
-    
+    email = models.EmailField(unique=True)
     tipo_usuario = models.CharField(
         choices=tipo_usuario, default='Usuario', null=True, blank=True, max_length=100)
     profesion = models.CharField(max_length=75, null=True, blank=True)
@@ -88,7 +98,7 @@ class User(AbstractUser):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        if(self.first_name == ''):
+        if(self.first_name==''):
             return '{}'.format(self.username)
         return '{} {}'.format(self.first_name, self.last_name)
 
@@ -150,7 +160,26 @@ def set_noPersonal(sender, instance, *args, **kwargs):
 
         instance.noPersonal = codigo
 
+def set_tipoUser(sender,instance,*args,**kwargs):
+    try:
+        with transaction.atomic():
+            
+            userId = instance.id
+            idUser = get_object_or_404(User, id=userId)
 
+            if(instance.tipo_usuario == 'Docente'):
+                docente=Docente(user=idUser)
+                docente.save()
+                
+            elif(instance.tipo_usuario=='Estudiante'):
+                estudiante = Estudiante(user=idUser)
+                estudiante.save()
+            else:
+                # Definido como usurio
+                print("Es definido como usuario...")
+
+    except Exception as e:
+        print(str(e))
 
 
 
@@ -158,3 +187,4 @@ pre_save.connect(set_noPersonal, sender=User)
 
 pre_save.connect(set_escala, sender=Puesto)
 
+post_save.connect(set_tipoUser,sender=User)

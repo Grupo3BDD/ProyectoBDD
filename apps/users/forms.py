@@ -108,3 +108,5 @@ class ChangePasswordForm(forms.Form):
         if password1 != password2:
             raise forms.ValidationError('Contraseña no coinciden')
         return password2
+
+
