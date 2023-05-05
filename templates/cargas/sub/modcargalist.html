@@ -48,11 +48,11 @@
         
         <thead>          
           <tr>
-            <th scope="col">Año</th>
-            <th scope="col">Ciclo académico</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Fecha envío</th>
-            <th scope="col">Fecha de aprobación</th>
+            <th scope="col">Pensum</th>
+            <th scope="col">Código</th>
+            <th scope="col">Curso</th>
+            <th scope="col">No. Personal</th>
+            <th scope="col">Docente</th>
 
           </tr>
 
@@ -60,13 +60,13 @@
 
         </thead>
         <tbody>
-          {% for carga in carga_list %}
+          {% for mod in mod_carga_list %}
           <tr>
-            <td scope="row">{{carga.year}}</td>
-            <td>{{carga.ciclo_acad}}</td>
-            <td> {{carga.estado}}</td>
-            <td>{{carga.get_created_at}}</td>
-            <td>{{carga.fecha_aprob}}</td>
+            <td scope="row">{{mod.pensum}}</td>
+            <td>{{mod.codigo}}</td>
+            <td> {{mod.curso}}</td>
+            <td>{{mod.num_personal}}</td>
+            <td>{{mod.docente}}</td>
 
             <td>
               <a class="btn btn-outline-dark" href="{% url 'cargas:carga-update' carga.id %}">Editar</a>
@@ -136,8 +136,8 @@
 <div class="row">
   <div class="col-12">
     <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
-      <h2>No se ha encontrado ninguna carga</h2>
-      <a class="btn btn btn-outline-dark" href="{% url 'cargas:carga-create' %}"  style="margin-left: 0.5rem;">Agregar</a>
+      <h2>No se ha encontrado ningún ciclo</h2>
+      <a class="btn btn btn-outline-dark" href="{% url 'cargas:modcarga-create' %}"  style="margin-left: 0.5rem;">Agregar</a>
 
 
      
