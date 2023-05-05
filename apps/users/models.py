@@ -17,6 +17,8 @@ from django.shortcuts import  get_object_or_404
 
 # Create your models here.
 
+# Por hacer el apartado de permisos
+
 class Rol(models.Model):
     rol = models.CharField(max_length=75, null=False, blank=False, unique=True)
     Descripcion = models.TextField()

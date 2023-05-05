@@ -1,0 +1,64 @@
+
+{% load static %}
+
+{% if  rol_list %}
+<div class="row" style="margin-top: 2.5rem;">
+    <div class="d-flex justify-content-center">
+
+        <h2>Roles</h2>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="d-flex justify-content-start">
+            <a class="btn btn-dark" href="#">Agregar: </a>
+          </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 2rem;">
+    <div class="col">
+        <table class="table table-hover caption-top ">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre del Rol</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Fecha Creacion</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rol in rol_list%}
+                <tr>
+                    <td scope="row">{{rol}}</td>
+                    <td>{{rol.Descripcion}}</td>
+                    <td>{{rol.fecha_creacion}}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Acciones
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Detalle</a></li>
+                            <li><a class="dropdown-item" href="#">Editar</a></li>
+                            <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                            </ul>
+                        </div>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include 'snippets/pages.html' %}
+    </div>
+</div>
+{% else %}
+<div class="row justify-content-center">
+    <div class="col-4" style="text-align: center;">
+        <h5>En este momento no se ha agregado ningun Rol a la plataforma</h5>
+        <a href="#" class="btn btn-outline-dark">Crear Usuario</a>
+    </div>
+</div>
+
+{% endif %}

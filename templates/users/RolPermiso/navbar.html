@@ -1,0 +1,14 @@
+{% load static %}
+
+{% url 'users:list_rolPermiso' as rol %}
+{% url 'users:permiso' as permiso %}
+
+<ul class="nav nav-underline flex-column menu">
+    <li class="nav-item">
+      <a class="nav-link {% if request.path == rol %} active {% endif %} " href="{{rol}}">Rol</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if request.path == permiso %} active {% endif %} " href="{{permiso}}">Permiso</a>
+    </li>
+    
+  </ul>
