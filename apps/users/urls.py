@@ -19,5 +19,6 @@ urlpatterns = [
     path('usuario/',login_required(views.listUsuario),name='usuario'),
     path('rol/',login_required(views.listRol),name='list_rolPermiso'),
     path('permiso/',login_required(views.listPermiso),name='permiso'),
+    path('puesto/',login_required(views.listPuesto), name='puesto'),
 
 ]

@@ -6,7 +6,7 @@ from django.urls import reverse_lazy, reverse
 from django.http import Http404
 
 # Modelos
-from .models import User, Rol, Permiso
+from .models import User, Rol, Permiso, Puesto
 from django.db.models import Q
 
 # LIBRERIAS PARA EL CRUD
@@ -26,7 +26,7 @@ from .decoradores import *
 from .forms import RegistroForm,  ChangePasswordForm
 
 # UTILS
-from .utils import breadcrumb_usuarios,breadcrumb_estudiante,breadcrumb_docente
+from .utils import breadcrumb_usuarios,breadcrumb_estudiante,breadcrumb_docente,breadcrumb_puesto
 
 # Paginacion
 from django.core.paginator import Paginator
@@ -262,3 +262,21 @@ def listRol(request):
         'page_obj':page_obj
     }
     return render(request,template_name,context)
+
+def listPuesto(request):
+    template_name = 'puesto/puesto.html'
+    puesto = Puesto.objects.all().order_by('id')
+
+    paginator = Paginator(puesto,5)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context={
+        'title':'Puestos',
+        'puesto_list':puesto,
+        'page_obj':page_obj,
+        'message':'Puestos',
+        'breadcrumb':breadcrumb_puesto(),
+    }
+
+    return render(request, template_name,context)
