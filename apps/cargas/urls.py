@@ -13,5 +13,6 @@ urlpatterns = [
 #-----------------------Para modificar carga
 
     path('modificar/<int:pk>/', views.ModCargaListView.as_view(), name='modificar-carga'),
-    path('modificar/crear', views.ModCargaCreateView.as_view(), name='modcarga-create')
+    path('modificar/crear', views.ModCargaCreateView.as_view(), name='modcarga-create'),
+    path('borrarmod/<int:pk>/', views.ModCargaDeleteView.as_view(), name='carga-delete'),
 ]

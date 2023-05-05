@@ -1,7 +1,7 @@
 import datetime
 from django.db import models
 
-from apps.pensum.models import Pensum
+from apps.pensum.models import Pensum, Curso
 from apps.users.models import User
 
 currentDateTime = datetime.datetime.now()
@@ -28,8 +28,8 @@ class Carga(models.Model):
 
 class ModCarga(models.Model):
     pensum = models.ForeignKey(Pensum, null=False, blank=False, on_delete=models.CASCADE)
-    codigo = models.CharField(max_length=255)
-    curso = models.CharField(max_length=255)
+    codigo = models.ForeignKey(Curso, null=False, blank=False, on_delete=models.CASCADE, related_name='mod_cargas')
+    curso = models.ForeignKey(Curso, null=False, blank=False, on_delete=models.CASCADE)
     num_personal = models.IntegerField(null=True)
     docente = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     

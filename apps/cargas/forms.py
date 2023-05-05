@@ -16,30 +16,4 @@ class ModCargaForm(ModelForm):
 
     class Meta:
         model = ModCarga
-        fields = [
-            'pensum',
-            'codigo',
-            'curso',
-            'num_personal',
-            'docente'
-
-        ]
-
-        labels = {
-            'pensum': 'Pensum',
-            'codigo': 'Código',
-            'curso': 'Curso',
-            'num_personal': 'No. Personal',
-            'docente': 'Docente'
-
-
-        }
-
-        widgets = {
-            'pensum': forms.Select(attrs={'class': 'form-control select2'}),
-            'codigo': forms.Select(attrs={'class': 'form-control select2'}),
-            'curso': forms.Select(attrs={'class': 'form-control select2'}),
-            'num_personal': forms.Select(attrs={'class': 'form-control select2'}),
-            'docente': forms.Select(attrs={'class': 'form-control select2'}),
-
-        }
+        fields = '__all__'

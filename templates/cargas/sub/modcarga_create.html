@@ -21,7 +21,7 @@
 {% block content %}
 <div class="card" style="margin-top: 2.5rem;">
     <div class="card-body">
-        <a href="{% url 'cargas:carga-list'%}">Regresar</a>
+        <a href="{% url 'cargas:modificar-carga'%}">Regresar</a>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
@@ -39,7 +39,7 @@
             <br>
             
             <button type='submit' class="btn  btn-dark ">Crear</button>
-            <a href="{% url 'cargas:carga-list' %}">CANCELAR</a>
+            <a href="{% url 'cargas:modificar-carga' %}">CANCELAR</a>
 
         </form>
 
