@@ -280,3 +280,4 @@ def listPuesto(request):
     }
 
     return render(request, template_name,context)
+
