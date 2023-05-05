@@ -124,6 +124,7 @@ class Pensum(models.Model):
 class Ciclo(models.Model):
     tipociclo = models.CharField(max_length=70,null=False,blank=False)
     estado = models.BooleanField(default=True)
+    pen = models.ForeignKey(Pensum,blank=False,null=False,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.ciclo
