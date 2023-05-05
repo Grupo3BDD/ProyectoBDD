@@ -5,18 +5,15 @@
 {% block content %}
 
 
-{% if carrera_list %}
+{% if carga_list %}
 
 <div class="row" style="margin-top: 5rem;">  
   <div class="d-flex justify-content-center">
-    
-    <h2>{{ message }}</h2>
-
   </div>
 </div>
 <div class="row">
   <div class="d-flex justify-content-center">
-    {% include 'pensums/carreras/snippets/breadcrumb.html'%}
+    {% include 'cargas/snippets/breadcrumb.html'%}
 
   </div>
 
@@ -31,7 +28,7 @@
 
     <div class="col">
       <div class="d-flex justify-content-start">
-        <a class="btn btn-dark" href="{% url 'pensums:CrearCarrera'%}">Crear: </a>
+        <a class="btn btn-dark" href="{% url 'cargas:modcarga-create'%}">Agregar: </a>
       </div>
     </div>
 
@@ -40,45 +37,42 @@
     
   </div>
 
-  <!--APARTADO DONDE SE MUESTRA EL LISTADO DE CURSOS-->
+  <!--APARTADO DONDE SE MUESTRA EL LISTADO DE EDIFICIOS-->
   <div class="row" style="margin-top: 2rem;">
     <div class="col">
       <table class="table table-hover caption-top ">
         <div class="d-flex justify-content-end">
-          {% include 'pensums/carreras/snippets/carreraBuscar.html' with query=query %}
+          {% include 'edificios/snippets/edificioBuscar.html' with query=query %}
 
         </div>
         
         <thead>          
           <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Encargado de área</th>
-            <th scope="col">Fecha de creación</th>
-            <th scope="col">Opciones</th>
+            <th scope="col">Pensum</th>
+            <th scope="col">Código</th>
+            <th scope="col">Curso</th>
+            <th scope="col">No. Personal</th>
+            <th scope="col">Docente</th>
+
           </tr>
+
+
 
         </thead>
         <tbody>
-          {% for carrera in carrera_list %}
+          {% for mod in mod_carga_list %}
           <tr>
-            <td scope="row">{{carrera.nombreCarrera}}</td>
-            <td>{{carrera.encargado_area}}</td>
-            <td>{{carrera.get_created_at}}</td>
+            <td scope="row">{{mod.pensum}}</td>
+            <td>{{mod.codigo}}</td>
+            <td> {{mod.curso}}</td>
+            <td>{{mod.num_personal}}</td>
+            <td>{{mod.docente}}</td>
 
             <td>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Opciones</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'pensums:ActualizarCarrera' carrera.id %}">Editar</a></li>
-                  <li><a class="dropdown-item" href="#">Administrar Pensum</a></li>
-                  <li><a class="dropdown-item" href="#">Cargas académicas</a></li>
-                  <li><a class="dropdown-item" href="#">Administrar horarios</a></li>
-                  <li><a class="dropdown-item" href="#">Cargas de contratación</a></li>
-                  <li><a class="dropdown-item" href="{% url 'pensums:EliminarCarrera' carrera.id %}">Eliminar</a></li>
-                </ul>
-              </li>
+              <a class="btn btn-outline-dark" href="{% url 'cargas:carga-update' carga.id %}">Editar</a>
+              <a class="btn btn-outline-dark" href="{% url 'cargas:carga-delete' carga.id %}">Eliminar</a>
+              <a class="btn btn-outline-dark" href="{% url 'cargas:modificar-carga' carga.id %}">Modificar</a>
             </td>
-
           </tr>
           {% endfor %}
 
@@ -100,6 +94,9 @@
           {% endif %}
 
 
+          
+          
+          
           {% for num in page_obj.paginator.page_range %}
             {% if num == page_obj.number%}
             <li class="page-item active" aria-current="page">
@@ -139,9 +136,13 @@
 <div class="row">
   <div class="col-12">
     <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
-      <h2>No se ha encontrado ninguna carrera</h2>
-      <a class="btn btn btn-outline-dark" href="{% url 'pensums:CrearCarrera' %}"  style="margin-left: 0.5rem;">Crear carrera</a>
+      <h2>No se ha encontrado ningún ciclo</h2>
+      <a class="btn btn btn-outline-dark" href="{% url 'cargas:modcarga-create' %}"  style="margin-left: 0.5rem;">Agregar</a>
 
+
+     
+      
+      
     </div>
   </div>
 </div>

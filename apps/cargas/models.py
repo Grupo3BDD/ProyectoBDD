@@ -1,11 +1,14 @@
 import datetime
 from django.db import models
 
+
 # Modelos
 from apps.pensum.models import Pensum,Carrera,Curso
 from apps.users.models import Docente
 
 # Obtener el año actual
+
+
 currentDateTime = datetime.datetime.now()
 date = currentDateTime.date()
 years = date.strftime("%Y")
@@ -38,6 +41,7 @@ class Carga(models.Model):
     fecha_envio = models.DateField() 
     fecha_aprob = models.DateField()
 
+
     def __str__(self):
         return '{} {}'.format(self.year,self.carreraId)
     
@@ -50,3 +54,7 @@ class CargaAcademicaDetalle(models.Model):
 
     def __str__(self):
         return '{} {} {} {}'.format(self.cargaId, self.pensum,self.cursoid.nombreCurso,self.docenteId)
+
+
+    
+

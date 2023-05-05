@@ -34,20 +34,12 @@
                 {% endif %}
 
             </div>
-
-            <!--</div style="margin-bottom:1rem">-->
-            <!--{% if field.name == 'salon' %}
-            <div>
-                <a href="{% url 'products:category_add'%}" >AGREGAR OTRA CATEGORIA</a>
-            </div> -->
-
-            <!--{% endif %}-->
             {% endfor %}
 
             <br>
             
             <button type='submit' class="btn  btn-dark ">Crear</button>
-            <a>CANCELAR</a>
+            <a href="{% url 'cargas:carga-list' %}">CANCELAR</a>
 
         </form>
 

@@ -52,6 +52,9 @@ class Carrera(models.Model):
     def __str__(self):
         return self.nombreCarrera
 
+    def get_created_at(self):
+        return self.fecha_creacion.strftime('%d-%m-%Y')
+
    
 class DetalleCarrera(models.Model):
     carreraId= models.ForeignKey(Carrera, null=False,blank=False,on_delete=models.CASCADE)
@@ -86,12 +89,13 @@ class DetalleCurso(models.Model):
     
 
     def __str__(self):
-        return self.cursoId
+        return '{}'.format(self.cursoId)
     
 class Prerequisito(models.Model):
     detalleId = models.ForeignKey(DetalleCurso,null=False,blank=False,on_delete=models.CASCADE)
     prerrequisito= models.ForeignKey(Curso, null=False,blank=False,on_delete=models.CASCADE)
-    
+    def __str__(self):
+        return '{}'.format(self.prerrequisito)
 
     
 class Laboratorio(models.Model):
