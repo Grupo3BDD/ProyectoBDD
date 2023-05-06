@@ -1,22 +1,25 @@
 <div class="row" style="margin-top: 2rem;">
   <div class="col">
-    {% if curso_list %}
+    {% if pensum_list %}
     <table class="table table-hover caption-top ">
 
 
       <thead>
         <tr>
           <th scope="col">Código</th>
-          <th scope="col">Nombre</th>
+          <th scope="col">Inicio de vigencia</th>
+          <th scope="col">Ultima utilizacion</th>
+          <th scope="col">Fecha de creacion</th>
+          <th scope="col">Opciones</th>
         </tr>
 
 
 
       </thead>
       <tbody>
-        {% for object in curso_list %}
+        {% for object in pensum_list %}
         <tr>
-          {% include 'pensums/cursos/snippets/curso.html' with curso=object %}
+          {% include 'pensums/pensum/snippets/pensum.html' with pensum=object %}
 
         </tr>
         {%endfor%}
@@ -26,8 +29,8 @@
 
     {% else %}
     <div class="h5">
-      No se ha encontrado registro del curso buscado
-      <a href="{% url 'pensums:Curso' %}" class="btn btn-primary">Regresar</a>
+      No se ha encontrado registro del pensum
+      <a href="{% url 'pensums:Pensum' %}" class="btn btn-primary">Regresar</a>
     </div>
     {% endif %}
   </div>

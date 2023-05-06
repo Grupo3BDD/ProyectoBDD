@@ -5,7 +5,7 @@
 {% block content %}
 
 
-{% if carrera_list %}
+{% if pensum_list %}
 
 <div class="row" style="margin-top: 5rem;">  
   <div class="d-flex justify-content-center">
@@ -53,8 +53,7 @@
           <tr>
             <th scope="col">Codigo Pensum</th>
             <th scope="col">Inicio de vigencia</th>
-            <th scope="col">Ultima utilizacion</th>
-            <th scope="col">Fecha de creación</th>
+            <th scope="col">Carrera del Pensum</th>
             <th scope="col">Opciones</th>
           </tr>
 
@@ -62,8 +61,9 @@
         <tbody>
           {% for pensum in pensum_list %}
           <tr>
-            <td scope="row">{{pensum.codigoPensum}}</td>
-            <td>{{pensum.inicioVigencia}}</td>
+            <td scope="row">{{pensum.codigo_pensum}}</td>
+            <td>{{pensum.year_inicio_vigencia}}</td>
+            <td>{{pensum.carreraId}}</td>
             <td>{{pensum.get_created_at}}</td>
 
             <td>
@@ -73,7 +73,7 @@
                   <li><a class="dropdown-item" href="{% url 'pensums:ActualizarPensum' pensum.id %}">Editar</a></li>
                   <li><a class="dropdown-item" href="#">Administrar Cursos</a></li>
                   <li><a class="dropdown-item" href="#">Visualizar</a></li>
-                  <li><a class="dropdown-item" href="{% url 'pensums:EliminarCarrera' carrera.id %}">Eliminar</a></li>
+                  <li><a class="dropdown-item" href="{% url 'pensums:EliminarPensum' pensum.id %}">Eliminar</a></li>
                 </ul>
               </li>
             </td>
