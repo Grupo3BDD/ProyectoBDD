@@ -16,7 +16,7 @@
 </div>
 <div class="row">
   <div class="d-flex justify-content-center">
-    {% include 'pensums/carreras/snippets/breadcrumb.html'%}
+    {% include 'pensums/pensum/snippets/breadcrumb.html'%}
 
   </div>
 
@@ -31,7 +31,7 @@
 
     <div class="col">
       <div class="d-flex justify-content-start">
-        <a class="btn btn-dark" href="{% url 'pensums:CrearCarrera'%}">Crear: </a>
+        <a class="btn btn-dark" href="{% url 'pensums:CrearPensum'%}">Crear: </a>
       </div>
     </div>
 
@@ -40,40 +40,39 @@
     
   </div>
 
-  <!--APARTADO DONDE SE MUESTRA EL LISTADO DE CURSOS-->
+  <!--APARTADO DONDE SE MUESTRA EL LISTADO DE PENSUM-->
   <div class="row" style="margin-top: 2rem;">
     <div class="col">
       <table class="table table-hover caption-top ">
         <div class="d-flex justify-content-end">
-          {% include 'pensums/carreras/snippets/carreraBuscar.html' with query=query %}
+          {% include 'pensums/pensum/snippets/pensumBuscar.html' with query=query %}
 
         </div>
         
         <thead>          
           <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Encargado de área</th>
+            <th scope="col">Codigo Pensum</th>
+            <th scope="col">Inicio de vigencia</th>
+            <th scope="col">Ultima utilizacion</th>
             <th scope="col">Fecha de creación</th>
             <th scope="col">Opciones</th>
           </tr>
 
         </thead>
         <tbody>
-          {% for carrera in carrera_list %}
+          {% for pensum in pensum_list %}
           <tr>
-            <td scope="row">{{carrera.nombreCarrera}}</td>
-            <td>{{carrera.encargado_area}}</td>
-            <td>{{carrera.get_created_at}}</td>
+            <td scope="row">{{pensum.codigoPensum}}</td>
+            <td>{{pensum.inicioVigencia}}</td>
+            <td>{{pensum.get_created_at}}</td>
 
             <td>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Opciones</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'pensums:ActualizarCarrera' carrera.id %}">Editar</a></li>
-                  <li><a class="dropdown-item" href="{% url 'pensums:Pensum' %}">Administrar Pensum</a></li>
-                  <li><a class="dropdown-item" href="#">Cargas académicas</a></li>
-                  <li><a class="dropdown-item" href="#">Administrar horarios</a></li>
-                  <li><a class="dropdown-item" href="#">Cargas de contratación</a></li>
+                  <li><a class="dropdown-item" href="{% url 'pensums:ActualizarPensum' pensum.id %}">Editar</a></li>
+                  <li><a class="dropdown-item" href="#">Administrar Cursos</a></li>
+                  <li><a class="dropdown-item" href="#">Visualizar</a></li>
                   <li><a class="dropdown-item" href="{% url 'pensums:EliminarCarrera' carrera.id %}">Eliminar</a></li>
                 </ul>
               </li>
@@ -139,8 +138,8 @@
 <div class="row">
   <div class="col-12">
     <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
-      <h2>No se ha encontrado ninguna carrera</h2>
-      <a class="btn btn btn-outline-dark" href="{% url 'pensums:CrearCarrera' %}"  style="margin-left: 0.5rem;">Crear carrera</a>
+      <h2>No se ha encontrado ningun pensum</h2>
+      <a class="btn btn btn-outline-dark" href="{% url 'pensums:CrearPensum' %}"  style="margin-left: 0.5rem;">Crear pensum</a>
 
     </div>
   </div>

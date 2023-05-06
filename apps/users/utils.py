@@ -14,3 +14,8 @@ def breadcrumb_estudiante(estudiante = True):
     return [
         {'title': 'Estudiantes', 'active': estudiante, 'url': reverse('users:estudiante')}
     ]
+
+def breadcrumb_puesto(puesto = True):
+    return [
+        {'title': 'Puestos', 'active': puesto, 'url': reverse('users:puesto')}
+    ]

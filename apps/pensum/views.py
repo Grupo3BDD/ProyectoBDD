@@ -220,3 +220,38 @@ class CarreraSearch(ListView):
         context['breadcrumb'] = breadcrumb()
 
         return context
+
+
+
+###-- MODULO QUE ENLISTA PENSUM--###
+class PensumList(ListView):
+    template_name = 'pensums/pensum/pensum.html'
+    queryset = Carrera.objects.all().order_by('-id')
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['message'] = 'Administrador de Pensum'
+        context['title'] = 'Pensum'
+        context['breadcrumb'] = breadcrumb()
+
+        return context
+
+###-- MODULO QUE CREA PENSUM--###
+class PensumCreate(CreateView):
+    model = Pensum
+    form_class = pensumForm
+    template_name = 'pensums/pensum/pensumForm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Agregar'
+        context['message'] = 'Crear'
+
+        return context
+
+    success_url = reverse_lazy('pensums:Pensum')
+
+###-- MODULO QUE MODIFICA ALGUN PENSUM--###
+
