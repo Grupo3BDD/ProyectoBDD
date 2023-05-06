@@ -62,7 +62,7 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{% url 'users:detail_user' docente.id%}">Detalle</a></li>
-                                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'users:update_user' docente.id%}">Editar</a></li>
                                         <li><a class="dropdown-item" href="{% url 'users:delete_user' docente.id%}">Eliminar</a></li>
                                         </ul>
                                     </div>

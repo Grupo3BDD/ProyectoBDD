@@ -24,7 +24,7 @@ from django.contrib.auth import authenticate
 from .decoradores import *
 
 # FORMS
-from .forms import RegistroForm,  ChangePasswordForm, CreateUserForm
+from .forms import RegistroForm,  ChangePasswordForm, CreateUserForm,UpdateUserForm
 
 # UTILS
 from .utils import breadcrumb_usuarios, breadcrumb_estudiante, breadcrumb_docente, breadcrumb_puesto
@@ -297,7 +297,18 @@ class crearUsuario(CreateView):
         context['title'] = 'Agregar'        
         context['info'] = 'Agregar'
         return context
+        
+class UpdateUser(UpdateView):
+    model= User
+    template_name = 'users/update.html'
+    form_class = UpdateUserForm   
+    creandoUsuario = False
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Agregar'        
+        context['info'] = 'Agregar'
+        return context
 
 def deleteUser(request,pk):
     user = get_object_or_404(User,pk=pk)

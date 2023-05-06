@@ -23,5 +23,6 @@ urlpatterns = [
     path('user/add',login_required(views.crearUsuario.as_view()), name='add_user'),
     path('user/delete/<int:pk>',login_required(views.deleteUser), name='delete_user'),
     path('user/detail/<int:pk>',login_required(views.detailUser), name='detail_user'),
+    path('user/update/<int:pk>',login_required(views.UpdateUser.as_view()), name='update_user'),
 
 ]

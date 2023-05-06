@@ -52,9 +52,9 @@
                                         Acciones
                                         </button>
                                         <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Detalle</a></li>
-                                        <li><a class="dropdown-item" href="#">Editar</a></li>
-                                        <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'users:detail_user' estudiante.id%}">Detalle</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'users:update_user' estudiante.id%}">Editar</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'users:delete_user' estudiante.id%}">Eliminar</a></li>
                                         </ul>
                                     </div>
                                 </td>
