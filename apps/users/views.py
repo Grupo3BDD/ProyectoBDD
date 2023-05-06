@@ -263,7 +263,7 @@ def listRol(request):
     }
     return render(request,template_name,context)
 
-<<<<<<< HEAD
+
 
 ###-- MODULO QUE ENLISTA A LOS ROLES--###
 class RolList(ListView):
@@ -385,7 +385,7 @@ class PermisoDelete(DeleteView):
         return context
 
     success_url = reverse_lazy('users:permiso')
-=======
+
 def listPuesto(request):
     template_name = 'puesto/puesto.html'
     puesto = Puesto.objects.all().order_by('id')
@@ -403,4 +403,4 @@ def listPuesto(request):
     }
 
     return render(request, template_name,context)
->>>>>>> 1673caed4977a10c26d4ae5a5aa86244a661f171
+
