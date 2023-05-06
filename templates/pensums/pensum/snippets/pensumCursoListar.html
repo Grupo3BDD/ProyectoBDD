@@ -1,0 +1,37 @@
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    {% if detallepensumcurso_list %}
+    <table class="table table-hover caption-top ">
+
+
+      <thead>
+        <tr>
+          <th scope="col">Codigo Pensum</th>
+            <th scope="col">Cursos</th>
+            <th scope="col">Ciclo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Opciones</th>
+        </tr>
+
+
+
+      </thead>
+      <tbody>
+        {% for object in detallepensumcurso_list %}
+        <tr>
+          {% include 'pensums/pensum/snippets/pensumcurso.html' with detallepensumcurso=object %}
+
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="h5">
+      No se ha encontrado registro del pensumcurso
+      <a href="{% url 'pensums:PensumAdd' %}" class="btn btn-primary">Regresar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

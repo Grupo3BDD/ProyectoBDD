@@ -282,6 +282,7 @@ class pensumCursoForm(forms.ModelForm):
             'codigo_pensum',
             'tipociclo',
             'cursoid',
+            'estado',
 
 
         ]
@@ -291,6 +292,7 @@ class pensumCursoForm(forms.ModelForm):
             'codigo_pensum':'Código pensum',
             'tipociclo':'Ciclo académico',
             'cursoid':'Curso',
+            'estado':'Habilitado',
 
         }
 

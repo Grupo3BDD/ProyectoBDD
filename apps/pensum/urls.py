@@ -26,11 +26,21 @@ urlpatterns = [
     path('carrera/detalle/<int:pk>/', login_required(views.CarreraDetalle.as_view()), name='DetalleCarrera'),
     path('carrera/buscar/', login_required(views.CarreraSearch.as_view()), name='BuscarCarrera'),
 
-#pensum
-    path('', login_required(views.PensumList.as_view()), name='Pensum'),
-    path('crear/', login_required(views.PensumCreate.as_view()), name='CrearPensum'),
-    path('actualizar/<int:pk>/', login_required(views.PensumUpdate.as_view()), name='ActualizarPensum'),
-    path('eliminar/<int:pk>/', login_required(views.pensumDelete), name='EliminarPensum'),
-    path('detalle/<int:pk>/', login_required(views.PensumDetalle.as_view()), name='DetallePensum'),
-    path('buscar/', login_required(views.PensumSearch.as_view()), name='BuscarPensum'),
+
+    #Pensums
+    path('pensum/', login_required(views.PensumList.as_view()), name='Pensum'),
+    path('pensum/crear/', login_required(views.PensumCreate.as_view()), name='CrearPensum'),
+    path('pensum/actualizar/<int:pk>/', login_required(views.PensumUpdate.as_view()), name='ActualizarPensum'),
+    path('pensum/eliminar/<int:pk>/', login_required(views.PensumDelete.as_view()), name='EliminarPensum'),
+    path('pensum/detalle/<int:pk>/', login_required(views.PensumDetalle.as_view()), name='DetallePensum'),
+    path('pensum/buscar/', login_required(views.PensumSearch.as_view()), name='BuscarPensum'),
+
+    #Add Cursos
+    path('pensumCurso/', login_required(views.DetallePCList.as_view()), name='PensumAdd'),
+    path('pensumCurso/vista/', login_required(views.DetallePCVista.as_view()), name='PensumVista'),
+    path('pensumCurso/crear/', login_required(views.DetallePCCreate.as_view()), name='AddCurso'),
+    path('pensumCurso/eliminar/<int:pk>/', login_required(views.DetallePCDelete.as_view()), name='RestCurso'),
+
+
+
 ]

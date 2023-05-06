@@ -323,3 +323,61 @@ class PensumSearch(ListView):
         context['breadcrumb'] = breadcrumb()
 
         return context
+
+###-- MODULO QUE ENLISTA CURSOS EN EL PENSUM--###
+class DetallePCList(ListView):
+    template_name = 'pensums/pensum/pensumCurso.html'
+    queryset = DetallePensumCurso.objects.all().order_by('-id')
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['message'] = 'Adición de Cursos al Pensum'
+        context['title'] = 'Pensum y Cursos'
+
+
+        return context
+
+###-- MODULO QUE AÑADE CURSOS A LOS PENSUMS--###
+class DetallePCCreate(CreateView):
+    model = DetallePensumCurso
+    form_class = pensumCursoForm
+    template_name = 'pensums/pensum/pensumCursoForm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Agregar'
+        context['message'] = 'Agregar'
+
+        return context
+
+    success_url = reverse_lazy('pensums:PensumAdd')
+
+
+###-- MODULO QUE ELIMINA ALGUN CURSO DEL PENSUM--###
+class DetallePCDelete(DeleteView):
+    model = DetallePensumCurso
+    template_name = 'pensums/pensum/pensumCursoDelete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Eliminar'
+
+        return context
+
+    success_url = reverse_lazy('pensums:PensumAdd')
+
+
+###-- MODULO QUE PERMITE VER LOS CURSOS EN EL PENSUM--###
+class DetallePCVista(ListView):
+    template_name = 'pensums/pensum/pensumCursoView.html'
+    queryset = DetallePensumCurso.objects.all().order_by('-id')
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['message'] = 'Cursos Pensum'
+        context['title'] = 'Cursos Pensum'
+
+        return context

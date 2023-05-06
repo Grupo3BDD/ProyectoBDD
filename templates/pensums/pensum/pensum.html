@@ -72,8 +72,8 @@
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Opciones</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{% url 'pensums:ActualizarPensum' pensum.id %}">Editar</a></li>
-                  <li><a class="dropdown-item" href="#">Administrar Cursos</a></li>
-                  <li><a class="dropdown-item" href="#">Visualizar</a></li>
+                  <li><a class="dropdown-item" href="{% url 'pensums:PensumAdd'  %}">Administrar Cursos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'pensums:PensumVista'  %}">Visualizar</a></li>
                   <li><a class="dropdown-item" href="{% url 'pensums:EliminarPensum' pensum.id %}">Eliminar</a></li>
                 </ul>
               </li>
