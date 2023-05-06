@@ -9,11 +9,12 @@
 
 <div class="row" style="margin-top: 5rem;">  
   <div class="d-flex justify-content-center">
+    <h2>Cargas</h2>
   </div>
 </div>
 <div class="row">
   <div class="d-flex justify-content-center">
-    {% include 'cargas/snippets/breadcrumb.html'%}
+    {% include 'snippets/breadcrumb.html'%}
 
   </div>
 
@@ -46,10 +47,12 @@
         <thead>          
           <tr>
             <th scope="col">Año</th>
+            <th scope="col">Nombre de la Carrera</th>
             <th scope="col">Ciclo académico</th>
             <th scope="col">Estado</th>
             <th scope="col">Fecha envío</th>
             <th scope="col">Fecha de aprobación</th>
+            <th scope="col">Acciones</th>
 
           </tr>
 
@@ -60,17 +63,25 @@
           {% for carga in carga_list %}
           <tr>
             <td scope="row">{{carga.year}}</td>
+            <td>{{carga.carreraId}}</td>
             <td>{{carga.ciclo_acad}}</td>
             <td> {{carga.estado}}</td>
             <td>{{carga.fecha_envio}}</td>
-            <td>{{carga.fecha_aprob}}</td>
-
+            <td>{{carga.get_fechaAprobacion}}</td>
             <td>
-              <a class="btn btn-outline-dark" href="{% url 'cargas:carga_update' carga.id %}">Modificar</a>
-              <a class="btn btn-outline-dark" href="#">Visualizar</a>
-              <a class="btn btn-outline-dark" href="{% url 'cargas:carga_delete' carga.id %}">Eliminar</a>
+              <div class="dropdown">
+                  <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Acciones
+                  </button>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Detalle</a></li>
+                      <li><a class="dropdown-item" href="{% url 'cargas:carga_update' carga.id %}">Editar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'cargas:carga_delete' carga.id %}">Eliminar</a></li>
+                  </ul>
+              </div>
+          </td>
 
-            </td>
+            
           </tr>
           {% endfor %}
 

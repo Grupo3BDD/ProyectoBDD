@@ -45,6 +45,11 @@ class Carga(models.Model):
     def __str__(self):
         return '{} {}'.format(self.year,self.carreraId)
     
+    def get_fechaAprobacion(self):
+        if self.fecha_aprob==None:
+            return 'Esta carga aun no ha sido aprobada'
+        return '{}'.format(self.fecha_aprob)
+    
 class CargaAcademicaDetalle(models.Model):
     cargaId = models.ForeignKey(Carga, blank=False, null=False, on_delete=models.CASCADE)
     docenteId = models.ForeignKey(Docente,blank=False, null=False, on_delete=models.CASCADE)

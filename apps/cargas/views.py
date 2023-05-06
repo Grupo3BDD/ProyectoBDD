@@ -1,15 +1,27 @@
-from typing import Any
-from django.db import models
-from django.db.models.query import QuerySet
+# URL
 from django.shortcuts import render, redirect, reverse
-from django.views import generic
-from .models import Carga
+
+# Modulo
+from .models import Carga,CargaAcademicaDetalle
+
+# CRUD
+from django.db.models import Q
+from django.db import transaction
+
+# Formulario
 from .forms import CargaForm
-from django.views.generic import View
+
+# Views
+from django.views.generic import View,ListView,CreateView,UpdateView,DeleteView
+
+# UTILS
 from .utils import breadcrumb
 
+# SETTINGS OF PROJECT
+from proyecto.settings import MEDIA_URL, STATIC_URL
+from django.shortcuts import  get_object_or_404
 
-class CargaListView(generic.ListView):
+class CargaListView(ListView):
     template_name = "cargas/carga_list.html"    
     queryset = Carga.objects.all().order_by('-id')
     paginate_by = 5
@@ -24,7 +36,7 @@ class CargaListView(generic.ListView):
         return context
     
 
-class CargaCreateView(generic.CreateView):
+class CargaCreateView(CreateView):
     template_name = "cargas/carga_create.html"
     form_class = CargaForm
 
@@ -34,7 +46,7 @@ class CargaCreateView(generic.CreateView):
     def get_queryset(self):
         return Carga.objects.all()
     
-class CargaDeleteView(generic.DeleteView):
+class CargaDeleteView(DeleteView):
     template_name = "cargas/carga_delete.html"
 
     def get_success_url(self):
@@ -44,7 +56,7 @@ class CargaDeleteView(generic.DeleteView):
         return Carga.objects.all()
     
 
-class CargaUpdateView (generic.UpdateView):
+class CargaUpdateView(UpdateView):
     template_name = "cargas/carga_update.html"
     form_class = CargaForm
 
@@ -54,3 +66,13 @@ class CargaUpdateView (generic.UpdateView):
     def get_queryset(self):
         return Carga.objects.all()
     
+
+def detailCarga(request,pk):
+    template_name='cargas/detalle_carga.html'
+    carga= get_object_or_404(Carga,pk=pk)
+    filtro = CargaAcademicaDetalle.objects.filter(Q(cargaId=pk))
+    context = {
+        'title': f'Carga Academica {carga.carreraId} ',
+        'cargaAcademicaDetalle_list':filtro
+    }
+    return render(request,template_name,context)
