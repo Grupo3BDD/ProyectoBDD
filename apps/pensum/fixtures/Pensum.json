@@ -1,7 +1,7 @@
 [
 {
     "model": "pensum.pensum",
-    "pk": 1,
+    "pk": 2,
     "fields": {
         "codigo_pensum": "44",
         "carreraId": 1,
