@@ -262,7 +262,7 @@ def listRol(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-<<<<<<< HEAD
+
     context = {
         'title': 'Listado De Roles y Permiso',
         'roles': request.path,
@@ -272,8 +272,8 @@ def listRol(request):
     return render(request, template_name, context)
 
 
-=======
->>>>>>> 847d593d66ff5d2296dd8c395352614af9585342
+
+
 
 
 ###-- MODULO QUE ENLISTA A LOS ROLES--###
@@ -413,7 +413,7 @@ def listPuesto(request):
         'breadcrumb': breadcrumb_puesto(),
     }
 
-<<<<<<< HEAD
+
     return render(request, template_name, context)
 
 
@@ -457,6 +457,6 @@ def detailUser(request,pk):
 
     return render(request,template_name,context)
  
-=======
+
     return render(request, template_name,context)
->>>>>>> 847d593d66ff5d2296dd8c395352614af9585342
+

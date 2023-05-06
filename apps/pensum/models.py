@@ -9,12 +9,14 @@ from apps.users.models import User,EncargadoArea,CoordinadorAcademico
 
 class GradoAcademico(models.Model):
     grado_academico = models.CharField(max_length=75,null=False,blank=False)
+    estado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.grado_academico
     
 class Jornada(models.Model):
     plan = models.CharField(max_length=75,null=False,blank=False)
+
 
     def __str__(self):
         return self.plan
@@ -41,8 +43,8 @@ class Carrera(models.Model):
     clasificacion = models.CharField(max_length=20, null=True, blank=False)
     partida = models.CharField(max_length=20, null=True, blank=False)
     tipo_ciclo = models.CharField(choices=tipo_ciclo,default='Semestral',max_length=100)
-    encargado_area = models.ForeignKey(EncargadoArea, on_delete=models.CASCADE)
-    coordinador_acad = models.ForeignKey(CoordinadorAcademico, on_delete=models.CASCADE)
+    encargado_area = models.ForeignKey(EncargadoArea, blank=True,null=True,on_delete=models.CASCADE)
+    coordinador_acad = models.ForeignKey(CoordinadorAcademico, blank=True,null=True,on_delete=models.CASCADE)
     
 
     habilitado = models.BooleanField(default=True)
@@ -60,6 +62,7 @@ class DetalleCarrera(models.Model):
     carreraId= models.ForeignKey(Carrera, null=False,blank=False,on_delete=models.CASCADE)
     grado_acad = models.ForeignKey(GradoAcademico,null=True,blank=True, on_delete=models.CASCADE)
     type_jornada = models.ForeignKey(TipoJornada,null=True,blank=True,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.carreraId
@@ -86,7 +89,7 @@ class Curso(models.Model):
 class DetalleCurso(models.Model):
     cursoId = models.ForeignKey(Curso, null=False,blank=False,on_delete=models.CASCADE)
     facultad_carrera = models.ForeignKey(Carrera, null=False,blank=False,on_delete=models.CASCADE)
-    
+    estado = models.BooleanField(default=True)
 
     def __str__(self):
         return '{}'.format(self.cursoId)
@@ -114,8 +117,7 @@ date = currentDateTime.date()
 years = date.strftime("%Y")
 
 class Pensum(models.Model):
-    codigo_pensum = models.CharField(max_length=60, null=False, blank=False,unique=True)
-    # Agregar a que carrera va este pensum
+    codigo_pensum = models.CharField(max_length=60, null=False, blank=False,unique=True)   
     carreraId = models.ForeignKey(Carrera, null=False,blank=False,on_delete=models.CASCADE)
     year_inicio_vigencia = models.IntegerField(default=years)
     descripcion = models.CharField(max_length=200)

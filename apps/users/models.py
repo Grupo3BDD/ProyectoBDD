@@ -22,6 +22,7 @@ from django.shortcuts import  get_object_or_404
 class Rol(models.Model):
     rol = models.CharField(max_length=75, null=False, blank=False, unique=True)
     Descripcion = models.TextField()
+    estado = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -32,6 +33,7 @@ class Permiso(models.Model):
     permiso = models.CharField(max_length=75, null=False, blank=False, unique=True)
     Descripcion = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    estado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.permiso
@@ -111,24 +113,29 @@ class User(AbstractUser):
 class UsuarioRol(models.Model):
     userId=models.ForeignKey(User,on_delete=models.CASCADE)
     puestoId=models.ForeignKey(Puesto, on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
 
 class EncargadoArea(models.Model):
     user = models.ForeignKey(User, blank=False,null=False,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
 
 class CoordinadorAcademico(models.Model):
     user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
     
 class Estudiante(models.Model):
     user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
 
 class Docente(models.Model):
     user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
 

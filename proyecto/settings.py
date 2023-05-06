@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 import proyecto.database as database
-DATABASES = database.POSTGRES
+DATABASES = database.SQLITE
 
 
 # Password validation

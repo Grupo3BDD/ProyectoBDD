@@ -50,6 +50,7 @@ class CargaAcademicaDetalle(models.Model):
     docenteId = models.ForeignKey(Docente,blank=False, null=False, on_delete=models.CASCADE)
     pensum = models.ForeignKey(Pensum, on_delete=models.CASCADE)
     cursoid = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     
 
     def __str__(self):
