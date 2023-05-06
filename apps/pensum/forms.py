@@ -230,7 +230,6 @@ class pensumForm(forms.ModelForm):
 
         }
 # Formulario para la edición de Pensums
-
 class editPensum(forms.ModelForm):
     class Meta:
         model = Pensum
@@ -270,3 +269,31 @@ class editPensum(forms.ModelForm):
 
         }
 
+#Formulario para los Detalles del Pensum
+class pensumCursoForm(forms.ModelForm):
+    class Meta:
+        model = DetallePensumCurso
+
+        fields = [
+
+            'codigo_pensum',
+            'tipociclo',
+            'cursoid',
+
+
+        ]
+
+        labels = {
+
+            'codigo_pensum':'Código pensum',
+            'tipociclo':'Ciclo académico',
+            'cursoid':'Curso',
+
+        }
+
+        widgets = {
+
+            'codigo_pensum': forms.Select(attrs={'class': 'form-control'}),
+            'cursoid': forms.Select(attrs={'class': 'form-control'}),
+
+        }
