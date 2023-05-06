@@ -5,21 +5,15 @@
 {% block content %}
 
 
-{% if carga_list %}
+{% if detallepensumcurso_list %}
 
 <div class="row" style="margin-top: 5rem;">  
   <div class="d-flex justify-content-center">
-  </div>
-</div>
-<div class="row">
-  <div class="d-flex justify-content-center">
-    {% include 'cargas/snippets/breadcrumb.html'%}
+    
+    <h2>{{ message }}</h2>
 
   </div>
-
 </div>
-
-
 
 <div class="row">
 
@@ -28,62 +22,47 @@
 
     <div class="col">
       <div class="d-flex justify-content-start">
-        <a class="btn btn-dark" href="{% url 'cargas:carga-create'%}">Agregar: </a>
+        <a class="btn btn-dark" href="{% url 'pensums:Pensum'%}">Regresar: </a>
       </div>
     </div>
 
-    
-
-    
   </div>
 
-  <!--APARTADO DONDE SE MUESTRA EL LISTADO DE EDIFICIOS-->
+  <!--APARTADO DONDE SE MUESTRA EL LISTADO DE CURSOS-->
   <div class="row" style="margin-top: 2rem;">
     <div class="col">
       <table class="table table-hover caption-top ">
-        <div class="d-flex justify-content-end">
-          {% include 'cargas/snippets/buscar_carga.html' with query=query %}
 
-        </div>
         
         <thead>          
           <tr>
-            <th scope="col">Año</th>
-            <th scope="col">Ciclo académico</th>
+            <th scope="col">Codigo Pensum</th>
+            <th scope="col">Cursos</th>
+            <th scope="col">Ciclo</th>
             <th scope="col">Estado</th>
-            <th scope="col">Fecha envío</th>
-            <th scope="col">Fecha de aprobación</th>
 
           </tr>
 
-
-
         </thead>
         <tbody>
-          {% for carga in carga_list %}
+          {% for detallepensumcurso in detallepensumcurso_list %}
           <tr>
-            <td scope="row">{{carga.year}}</td>
-            <td>{{carga.ciclo_acad}}</td>
-            <td> {{carga.estado}}</td>
-            <td>{{carga.fecha_envio}}</td>
-            <td>{{carga.fecha_aprob}}</td>
+            <td scope="row">{{detallepensumcurso.codigo_pensum}}</td>
+            <td>{{detallepensumcurso.cursoid}}</td>
+            <td>{{detallepensumcurso.tipociclo}}</td>
+            <td>{{detallepensumcurso.estado}}</td>
 
-            <td>
-              <a class="btn btn-outline-dark" href="{% url 'cargas:carga-update' carga.id %}">Modificar</a>
-              <a class="btn btn-outline-dark" href="#">Visualizar</a>
-              <a class="btn btn-outline-dark" href="{% url 'cargas:carga-delete' carga.id %}">Eliminar</a>
 
-            </td>
           </tr>
           {% endfor %}
 
         </tbody>
       </table>
       
-      <nav aria-label="...">
+      <!--<nav aria-label="...">
         <ul class="pagination">
 
-          
+
           {% if page_obj.has_previous %}
           <li class="page-item activate">
             <a class="page-link" href="?page={{page_obj.previous_page_number }}">Previous</a>
@@ -95,15 +74,12 @@
           {% endif %}
 
 
-          
-          
-          
           {% for num in page_obj.paginator.page_range %}
             {% if num == page_obj.number%}
             <li class="page-item active" aria-current="page">
               <a class="page-link" href="#">{{num}}</a>
             </li>
-          
+
             {% else %}
             <li class="page-item" aria-current="page">
               <a class="page-link" href="?page={{num}}">{{num}}</a>
@@ -112,7 +88,7 @@
 
           {% endfor%}
 
-          
+
 
           {% if page_obj.has_next %}
           <li class="page-item">
@@ -125,7 +101,7 @@
           {% endif %}
 
         </ul>
-      </nav>
+      </nav> -->
 
     </div>
   </div>
@@ -137,13 +113,9 @@
 <div class="row">
   <div class="col-12">
     <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
-      <h2>No se ha encontrado ninguna carga</h2>
-      <a class="btn btn btn-outline-dark" href="{% url 'cargas:carga-create' %}"  style="margin-left: 0.5rem;">Agregar</a>
+      <h2>No se ha encontrado ningun curso add</h2>
+      <a class="btn btn btn-outline-dark" href="{% url 'pensums:AddCurso' %}"  style="margin-left: 0.5rem;">Agregar curso</a>
 
-
-     
-      
-      
     </div>
   </div>
 </div>
