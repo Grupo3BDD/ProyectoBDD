@@ -4,6 +4,7 @@
 {% url 'pensums:Curso' as Curso%}
 {% url 'pensums:Carrera' as Carrera%}
 
+
 {% block css %}
 <style>
   .menu a{
@@ -23,9 +24,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Carga</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Control de asignacion de cursos</a></li>
-          <li><a class="dropdown-item" href="#">Asignacion de cursos</a></li>
-          <li><a class="dropdown-item" href="#">Consultar notas de cursos</a></li>
+          <li><a class="dropdown-item" href="{% url 'cargas:carga' %}">Carga Academica</a></li>
+          <li><a class="dropdown-item" href="#">Encargado de Area</a></li>
+          <li><a class="dropdown-item" href="#">Coordinador de Area</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">

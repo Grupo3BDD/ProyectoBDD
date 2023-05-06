@@ -38,7 +38,7 @@ class Carga(models.Model):
         ('No aprobado', 'No aprobado')
     )
     estado = models.CharField(max_length=255, choices=estados, default='En proceso')
-    fecha_envio = models.DateField(null=True,blank=True) 
+    fecha_envio = models.DateField(auto_now_add=True) 
     fecha_aprob = models.DateField(null=True,blank=True)
 
 

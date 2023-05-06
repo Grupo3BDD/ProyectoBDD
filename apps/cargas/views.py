@@ -29,7 +29,7 @@ class CargaCreateView(generic.CreateView):
     form_class = CargaForm
 
     def get_success_url(self):
-        return reverse("cargas:carga-list")
+        return reverse("cargas:carga")
     
     def get_queryset(self):
         return Carga.objects.all()
@@ -38,7 +38,7 @@ class CargaDeleteView(generic.DeleteView):
     template_name = "cargas/carga_delete.html"
 
     def get_success_url(self):
-        return reverse("cargas:carga-list")
+        return reverse("cargas:carga")
     
     def get_queryset(self):
         return Carga.objects.all()
@@ -49,7 +49,7 @@ class CargaUpdateView (generic.UpdateView):
     form_class = CargaForm
 
     def get_success_url(self):
-        return reverse("cargas:carga-list")
+        return reverse("cargas:carga")
     
     def get_queryset(self):
         return Carga.objects.all()

@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 app_name = 'cargas'
 
 urlpatterns = [
-    path('listacarga/', views.CargaListView.as_view(), name='carga-list'),
-    path('crearcarga/', views.CargaCreateView.as_view(), name='carga-create'),
-    path('editarcarga/<int:pk>/', views.CargaUpdateView.as_view(), name='carga-update'),
-    path('borrarcarga/<int:pk>/', views.CargaDeleteView.as_view(), name='carga-delete'),
+    path('', views.CargaListView.as_view(), name='carga'),
+    path('add', views.CargaCreateView.as_view(), name='carga_add'),
+    path('editar/<int:pk>/', views.CargaUpdateView.as_view(), name='carga_update'),
+    path('delete/<int:pk>/', views.CargaDeleteView.as_view(), name='carga_delete'),
    
 ]

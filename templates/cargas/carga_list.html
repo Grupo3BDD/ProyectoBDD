@@ -28,7 +28,7 @@
 
     <div class="col">
       <div class="d-flex justify-content-start">
-        <a class="btn btn-dark" href="{% url 'cargas:carga-create'%}">Agregar: </a>
+        <a class="btn btn-dark" href="{% url 'cargas:carga_add'%}">Agregar: </a>
       </div>
     </div>
 
@@ -41,10 +41,7 @@
   <div class="row" style="margin-top: 2rem;">
     <div class="col">
       <table class="table table-hover caption-top ">
-        <div class="d-flex justify-content-end">
-          {% include 'cargas/snippets/buscar_carga.html' with query=query %}
-
-        </div>
+        
         
         <thead>          
           <tr>
@@ -69,9 +66,9 @@
             <td>{{carga.fecha_aprob}}</td>
 
             <td>
-              <a class="btn btn-outline-dark" href="{% url 'cargas:carga-update' carga.id %}">Modificar</a>
+              <a class="btn btn-outline-dark" href="{% url 'cargas:carga_update' carga.id %}">Modificar</a>
               <a class="btn btn-outline-dark" href="#">Visualizar</a>
-              <a class="btn btn-outline-dark" href="{% url 'cargas:carga-delete' carga.id %}">Eliminar</a>
+              <a class="btn btn-outline-dark" href="{% url 'cargas:carga_delete' carga.id %}">Eliminar</a>
 
             </td>
           </tr>
@@ -138,7 +135,7 @@
   <div class="col-12">
     <div class="d-flex justify-content-center" style="height: 50vh; align-items: center; display: flex;">
       <h2>No se ha encontrado ninguna carga</h2>
-      <a class="btn btn btn-outline-dark" href="{% url 'cargas:carga-create' %}"  style="margin-left: 0.5rem;">Agregar</a>
+      <a class="btn btn btn-outline-dark" href="{% url 'cargas:carga_add' %}"  style="margin-left: 0.5rem;">Agregar</a>
 
 
      
