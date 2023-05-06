@@ -21,4 +21,5 @@ SELECT carrera."nombreCarrera" AS " NOMBRE DE LA CARRERA",  pensum."codigo_pensu
 FROM pensum_carrera carrera
 JOIN pensum_pensum pensum ON pensum."carreraId_id" = carrera.id; 
 
-
+-- Insertar un tipo de clase
+INSERT INTO edificios_clasificacion VALUES('Salon de eventos');
