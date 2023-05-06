@@ -54,6 +54,7 @@
             <th scope="col">Codigo Pensum</th>
             <th scope="col">Inicio de vigencia</th>
             <th scope="col">Carrera del Pensum</th>
+            <th scope="col">Fecha de creación</th>
             <th scope="col">Opciones</th>
           </tr>
 
@@ -73,7 +74,7 @@
                   <li><a class="dropdown-item" href="{% url 'pensums:ActualizarPensum' pensum.id %}">Editar</a></li>
                   <li><a class="dropdown-item" href="#">Administrar Cursos</a></li>
                   <li><a class="dropdown-item" href="#">Visualizar</a></li>
-                  <li><a class="dropdown-item" href="{% url 'pensums: EliminarPensum' pensum.id %}">Eliminar</a></li>
+                  <li><a class="dropdown-item" href="{% url 'pensums:EliminarPensum' pensum.id %}">Eliminar</a></li>
                 </ul>
               </li>
             </td>

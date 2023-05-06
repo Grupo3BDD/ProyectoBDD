@@ -30,7 +30,7 @@ urlpatterns = [
     path('pensum/', login_required(views.PensumList.as_view()), name='Pensum'),
     path('pensum/crear/', login_required(views.PensumCreate.as_view()), name='CrearPensum'),
     path('pensum/actualizar/<int:pk>/', login_required(views.PensumUpdate.as_view()), name='ActualizarPensum'),
-    path('carrera/eliminar/<int:pk>/', login_required(views.PensumDelete.as_view()), name='EliminarPensum'),
+    path('pensum/eliminar/<int:pk>/', login_required(views.PensumDelete.as_view()), name='EliminarPensum'),
     path('pensum/detalle/<int:pk>/', login_required(views.PensumDetalle.as_view()), name='DetallePensum'),
     path('pensum/buscar/', login_required(views.PensumSearch.as_view()), name='BuscarPensum'),
 ]

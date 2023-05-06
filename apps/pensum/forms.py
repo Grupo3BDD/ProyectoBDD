@@ -181,8 +181,13 @@ class detalleCursoForm(forms.ModelForm):
 
             'cursoId',
             'facultad_carrera',
-
         ]
+
+
+<<<<<<< HEAD
+        ]
+=======
+>>>>>>> 847d593d66ff5d2296dd8c395352614af9585342
 
 #-------------
 # Formulario para pensum
@@ -209,10 +214,13 @@ class pensumForm(forms.ModelForm):
 
             'cursoId': 'Código del curso',
             'facultad_carrera': 'Carrera',
+<<<<<<< HEAD
 
         
 
 
+=======
+>>>>>>> 847d593d66ff5d2296dd8c395352614af9585342
             'codigo_pensum':'Codigo',
             'year_inicio_vigencia':'Año de inicio de vigencia',
             'descripcion':'Descripcion del proceso de graduacion',
@@ -230,9 +238,14 @@ class pensumForm(forms.ModelForm):
             'examen_final': forms.TextInput(attrs={'class':'form-control','type':'number'}),
             'carreraId':forms.Select(attrs={'class':'form-control'})
 
+
         }
+<<<<<<< HEAD
 
 # Formulario para la edición de Carreras
+=======
+# Formulario para la edición de Pensums
+>>>>>>> 847d593d66ff5d2296dd8c395352614af9585342
 
 class editPensum(forms.ModelForm):
     class Meta:
@@ -246,6 +259,7 @@ class editPensum(forms.ModelForm):
             'cantidad_ciclo',
             'examen_final',
             'carreraId',
+            'estado',
 
         ]
 
@@ -257,6 +271,7 @@ class editPensum(forms.ModelForm):
             'cantidad_ciclo':'Cantidad de ciclos',
             'examen_final':'Valor del examen final',
             'carreraId':'Carrera de Facultad',
+            'estado':'Habilitado',
 
         }
 
@@ -270,3 +285,7 @@ class editPensum(forms.ModelForm):
 
 
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 847d593d66ff5d2296dd8c395352614af9585342

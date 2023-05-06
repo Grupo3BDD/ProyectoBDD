@@ -127,6 +127,9 @@ class Pensum(models.Model):
     def __str__(self):
         return '{} '.format(self.codigo_pensum)
 
+    def get_created_at(self):
+        return self.fecha_creacion.strftime('%d-%m-%Y')
+
 class DetallePensumCurso(models.Model):
     tipo_ciclo = [
         ('Primer Ciclo', 'Primer Ciclo'),
