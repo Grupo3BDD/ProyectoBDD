@@ -1,9 +1,10 @@
-<td scope="row">{{curso.codigoCurso}}</td>
-<td>{{curso.nombreCurso}}</td>
+<td scope="row">{{curso.codigo_pensum}}</td>
+<td>{{pensum.codigo_pensum}}</td>
+<td>{{carrera.get_created_at}}</td>
 
 
 <td>
-    <a class="btn btn-outline-dark" href="{% url 'pensums:DetalleCurso' curso.id %}">Mostrar</a>
-    <a class="btn btn-outline-dark" href="{% url 'pensums:ActualizarCurso' curso.id %}">Editar</a>
-    <a class="btn btn-outline-dark" href="{% url 'pensums:EliminarCurso' curso.id %}">Eliminar</a>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:DetalleCurso' pensum.id %}">Mostrar</a>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:ActualizarCurso' pensum.id %}">Editar</a>
+    <a class="btn btn-outline-dark" href="{% url 'pensums:EliminarCurso' pensum.id %}">Eliminar</a>
 </td>

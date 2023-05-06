@@ -226,7 +226,7 @@ class CarreraSearch(ListView):
 ###-- MODULO QUE ENLISTA PENSUM--###
 class PensumList(ListView):
     template_name = 'pensums/pensum/pensum.html'
-    queryset = Carrera.objects.all().order_by('-id')
+    queryset = Pensum.objects.all().order_by('-id')
     paginate_by = 5
 
     def get_context_data(self, **kwargs):
@@ -254,4 +254,63 @@ class PensumCreate(CreateView):
     success_url = reverse_lazy('pensums:Pensum')
 
 ###-- MODULO QUE MODIFICA ALGUN PENSUM--###
+class PensumUpdate(UpdateView):
+    model = Pensum
+    form_class = editPensum
+    template_name = 'pensums/pensum/pensumForm.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Editar'
+        context['message'] = 'Guardar'
+
+        return context
+
+    success_url = reverse_lazy('pensums:Pensum')
+
+
+###-- MODULO QUE ELIMINA ALGUN PENSUM--###
+class PensumDelete(DeleteView):
+    model = Pensum
+    template_name = 'pensums/pensum/pensumDelete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Eliminar'
+
+        return context
+
+    success_url = reverse_lazy('pensums:Pensum')
+
+###-- MODULO QUE DETALLA ALGUN PENSUM--###
+class PensumDetalle(DetailView):
+    model = Pensum
+    template_name = 'pensums/pensum/pensumDetalle.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Detalle'
+        context['message'] = 'Detalle'
+        context['breadcrumb'] = breadcrumb()
+
+        return context
+
+###-- MODULO QUE BUSCA PENSUMS-###
+class PensumSearch(ListView):
+    template_name = 'pensums/pensum/pensumBuscar.html'
+
+    def get_queryset(self):
+        filters = Q(codigo_pensum__icontains=self.query())
+        return Pensum.objects.filter(filters)
+
+    def query(self):
+        return self.request.GET.get('q')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.query()
+        context['title'] = 'Buscar'
+        context['count'] = context['pensum_list'].count()
+        context['breadcrumb'] = breadcrumb()
+
+        return context

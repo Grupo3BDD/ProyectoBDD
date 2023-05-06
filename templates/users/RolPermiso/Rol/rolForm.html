@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block css %}
+<link href="{% static 'lib/jquery-ui-1.12.1/jquery-ui.min.css' %}" rel="stylesheet" />
+<link href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="card" style="margin-top: 2.5rem;">
+    <div class="card-body">
+        <a href="{% url 'users:list_rolPermiso'%}">Regresar</a>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group" style="margin-bottom: 1rem;">
+                {{ field.label_tag }}
+                {{ field }}
+
+                {% if field.errors %}
+                {{ field.errors }}
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+            <br>
+            
+            <button type="submit" class="btn  btn-dark ">{{message}}</button>
+            <a href="{% url 'users:list_rolPermiso'%}">CANCELAR</a>
+            
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

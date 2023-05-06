@@ -23,7 +23,7 @@ from django.contrib.auth import authenticate
 from .decoradores import *
 
 # FORMS
-from .forms import RegistroForm,  ChangePasswordForm
+from .forms import *
 
 # UTILS
 from .utils import breadcrumb_usuarios,breadcrumb_estudiante,breadcrumb_docente,breadcrumb_puesto
@@ -262,6 +262,129 @@ def listRol(request):
         'page_obj':page_obj
     }
     return render(request,template_name,context)
+
+
+
+###-- MODULO QUE ENLISTA A LOS ROLES--###
+class RolList(ListView):
+    template_name = 'users/RolPermiso/Rol/rol.html'
+    queryset = Rol.objects.all().order_by('-id')
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['message'] = 'Administración de Roles'
+        context['title'] = 'Roles'
+
+
+        return context
+
+###-- MODULO QUE CREA A LOS ROLES--###
+class RolCreate(CreateView):
+    model = Rol
+    form_class = rolForm
+    template_name = 'users/RolPermiso/Rol/rolForm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Agregar'
+        context['message'] = 'Crear'
+
+        return context
+
+    success_url = reverse_lazy('users:list_rolPermiso')
+
+
+###-- MODULO QUE MODIFICA ALGUN ROL--###
+class RolUpdate(UpdateView):
+    model = Rol
+    form_class = rolForm
+    template_name = 'users/RolPermiso/Rol/rolForm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Editar'
+        context['message'] = 'Guardar'
+
+        return context
+
+    success_url = reverse_lazy('users:list_rolPermiso')
+
+
+###-- MODULO QUE ELIMINA ALGUN ROL--###
+class RolDelete(DeleteView):
+    model = Rol
+    template_name = 'users/RolPermiso/Rol/rolDelete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Eliminar'
+
+        return context
+
+    success_url = reverse_lazy('users:list_rolPermiso')
+
+
+###-- MODULO QUE ENLISTA A LOS PERMISOS--###
+class PermisoList(ListView):
+    template_name = 'users/RolPermiso/Permiso/permiso.html'
+    queryset = Permiso.objects.all().order_by('-id')
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['message'] = 'Administración de Permisos'
+        context['title'] = 'Permisos'
+
+
+        return context
+
+###-- MODULO QUE CREA A LOS PERMISOS--###
+class PermisoCreate(CreateView):
+    model = Permiso
+    form_class = permisoForm
+    template_name = 'users/RolPermiso/Permiso/permisoForm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Agregar'
+        context['message'] = 'Crear'
+
+        return context
+
+    success_url = reverse_lazy('users:permiso')
+
+
+###-- MODULO QUE MODIFICA ALGUN PERMISO--###
+class PermisoUpdate(UpdateView):
+    model = Permiso
+    form_class = permisoForm
+    template_name = 'users/RolPermiso/Permiso/permisoForm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Editar'
+        context['message'] = 'Guardar'
+
+        return context
+
+    success_url = reverse_lazy('users:permiso')
+
+
+###-- MODULO QUE ELIMINA ALGUN PERMISO--###
+class PermisoDelete(DeleteView):
+    model = Permiso
+    template_name = 'users/RolPermiso/Permiso/permisoDelete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Eliminar'
+
+        return context
+
+    success_url = reverse_lazy('users:permiso')
 
 def listPuesto(request):
     template_name = 'puesto/puesto.html'

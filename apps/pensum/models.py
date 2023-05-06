@@ -125,7 +125,7 @@ class Pensum(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '{} '.format(self.codigoPensum)
+        return '{} '.format(self.codigo_pensum)
 
 class DetallePensumCurso(models.Model):
     tipo_ciclo = [
@@ -142,12 +142,12 @@ class DetallePensumCurso(models.Model):
     ]
     tipociclo = models.CharField(max_length=100,null=False,blank=False,choices=tipo_ciclo)
 
-    codigoPensum = models.ForeignKey(Pensum,on_delete=models.CASCADE)
+    codigo_pensum = models.ForeignKey(Pensum,on_delete=models.CASCADE)
     cursoid = models.ForeignKey(Curso, on_delete=models.CASCADE)
     estado = models.BooleanField(default=True)
 
     def __str__(self):
-        return '{} {} {}'.format(self.cursoid.codigoCurso, self.cursoid.nombreCurso,self.codigoPensum)
+        return '{} {} {}'.format(self.cursoid.codigoCurso, self.cursoid.nombreCurso,self.codigo_pensum)
 
 
 

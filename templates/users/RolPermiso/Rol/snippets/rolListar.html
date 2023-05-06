@@ -1,0 +1,34 @@
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    {% if rol_list %}
+    <table class="table table-hover caption-top ">
+
+
+      <thead>
+        <tr>
+          <th scope="col">Nombre del Rol</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Fecha de creación</th>
+
+        </tr>
+
+      </thead>
+      <tbody>
+        {% for object in rol_list %}
+        <tr>
+          {% include 'users/RolPermiso/Rol/snippets/rol.html' with rol=object %}
+
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="h5">
+      No se ha encontrado registro del rol buscado
+      <a href="{% url 'users:list_rolPermiso' %}" class="btn btn-primary">Regresar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
