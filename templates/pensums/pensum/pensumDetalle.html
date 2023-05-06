@@ -27,7 +27,7 @@
     <div class="col-6">
         <div class="h5" style="margin-bottom: 2rem;">
             <span style="text-transform: uppercase;">Codigo de pensum:  </span>
-            <span class="p2" style="color: red;">{{pensum.cod_pensum}}</span>
+            <span class="p2" style="color: red;">{{pensum.codigo_pensum}}</span>
         </div>
 
         <div class="h5" style="margin-bottom: 2rem;">
@@ -35,7 +35,21 @@
             <span class="p2" style="color: red;"><br>{{pensum.year_inicio_vigencia}}</span>
         </div>
 
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Descripción proceso de graduación </span>
+            <span class="p2" style="color: red;"><br>{{pensum.descripcion}}</span>
+        </div>
 
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Valor examen final: </span>
+            <span class="p2" style="color: red;"><br>{{pensum.examen_final}}</span>
+        </div>
+
+        <div class="h5" style="margin-bottom: 2rem;">
+            <span style="text-transform: uppercase;">Fecha de creación: </span>
+            <span class="p2" style="color: red;"><br>{{pensum.get_created_at}}</span>
+        </div>
+        
         </div>
 
 

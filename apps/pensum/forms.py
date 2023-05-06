@@ -229,7 +229,7 @@ class pensumForm(forms.ModelForm):
 
 
         }
-# Formulario para la edición de Carreras
+# Formulario para la edición de Pensums
 
 class editPensum(forms.ModelForm):
     class Meta:
@@ -243,11 +243,11 @@ class editPensum(forms.ModelForm):
             'cantidad_ciclo',
             'examen_final',
             'carreraId',
+            'estado',
 
         ]
 
         labels = {
-
 
             'codigo_pensum':'Codigo',
             'year_inicio_vigencia':'Año de inicio de vigencia',
@@ -255,6 +255,7 @@ class editPensum(forms.ModelForm):
             'cantidad_ciclo':'Cantidad de ciclos',
             'examen_final':'Valor del examen final',
             'carreraId':'Carrera de Facultad',
+            'estado':'Habilitado',
 
         }
 
