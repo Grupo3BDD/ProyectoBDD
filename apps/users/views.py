@@ -180,7 +180,7 @@ def detailUserRegister(request, pk):
         return render(request, template_name, context)
     return redirect('index')
 
-
+# Modulo para listar los Docente
 def listDocente(request):
     template_name = 'users/Docente/docente.html'
     listado_docente = User.objects.all().filter(tipo_usuario='Docente')
@@ -197,7 +197,7 @@ def listDocente(request):
     }
     return render(request, template_name, context)
 
-
+# Modulo para listar los estudiantes
 def listEstudiante(request):
     template_name = 'users/Estudiante/estudiante.html'
     listado_estudiante = User.objects.all().filter(tipo_usuario='Estudiante')
@@ -215,7 +215,7 @@ def listEstudiante(request):
     }
     return render(request, template_name, context)
 
-
+# Modulo para listar los usuarios
 def listUsuario(request):
     template_name = 'users/Usuarios/usuario.html'
     listado_usuario = User.objects.all().filter(tipo_usuario='Usuario')
@@ -234,7 +234,7 @@ def listUsuario(request):
     }
     return render(request, template_name, context)
 
-
+# Modulo para listar los permisos
 def listPermiso(request):
     template_name = 'users/RolPermiso/listPermisoRol.html'
     permiso = Permiso.objects.all().order_by('id')
@@ -253,6 +253,7 @@ def listPermiso(request):
     return render(request, template_name, context)
 
 
+# Modulo para lista los Roles
 def listRol(request):
 
     template_name = 'users/RolPermiso/listPermisoRol.html'
@@ -369,6 +370,7 @@ class PermisoDelete(DeleteView):
 
     success_url = reverse_lazy('users:permiso')
 
+# En lista los puestos
 def listPuesto(request):
     template_name = 'puesto/puesto.html'
     puesto = Puesto.objects.all().order_by('id')
@@ -388,7 +390,7 @@ def listPuesto(request):
 
     return render(request, template_name, context)
 
-
+# Crear un usuario
 class crearUsuario(CreateView):
     model= User
     template_name = 'users/create.html'
@@ -400,7 +402,9 @@ class crearUsuario(CreateView):
         context['title'] = 'Agregar'        
         context['info'] = 'Agregar'
         return context
-        
+
+
+# Modificar Usuarios
 class UpdateUser(UpdateView):
     model= User
     template_name = 'users/update.html'
@@ -413,13 +417,17 @@ class UpdateUser(UpdateView):
         context['info'] = 'Agregar'
         return context
 
-def deleteUser(request,pk):
-    user = get_object_or_404(User,pk=pk)
-    if user:
-        user.delete()
-    return redirect('users:usuario')
+# Eliminar usuarios
+def deleteUser(request,pk):    
+    if request.user.is_superuser:
+        users = get_object_or_404(User,pk=pk)
+        if users:
+            users.delete()
+        return redirect('users:usuario')
 
+# Aceder al detalle del usuario
 def detailUser(request,pk):
+    
     user = get_object_or_404(User,pk=pk)
     template_name = 'users/detail.html'
     context ={
