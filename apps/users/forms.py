@@ -424,6 +424,35 @@ class permisoForm(forms.ModelForm):
             'Descripcion': forms.TextInput(attrs={'class': 'form-control'}),
 
         }
+
+
+# Formulario para edición de Permisos
+class editPermiso(forms.ModelForm):
+    class Meta:
+        model = Permiso
+
+        fields = [
+            'idrol',
+            'permiso',
+            'Descripcion',
+            'estado',
+
+        ]
+
+        labels = {
+            'idrol': 'Rol al cual es asociado este permiso',
+            'permiso': 'Nombre del Permiso',
+            'Descripcion': 'Descripcion del Permiso',
+            'estado':'Habiltiado'
+
+        }
+
+        widgets = {
+
+            'permiso': forms.TextInput(attrs={'class': 'form-control'}),
+            'Descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+
+        }
         
 #Formulario para edición de Roles
 class rolForm(forms.ModelForm):
