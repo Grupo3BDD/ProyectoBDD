@@ -1,0 +1,35 @@
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    {% if permiso_list %}
+    <table class="table table-hover caption-top ">
+
+
+      <thead>
+        <tr>
+            <th scope="col">Rol</th>
+          <th scope="col">Permiso</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Fecha de creación</th>
+
+        </tr>
+
+      </thead>
+      <tbody>
+        {% for object in permiso_list %}
+        <tr>
+          {% include 'users/RolPermiso/Permiso/snippets/permiso.html' with permiso=object %}
+
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="h5">
+      No se ha encontrado registro del permiso buscado
+      <a href="{% url 'users:permiso' %}" class="btn btn-primary">Regresar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

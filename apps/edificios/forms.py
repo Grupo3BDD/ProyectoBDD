@@ -30,6 +30,7 @@ class edificioForm(forms.ModelForm):
 
         }
 
+#Formulario para la edición de Edificios
 class editForm(forms.ModelForm):
     class Meta:
         model = Edificio
@@ -57,7 +58,7 @@ class editForm(forms.ModelForm):
 
         }
 
-
+#Formulario para las Clasificaciones
 class clasificacionForm(forms.ModelForm):
     class Meta:
         model = Clasificacion
@@ -83,6 +84,7 @@ class clasificacionForm(forms.ModelForm):
 
         }
 
+#Formulario para la edición de Clasificaciones
 class editClasificacion(forms.ModelForm):
     class Meta:
         model = Clasificacion
@@ -108,6 +110,7 @@ class editClasificacion(forms.ModelForm):
 
         }
 
+#Formulario para los Salones
 class salonForm(forms.ModelForm):
     class Meta:
         model = Salon
@@ -137,6 +140,7 @@ class salonForm(forms.ModelForm):
 
         }
 
+#Formulario para la edición de Salones
 class editSalon(forms.ModelForm):
     class Meta:
         model = Salon

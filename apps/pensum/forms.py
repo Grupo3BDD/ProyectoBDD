@@ -171,3 +171,22 @@ class editCarrera(forms.ModelForm):
             'coordinador_acad': forms.Select(attrs={'class': 'form-control select2'}),
 
         }
+
+class detalleCursoForm(forms.ModelForm):
+    class Meta:
+        model = DetalleCurso
+
+        fields = [
+
+            'cursoId',
+            'facultad_carrera',
+
+        ]
+
+        labels = {
+
+            'cursoId': 'Código del curso',
+            'facultad_carrera': 'Carrera',
+
+        }
+

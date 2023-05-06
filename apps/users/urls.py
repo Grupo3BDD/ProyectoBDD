@@ -9,6 +9,7 @@ app_name = 'users'
 
 urlpatterns = [
 
+    #Usuarios
     path('sign-up/', views.SignUp.as_view(), name = 'signup'),
     path('accounts/login/',views.login_view, name='login'),
     path('logout/',views.logout_view, name='logout'),
@@ -19,5 +20,18 @@ urlpatterns = [
     path('usuario/',login_required(views.listUsuario),name='usuario'),
     path('rol/',login_required(views.listRol),name='list_rolPermiso'),
     path('permiso/',login_required(views.listPermiso),name='permiso'),
+
+    #Roles
+    #path('roles/', login_required(views.RolList.as_view()), name='Rol'),
+    path('rol/crear/', login_required(views.RolCreate.as_view()), name='CrearRol'),
+    path('rol/actualizar/<int:pk>/', login_required(views.RolUpdate.as_view()), name='ActualizarRol'),
+    path('rol/eliminar/<int:pk>/', login_required(views.RolDelete.as_view()), name='EliminarRol'),
+
+    #Permisos
+    #path('permisos/', login_required(views.PermisoList.as_view()), name='Permiso'),
+    path('permiso/crear/', login_required(views.PermisoCreate.as_view()), name='CrearPermiso'),
+    path('permiso/actualizar/<int:pk>/', login_required(views.PermisoUpdate.as_view()), name='ActualizarPermiso'),
+    path('permiso/eliminar/<int:pk>/', login_required(views.PermisoDelete.as_view()), name='EliminarPermiso'),
+
 
 ]
