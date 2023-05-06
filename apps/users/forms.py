@@ -111,6 +111,31 @@ class ChangePasswordForm(forms.Form):
 
 
 class CreateUserForm(UserCreationForm):
+    USER_TYPE = [
+            ('Usuario', 'Usuario'),
+        ('Docente', 'Docente'),
+        ('Estudiante', 'Estudiante')
+    ]
+    certificado_nacimiento = [
+        ('Libro', 'Libro'),
+        ('Acta', 'Acta'),
+        ('Folio', 'Folio')
+    ]
+
+    tipo_usuario = forms.ChoiceField(
+        choices=USER_TYPE,
+        required = False,
+        label='Tipo de Usuario',
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        )
+    
+    certificado_nacimiento = forms.ChoiceField(
+        choices=certificado_nacimiento,
+        required = False,
+        label='Tipo de Certificado de Nacimiento',
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        )
+
     username = forms.CharField(
         label='Usuario',
         widget=forms.TextInput(
@@ -167,6 +192,8 @@ class CreateUserForm(UserCreationForm):
             'last_name',
             'email',
             'username',
+            'password1',
+            'password2',
             'tipo_usuario',
             'profesion',
             'acronimo',
@@ -176,7 +203,7 @@ class CreateUserForm(UserCreationForm):
             'telefono',
             'pais_origen',
             'imagen',
-            'estado',
+            
             
 
         ]
@@ -188,16 +215,26 @@ class CreateUserForm(UserCreationForm):
             'acronimo': 'Acronimo de la Profesion',
             'tipoDocumento': 'Tipo de Documento de Identificacion',
             'noDocumentoIdentificacion': 'Numero de Documento de Identificacion',
-            'certificado_nacimiento': 'Certificado de Nacimiento',
+            
             'telefono': 'Telefono',
             'pais_origen': 'Pais de Origen',
             'imagen': 'Imagen',
-            'estado': 'Estado',
+            
             
         }
 
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control','name':'first_name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control','name':'last_name'}),
+            
+            'profesion': forms.TextInput(attrs={'class': 'form-control','name':'profesion'}),
+            'acronimo': forms.TextInput(attrs={'class': 'form-control','name':'profesion'}),
+            'tipoDocumento': forms.Select(attrs={'class': 'form-control','name':'profesion'}),
+            'noDocumentoIdentificacion': forms.TextInput(attrs={'class': 'form-control','name':'profesion'}),
+            
+            'telefono': forms.TextInput(attrs={'class': 'form-control','name':'profesion'}),
+            'pais_origen': forms.Select(attrs={'class': 'form-control','name':'profesion'}),
+            'imagen':forms.FileInput(attrs={'type':'checkbox', 'name':'image', 'type':'file', 'accept':'image', 'class':'form-control'}),
+            
 
         }

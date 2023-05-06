@@ -219,7 +219,7 @@ def listUsuario(request):
 
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    print(page_obj)
+    
 
     context = {
         'title': 'Listado De Usuarios',
@@ -299,4 +299,19 @@ class crearUsuario(CreateView):
         return context
 
 
+def deleteUser(request,pk):
+    user = get_object_or_404(User,pk=pk)
+    if user:
+        user.delete()
+    return redirect('users:usuario')
+
+def detailUser(request,pk):
+    user = get_object_or_404(User,pk=pk)
+    template_name = 'users/detail.html'
+    context ={
+        'title':f'Detalle {user}',
+
+    }
+
+    return render(request,template_name,context)
  

@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col">
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-dark" href="#">Agregar: </a>
+                    <a class="btn btn-dark" href="{% url 'users:add_user'%}">Agregar: </a>
                   </div>
             </div>
         </div>
@@ -64,9 +64,9 @@
                                         Acciones
                                         </button>
                                         <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Detalle</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'users:detail_user' usuario.id%}">Detalle</a></li>
                                         <li><a class="dropdown-item" href="#">Editar</a></li>
-                                        <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'users:delete_user'  usuario.id %} ">Eliminar</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -83,7 +83,7 @@
         <div class="row justify-content-center">
             <div class="col-4" style="text-align: center;">
                 <h5>En este momento no se ha agregado ningun Usuario a la plataforma</h5>
-                <a href="#" class="btn btn-outline-dark">Crear Usuario</a>
+                <a href="{% url 'users:add_user'%}" class="btn btn-outline-dark">Crear Usuario</a>
             </div>
         </div>
     {% endif %}
