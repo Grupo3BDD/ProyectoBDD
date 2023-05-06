@@ -21,7 +21,7 @@ from django.db.models import Q
 from .models import *
 
 #FORMULARIOS
-from. forms import *
+from .forms import *
 
 # Decoradores
 #from .decoradores import *

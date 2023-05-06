@@ -232,7 +232,6 @@ class pensumForm(forms.ModelForm):
 
 # Formulario para la edición de Pensums
 
-
 class editPensum(forms.ModelForm):
     class Meta:
         model = Pensum
@@ -277,6 +276,7 @@ class editPensum(forms.ModelForm):
 class pensumCursoForm(forms.ModelForm):
     class Meta:
         model = DetallePensumCurso
+
         fields = [
 
             'codigo_pensum',

@@ -7,6 +7,7 @@ import datetime
 from apps.users.models import User,EncargadoArea,CoordinadorAcademico
 
 
+
 class GradoAcademico(models.Model):
     grado_academico = models.CharField(max_length=75,null=False,blank=False)
     estado = models.BooleanField(default=True)

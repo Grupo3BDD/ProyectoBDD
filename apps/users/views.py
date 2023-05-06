@@ -25,7 +25,7 @@ from .decoradores import *
 
 # FORMS
 
-from .forms import rolForm, permisoForm
+from .forms import rolForm, permisoForm, editRol, editPermiso
 
 from .forms import RegistroForm,  ChangePasswordForm, CreateUserForm,UpdateUserForm
 
@@ -295,7 +295,7 @@ class RolCreate(CreateView):
 ###-- MODULO QUE MODIFICA ALGUN ROL--###
 class RolUpdate(UpdateView):
     model = Rol
-    form_class = rolForm
+    form_class = editRol
     template_name = 'users/RolPermiso/Rol/rolForm.html'
 
     def get_context_data(self, **kwargs):
@@ -343,7 +343,7 @@ class PermisoCreate(CreateView):
 ###-- MODULO QUE MODIFICA ALGUN PERMISO--###
 class PermisoUpdate(UpdateView):
     model = Permiso
-    form_class = permisoForm
+    form_class = editPermiso
     template_name = 'users/RolPermiso/Permiso/permisoForm.html'
 
     def get_context_data(self, **kwargs):
