@@ -3,8 +3,8 @@
     "model": "users.user",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$600000$IWx6q4VsbV40H7bOZwcnHJ$sK3rvE2t+T9DgHv+chPann1oKI78L+nd/yQATC8/UmA=",
-        "last_login": null,
+        "password": "pbkdf2_sha256$600000$jqhDgc434Dpk5qDO6NGG9j$8137M9LQ636kX27ML6hnaZkGBF/otIlSwCl/E7O+1PU=",
+        "last_login": "2023-05-05T23:23:04.997Z",
         "is_superuser": true,
         "username": "choc1403",
         "first_name": "",
@@ -12,23 +12,21 @@
         "email": "eloicx@gmail.com",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2023-05-05T01:49:13.412Z",
+        "date_joined": "2023-05-05T23:22:56.587Z",
         "tipo_usuario": "Usuario",
         "profesion": null,
         "acronimo": null,
         "tipoDocumento": null,
         "noDocumentoIdentificacion": null,
-        "noPersonal": "2023ae5d1",
+        "noPersonal": "2023553da",
         "certificado_nacimiento": null,
         "telefono": null,
         "pais_origen": null,
         "estado": true,
         "imagen": "",
-        "fecha_creacion": "2023-05-05T01:49:14.053Z",
+        "fecha_creacion": "2023-05-05T23:22:56.750Z",
         "groups": [],
-        "user_permissions": [],
-        "rol": [],
-        "puesto": []
+        "user_permissions": []
     }
 }
 ]

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col">
+  <h2 slot="text-align:center">Editar</h2>
+  <a href="{% url 'users:usuario'%}">Regresar</a>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+
+                {% if field.errors %}
+                    {{ field.errors }}
+                {% endif %}
+            </div>
+
+    
+        
+            
+    {% endfor %}
+    <button type="submit" class="btn btn-outline-dark">Guardar</button>
+  </form>
+
+{% endblock%}

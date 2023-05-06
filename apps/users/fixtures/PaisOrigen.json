@@ -1,0 +1,10 @@
+[
+{
+    "model": "users.paisorigen",
+    "pk": 1,
+    "fields": {
+        "pais": "Guatemala",
+        "fecha_creacion": "2023-05-05T22:41:19.179Z"
+    }
+}
+]
