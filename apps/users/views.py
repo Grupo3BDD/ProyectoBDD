@@ -25,7 +25,7 @@ from .decoradores import *
 
 # FORMS
 
-from .forms import *
+from .forms import rolForm, permisoForm
 
 from .forms import RegistroForm,  ChangePasswordForm, CreateUserForm,UpdateUserForm
 
@@ -276,21 +276,6 @@ def listRol(request):
 
 
 
-###-- MODULO QUE ENLISTA A LOS ROLES--###
-class RolList(ListView):
-    template_name = 'users/RolPermiso/Rol/rol.html'
-    queryset = Rol.objects.all().order_by('-id')
-    paginate_by = 5
-
-    def get_context_data(self, **kwargs):
-
-        context = super().get_context_data(**kwargs)
-        context['message'] = 'Administración de Roles'
-        context['title'] = 'Roles'
-
-
-        return context
-
 ###-- MODULO QUE CREA A LOS ROLES--###
 class RolCreate(CreateView):
     model = Rol
@@ -337,20 +322,7 @@ class RolDelete(DeleteView):
     success_url = reverse_lazy('users:list_rolPermiso')
 
 
-###-- MODULO QUE ENLISTA A LOS PERMISOS--###
-class PermisoList(ListView):
-    template_name = 'users/RolPermiso/Permiso/permiso.html'
-    queryset = Permiso.objects.all().order_by('-id')
-    paginate_by = 5
 
-    def get_context_data(self, **kwargs):
-
-        context = super().get_context_data(**kwargs)
-        context['message'] = 'Administración de Permisos'
-        context['title'] = 'Permisos'
-
-
-        return context
 
 ###-- MODULO QUE CREA A LOS PERMISOS--###
 class PermisoCreate(CreateView):
@@ -458,5 +430,5 @@ def detailUser(request,pk):
     return render(request,template_name,context)
  
 
-    return render(request, template_name,context)
+    
 

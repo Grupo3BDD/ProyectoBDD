@@ -27,13 +27,13 @@ urlpatterns = [
     path('user/update/<int:pk>',login_required(views.UpdateUser.as_view()), name='update_user'),
 
     #Roles
-    #path('roles/', login_required(views.RolList.as_view()), name='Rol'),
+    
     path('rol/crear/', login_required(views.RolCreate.as_view()), name='CrearRol'),
     path('rol/actualizar/<int:pk>/', login_required(views.RolUpdate.as_view()), name='ActualizarRol'),
     path('rol/eliminar/<int:pk>/', login_required(views.RolDelete.as_view()), name='EliminarRol'),
 
     #Permisos
-    #path('permisos/', login_required(views.PermisoList.as_view()), name='Permiso'),
+    
     path('permiso/crear/', login_required(views.PermisoCreate.as_view()), name='CrearPermiso'),
     path('permiso/actualizar/<int:pk>/', login_required(views.PermisoUpdate.as_view()), name='ActualizarPermiso'),
     path('permiso/eliminar/<int:pk>/', login_required(views.PermisoDelete.as_view()), name='EliminarPermiso'),

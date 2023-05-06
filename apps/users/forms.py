@@ -3,7 +3,7 @@
 from django import forms
 
 # MODELOS
-from .models import *
+from .models import Rol, Permiso, User
 
 # LIBRERIA QUE SE ENCARGA DE CREAR USUARIOS
 from django.contrib.auth.forms import UserCreationForm
@@ -110,16 +110,8 @@ class ChangePasswordForm(forms.Form):
         return password2
 
 
-#Formulario para los Roles
-class rolForm(forms.ModelForm):
-    class Meta:
-        Model = Rol
 
-        fields = [
-            'rol',
-            'Descripcion',
-            #'habilitado',
-        ]
+        
 
 class CreateUserForm(UserCreationForm):
     USER_TYPE = [
@@ -265,17 +257,7 @@ class CreateUserForm(UserCreationForm):
 
 
 
-# Formulario para los Permisos
-class permisoForm(forms.ModelForm):
-    class Meta:
-        Model = Permiso
 
-        fields = [
-            'idrol',
-            'permiso',
-            'Descripcion',
-            # 'habilitado',
-        ]
 
 class UpdateUserForm(forms.ModelForm):
     USER_TYPE = [
@@ -416,3 +398,35 @@ class UpdateUserForm(forms.ModelForm):
 
 
         }
+
+# Formulario para los Permisos
+class permisoForm(forms.ModelForm):
+    class Meta:
+        model = Permiso
+
+        fields = [
+            'idrol',
+            'permiso',
+            'Descripcion',
+            
+        ]
+        
+        labels={
+            'idrol':'Rol al cual es asociado este permiso',
+            'permiso':'Nombre del Permiso',
+            'Descripcion':'Descripcion del Permiso',
+
+        }
+        
+#Formulario para los Roles
+class rolForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Rol
+        fields =[
+            'rol',
+            'Descripcion',
+            'estado'
+        ]
