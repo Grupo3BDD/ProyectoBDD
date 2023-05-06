@@ -172,6 +172,17 @@ class editCarrera(forms.ModelForm):
 
         }
 
+<<<<<<< HEAD
+class detalleCursoForm(forms.ModelForm):
+    class Meta:
+        model = DetalleCurso
+
+        fields = [
+
+            'cursoId',
+            'facultad_carrera',
+
+=======
 
 #-------------
 # Formulario para pensum
@@ -186,11 +197,23 @@ class pensumForm(forms.ModelForm):
             'descripcion',
             'cantidad_ciclo',
             'examen_final',
+<<<<<<< HEAD
             'carreraId',
+=======
+            'carreraId'
+>>>>>>> 1673caed4977a10c26d4ae5a5aa86244a661f171
+>>>>>>> d7a0289757c1c464feca9c783af1c8d5458fd5a5
         ]
 
         labels = {
 
+<<<<<<< HEAD
+            'cursoId': 'Código del curso',
+            'facultad_carrera': 'Carrera',
+
+        }
+
+=======
             'codigo_pensum':'Codigo',
             'year_inicio_vigencia':'Año de inicio de vigencia',
             'descripcion':'Descripcion del proceso de graduacion',
@@ -209,6 +232,7 @@ class pensumForm(forms.ModelForm):
             'carreraId':forms.Select(attrs={'class':'form-control'})
 
         }
+<<<<<<< HEAD
 # Formulario para la edición de Carreras
 
 class editPensum(forms.ModelForm):
@@ -247,3 +271,6 @@ class editPensum(forms.ModelForm):
 
 
         }
+=======
+>>>>>>> 1673caed4977a10c26d4ae5a5aa86244a661f171
+>>>>>>> d7a0289757c1c464feca9c783af1c8d5458fd5a5

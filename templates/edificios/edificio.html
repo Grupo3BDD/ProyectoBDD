@@ -41,6 +41,7 @@
   </div>
 
   <!--APARTADO DONDE SE MUESTRA EL LISTADO DE EDIFICIOS-->
+
   <div class="row" style="margin-top: 2rem;">
     <div class="col">
       <table class="table table-hover caption-top ">
@@ -49,12 +50,13 @@
 
         </div>
         
-        <thead>          
+        <thead>
+
           <tr>
             <th scope="col">Nombre del edificio</th>
             <th scope="col">Cantidad de salones</th>
             <th scope="col">Niveles</th>
-            <th scope="col">Habilitado</th>
+
             <th scope="col">Fecha de creación</th>
             <th scope="col">Opciones</th>
 
@@ -69,9 +71,6 @@
             <td scope="row">{{edificio.nombreEdificio}}</td>
             <td>{{edificio.cantidadSalones}}</td>
             <td> {{edificio.niveles}}</td>
-            <td>{{edificio.estado}}</td>
-
-            
             <td>{{edificio.get_created_at}}</td>
 
             <td>
@@ -85,6 +84,7 @@
 
         </tbody>
       </table>
+
       
       <nav aria-label="...">
         <ul class="pagination">
@@ -135,6 +135,7 @@
 
 </div>
 
+
 {% else%}
 
 <div class="row">
@@ -144,9 +145,6 @@
       <a class="btn btn btn-outline-dark" href="{% url 'edificios:Crear' %}"  style="margin-left: 0.5rem;">Crear</a>
 
 
-     
-      
-      
     </div>
   </div>
 </div>

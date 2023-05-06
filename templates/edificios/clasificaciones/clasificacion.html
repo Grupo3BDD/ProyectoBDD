@@ -52,7 +52,7 @@
         <thead>          
           <tr>
             <th scope="col">Nombre Clasificación</th>
-            <th scope="col">Habilitado</th>
+
             <th scope="col">Opciones</th>
 
           </tr>
@@ -64,7 +64,7 @@
           {% for clasificacion in clasificacion_list %}
           <tr>
             <td scope="row">{{clasificacion.tipo_salon_uso}}</td>
-            <td>{{clasificacion.estado}}</td>
+
 
             <td>
               <!--<a class="btn btn-outline-dark" href="{% url 'edificios:DetalleClasificacion' clasificacion.id %}">Mostrar</a>-->
