@@ -109,7 +109,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('tipociclo', models.CharField(choices=[('Primer Ciclo', 'Primer Ciclo'), ('Segundo Ciclo', 'Segundo Ciclo'), ('Tercer Ciclo', 'Tercer Ciclo'), ('Cuarto Ciclo', 'Cuarto Ciclo'), ('Quinto Ciclo', 'Quinto Ciclo'), ('Sexto Ciclo', 'Sexto Ciclo'), ('Septimo Ciclo', 'Septimo Ciclo'), ('Octavo Ciclo', 'Octavo Ciclo'), ('Noveno Ciclo', 'Noveno Ciclo'), ('Decimo Ciclo', 'Decimo Ciclo')], max_length=100)),
                 ('estado', models.BooleanField(default=True)),
-                ('codePensum', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pensum.pensum')),
+                ('codigo_pensum', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pensum.pensum')),
                 ('cursoid', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pensum.curso')),
             ],
         ),

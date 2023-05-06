@@ -27,10 +27,10 @@ urlpatterns = [
     path('carrera/buscar/', login_required(views.CarreraSearch.as_view()), name='BuscarCarrera'),
 
 #pensum
-    path('pensum/', login_required(views.PensumList.as_view()), name='Pensum'),
-    path('pensum/crear/', login_required(views.PensumCreate.as_view()), name='CrearPensum'),
-    path('pensum/actualizar/<int:pk>/', login_required(views.PensumUpdate.as_view()), name='ActualizarPensum'),
-    path('pensum/eliminar/<int:pk>/', login_required(views.PensumDelete.as_view()), name='EliminarPensum'),
-    path('pensum/detalle/<int:pk>/', login_required(views.PensumDetalle.as_view()), name='DetallePensum'),
-    path('pensum/buscar/', login_required(views.PensumSearch.as_view()), name='BuscarPensum'),
+    path('', login_required(views.PensumList.as_view()), name='Pensum'),
+    path('crear/', login_required(views.PensumCreate.as_view()), name='CrearPensum'),
+    path('actualizar/<int:pk>/', login_required(views.PensumUpdate.as_view()), name='ActualizarPensum'),
+    path('eliminar/<int:pk>/', login_required(views.pensumDelete), name='EliminarPensum'),
+    path('detalle/<int:pk>/', login_required(views.PensumDetalle.as_view()), name='DetallePensum'),
+    path('buscar/', login_required(views.PensumSearch.as_view()), name='BuscarPensum'),
 ]
