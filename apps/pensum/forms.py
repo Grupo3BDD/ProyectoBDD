@@ -231,11 +231,7 @@ class pensumForm(forms.ModelForm):
 # Formulario para la edición de Carreras
 
 # Formulario para la edición de Pensums
-<<<<<<< HEAD
-=======
 
-
->>>>>>> c0d4bc061a2a6f276362de958123b9a81ee38a06
 class editPensum(forms.ModelForm):
     class Meta:
         model = Pensum
@@ -274,7 +270,7 @@ class editPensum(forms.ModelForm):
 
 
         }
-<<<<<<< HEAD
+
 
 #Formulario para los Detalles del Pensum
 class pensumCursoForm(forms.ModelForm):
@@ -304,5 +300,4 @@ class pensumCursoForm(forms.ModelForm):
             'cursoid': forms.Select(attrs={'class': 'form-control'}),
 
         }
-=======
->>>>>>> c0d4bc061a2a6f276362de958123b9a81ee38a06
+

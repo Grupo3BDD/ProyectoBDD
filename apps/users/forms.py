@@ -417,8 +417,15 @@ class permisoForm(forms.ModelForm):
             'Descripcion':'Descripcion del Permiso',
 
         }
+
+        widgets = {
+
+            'permiso': forms.TextInput(attrs={'class': 'form-control'}),
+            'Descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+
+        }
         
-#Formulario para los Roles
+#Formulario para edición de Roles
 class rolForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -428,5 +435,47 @@ class rolForm(forms.ModelForm):
         fields =[
             'rol',
             'Descripcion',
+
+        ]
+
+        labels = {
+
+            'rol': 'Nombre del rol',
+            'Descripcion': 'Descripción',
+
+        }
+
+        widgets = {
+
+            'rol': forms.TextInput(attrs={'class': 'form-control'}),
+            'Descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+
+        }
+
+# Formulario para los Roles
+class editRol(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Rol
+        fields = [
+            'rol',
+            'Descripcion',
             'estado'
         ]
+
+        labels = {
+
+            'rol': 'Nombre del rol',
+            'Descripcion': 'Descripción',
+            'estado':'Habilitado'
+
+        }
+
+        widgets = {
+
+            'rol': forms.TextInput(attrs={'class': 'form-control'}),
+            'Descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+
+        }
