@@ -1,6 +1,7 @@
 from django.contrib import admin
 # Modelos
 from .models import User, Rol, Puesto, PaisOrigen, TipoDocumento, EncargadoArea,CoordinadorAcademico,Estudiante,Docente,Permiso
+from .models import UsuarioRol
 from django.contrib.auth.models import Permission
 
 # Register your models here.
@@ -29,3 +30,4 @@ admin.site.register(Estudiante)
 admin.site.register(CoordinadorAcademico)
 admin.site.register(Docente)
 admin.site.register(Permiso)
+admin.site.register(UsuarioRol)

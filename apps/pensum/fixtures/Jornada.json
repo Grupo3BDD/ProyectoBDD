@@ -1,2 +1,16 @@
 [
+{
+    "model": "pensum.jornada",
+    "pk": 1,
+    "fields": {
+        "plan": "Diaro"
+    }
+},
+{
+    "model": "pensum.jornada",
+    "pk": 2,
+    "fields": {
+        "plan": "Fin de Semana"
+    }
+}
 ]

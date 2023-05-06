@@ -1,2 +1,42 @@
 [
+{
+    "model": "pensum.gradoacademico",
+    "pk": 1,
+    "fields": {
+        "grado_academico": "Tecnico",
+        "estado": true
+    }
+},
+{
+    "model": "pensum.gradoacademico",
+    "pk": 2,
+    "fields": {
+        "grado_academico": "Licenciatura",
+        "estado": true
+    }
+},
+{
+    "model": "pensum.gradoacademico",
+    "pk": 3,
+    "fields": {
+        "grado_academico": "Diplomado",
+        "estado": true
+    }
+},
+{
+    "model": "pensum.gradoacademico",
+    "pk": 4,
+    "fields": {
+        "grado_academico": "Especialidad",
+        "estado": true
+    }
+},
+{
+    "model": "pensum.gradoacademico",
+    "pk": 5,
+    "fields": {
+        "grado_academico": "Maestria",
+        "estado": true
+    }
+}
 ]

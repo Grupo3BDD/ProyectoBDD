@@ -1,2 +1,18 @@
 [
+{
+    "model": "edificios.clasificacion",
+    "pk": 1,
+    "fields": {
+        "tipo_salon_uso": "Salón de clases",
+        "estado": true
+    }
+},
+{
+    "model": "edificios.clasificacion",
+    "pk": 2,
+    "fields": {
+        "tipo_salon_uso": "Salon de laboratorio",
+        "estado": true
+    }
+}
 ]

@@ -402,6 +402,8 @@ class crearUsuario(CreateView):
         context['title'] = 'Agregar'        
         context['info'] = 'Agregar'
         return context
+    
+    success_url=reverse_lazy('users:usuario')
 
 
 # Modificar Usuarios
