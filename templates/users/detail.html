@@ -1,2 +1,99 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="row ">
+        <div class="d-flex justify-content-center">
+            <h2>Informacion de {{user.get_acronimo}} {{user}}</h2>
+        </div>     
+        
+    </div>
+    <div class="row ">
+        <div class="d-flex justify-content-center">
+            {% include 'snippets/breadcrumb.html'%}
+        </div>
+    </div>
+    
+    <div class="row" style="margin-top: 0.5rem;">
+        <div class="col-12" style="margin-bottom: 0.5rem;">
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-outline-dark" href="{% url 'users:update_user' user.id%}">Editar</a>
+
+            </div>
+        </div>
+        <div class="col">
+           <div class="card " >
+                <div class="row">                    
+                    <div class="col-8">
+                        <div class="car-body" style="margin-left: 1rem; margin-top:1rem ;">
+
+                            <h5 class="card-title">Nombre: <span class="fst-italic">{{user.get_allName}}</span></h5>
+                            <p class="">
+                                <span class="h6">Correo Electronico:</span>  
+                                <span class="fst-italic" >{{user.email}}</span>
+                            </p>
+                            <p class="">
+                                <span class="h6">Nombre de Usuario:</span> 
+                                <span class="fst-italic" >{{user.username}}</span>
+                            </p>
+                            <p class="">
+                                <span class="h6">Profesion:</span> 
+                                <span class="fst-italic" >{{user.get_profesion}}</span>
+                                <span class="h6">Acronimo:</span>
+                                <span class="fst-italic" >{{user.get_acronimo}}</span> 
+                            </p>
+                            <p class="">
+                                <span class="h6">Tipo de Identificacion: </span>
+                                <span class="fst-italic" >
+                                    {{user.get_tipoIdentificacion}} 
+                                </span>
+                                
+                            </p>
+                            <p>
+                                <span class="h6">No. Documento De Identificacion: </span>
+                                <span class="fst-italic" >{{noDocumentoIdentificacion}}</span>
+                            </p>
+                            <p class="">
+                                <span class="h6">Numero Personal: </span>
+                                <span class="fst-italic" >{{user.noPersonal}}</span>
+                            </p>
+                            <p class="">
+                                <span class="h6">Telefono:</span> 
+                                <span class="fst-italic" >{{user.get_telefono}}
+
+                                </span>
+                            </p>
+                            <p class="">
+                                <span class="h6">Certificado de Nacimiento:</span> 
+                                <span class="fst-italic" >{{user.get_certificado}}</span>
+                            </p>
+                            <p class="">
+                                <span class="h6">Pais Origen: </span>
+                                <span class="fst-italic" >{{user.get_pais}}</span>
+                            </p>
+                            
+                            
+                            <p class="">
+                                <span class="h6">Tipo de Usuario:</span> 
+                                <span class="fst-italic" >{{user.tipo_usuario}}</span>
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="col-4">
+                        <img src="{{user.get_image}}" class="img-fluid rounded-start" alt="foto de {{user}}">
+                        <p class="">
+                            <span class="h6">Fecha en que este Usuario fue creado:</span> 
+                            <span class="fst-italic" >{{user.fecha_creacion}}</span>
+                        </p>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

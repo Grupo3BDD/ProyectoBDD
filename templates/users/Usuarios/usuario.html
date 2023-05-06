@@ -36,7 +36,7 @@
                             <th scope="col">Profesion</th>
                             <th scope="col">No.Personal</th>
                             <th scope="col">Telefono</th>
-                            <th scope="col">Rol</th>
+                            
                             <th scope="col">Acciones</th>
                             
                           </tr>
@@ -46,18 +46,10 @@
                             <tr>
                                 <td scope="row">{{usuario}}</td>
                                 <td>{{usuario.email}}</td>
-                                <td>{{usuario.profesion}}</td>
+                                <td>{{usuario.get_profesion}}</td>
                                 <td>{{usuario.noPersonal}}</td>
-                                <td>{{usuario.telefono}}</td>
-                                <td>
-                                    <ul class="nav flex-column">
-                                        {% for rols in usuario.rol.all %}
-                                            <li class="nav-link disabled">{{rols.rol}}</li>
-                                        {% endfor %}
-
-                                    </ul>
-                                    
-                                </td>
+                                <td>{{usuario.get_telefono}}</td>
+                                
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

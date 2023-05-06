@@ -2,26 +2,32 @@
 
 {% block content %}
 <div class="col">
-  <h2 slot="text-align:center">Editar</h2>
+  <h2 slot="text-align:center">Registro</h2>
   <a href="{% url 'users:usuario'%}">Regresar</a>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-        
-            <div class="form-group">
-                {{ field.label_tag }}
-                {{ field }}
-
-                {% if field.errors %}
-                    {{ field.errors }}
-                {% endif %}
-            </div>
-
+  <div class="card" >
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
     
+                    {% if field.errors %}
+                        {{ field.errors }}
+                    {% endif %}
+                </div>
+               
         
             
-    {% endfor %}
-    <button type="submit" class="btn btn-outline-dark">Guardar</button>
-  </form>
+                
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn btn-outline-dark">Guardar</button>
+      </form>
+    </div>
+  </div>
+  
 
 {% endblock%}

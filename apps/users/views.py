@@ -424,6 +424,8 @@ def detailUser(request,pk):
     template_name = 'users/detail.html'
     context ={
         'title':f'Detalle {user}',
+        'user':user,
+        'breadcrumb': breadcrumb_usuarios(),
 
     }
 

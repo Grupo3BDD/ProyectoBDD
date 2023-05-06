@@ -109,6 +109,46 @@ class User(AbstractUser):
     
     def get_username(self):
         return '{}'.format(self.username)
+    
+    def get_allName(self):
+        if(self.first_name=='' and self.last_name==''):
+            return 'No cuenta con esta informacion'
+        return '{} {}'.format(self.first_name,self.last_name)
+    
+    def get_acronimo(self):
+        if self.acronimo==None:
+            return ''
+        return '{}'.format(self.acronimo)
+    
+    def get_certificado(self):
+        if self.certificado_nacimiento==None:
+            return 'Este usuario no tiene este campo'
+        return '{}'.format(self.certificado_nacimiento)
+    
+    def get_telefono(self):
+        if self.telefono==None:
+            return 'Este usuario no tiene este campo'
+        return '{}'.format(self.telefono)
+    
+    def get_profesion(self):
+        if self.profesion==None:
+            return 'Este usuario no tiene este campo'
+        return '{}'.format(self.profesion)
+    
+    def get_pais(self):
+        if self.pais_origen==None:
+            return 'Este usuario no tiene este campo'
+        return '{}'.format(self.pais_origen)
+    
+    def get_tipoIdentificacion(self):
+        if self.tipoDocumento==None:
+            return 'Este usuario no tiene este campo'
+        return '{}'.format(self.pais_origen)
+    
+    def get_noIdentificacion(self):
+        if self.noDocumentoIdentificacion=='':
+            return 'Este usuario no tiene este campo'
+        return '{}'.format(self.noDocumentoIdentificacion)
 
 class UsuarioRol(models.Model):
     userId=models.ForeignKey(User,on_delete=models.CASCADE)
