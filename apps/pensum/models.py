@@ -128,7 +128,7 @@ class Pensum(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '{} '.format(self.codigo_pensum)
+        return self.codigo_pensum
 
     def get_created_at(self):
         return self.fecha_creacion.strftime('%d-%m-%Y')

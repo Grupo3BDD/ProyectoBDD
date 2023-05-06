@@ -1,2 +1,17 @@
 [
+{
+    "model": "pensum.carrera",
+    "pk": 1,
+    "fields": {
+        "nombreCarrera": "Civil",
+        "duracionPeriodos": 50,
+        "clasificacion": "20",
+        "partida": "20",
+        "tipo_ciclo": "Semestral",
+        "encargado_area": null,
+        "coordinador_acad": null,
+        "habilitado": true,
+        "fecha_creacion": "2023-05-06T05:39:46.469Z"
+    }
+}
 ]
