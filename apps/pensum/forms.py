@@ -186,7 +186,7 @@ class pensumForm(forms.ModelForm):
             'descripcion',
             'cantidad_ciclo',
             'examen_final',
-            'carreraId'
+            'carreraId',
         ]
 
         labels = {
@@ -196,7 +196,7 @@ class pensumForm(forms.ModelForm):
             'descripcion':'Descripcion del proceso de graduacion',
             'cantidad_ciclo':'Cantidad de ciclos',
             'examen_final':'Valor del examen final',
-            'carreraId':'Carrera de Facultad'
+            'carreraId':'Carrera de Facultad',
 
         }
 
@@ -207,5 +207,43 @@ class pensumForm(forms.ModelForm):
             'cantidad_ciclo': forms.TextInput(attrs={'class': 'form-control','type':'number'}),
             'examen_final': forms.TextInput(attrs={'class':'form-control','type':'number'}),
             'carreraId':forms.Select(attrs={'class':'form-control'})
+
+        }
+# Formulario para la edición de Carreras
+
+class editPensum(forms.ModelForm):
+    class Meta:
+        model = Pensum
+
+        fields = [
+
+            'codigo_pensum',
+            'year_inicio_vigencia',
+            'descripcion',
+            'cantidad_ciclo',
+            'examen_final',
+            'carreraId',
+
+        ]
+
+        labels = {
+
+            'codigo_pensum':'Codigo',
+            'year_inicio_vigencia':'Año de inicio de vigencia',
+            'descripcion':'Descripcion del proceso de graduacion',
+            'cantidad_ciclo':'Cantidad de ciclos',
+            'examen_final':'Valor del examen final',
+            'carreraId':'Carrera de Facultad',
+
+        }
+
+        widgets = {
+            'codigo_pensum': forms.TextInput(attrs={'class': 'form-control'}),
+            'year_inicio_vigencia': forms.TextInput(attrs={'class': 'form-control', 'type':'number'}),
+            'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+            'cantidad_ciclo': forms.TextInput(attrs={'class': 'form-control','type':'number'}),
+            'examen_final': forms.TextInput(attrs={'class':'form-control','type':'number'}),
+            'carreraId':forms.Select(attrs={'class':'form-control'})
+
 
         }

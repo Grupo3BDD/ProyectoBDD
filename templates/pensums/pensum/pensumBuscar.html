@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row" style="margin-top: 2rem;">
+  <div class="col">
+    <div class="d-flex justify-content-start">
+      {% include 'pensums/pensum/snippets/breadcrumb.html'%}
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    {% include 'pensums/pensum/snippets/pensumBuscar.html' with query=query %}
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col">
+    <p>Resultados para: {{ query }} ({{ count }})</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    {% include 'pensums/pensum/snippets/pensumListar.html' %}
+  </div>
+</div>
+
+<div class="row">
+  <div>
+      <a class="btn btn-outline-dark" href="{% url 'pensums:Pensum' %}">Regresar</a>
+  </div>
+
+</div>
+
+
+{% endblock %}
