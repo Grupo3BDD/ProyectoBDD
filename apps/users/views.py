@@ -6,8 +6,9 @@ from django.urls import reverse_lazy, reverse
 from django.http import Http404
 
 # Modelos
-from .models import User, Rol, Permiso, Puesto
+from .models import User, Rol, Permiso, Puesto, TipoDocumento, PaisOrigen, EncargadoArea, CoordinadorAcademico
 from django.db.models import Q
+from django.db import transaction
 
 # LIBRERIAS PARA EL CRUD
 from django.views.generic import CreateView, UpdateView, DeleteView, View
@@ -23,10 +24,10 @@ from django.contrib.auth import authenticate
 from .decoradores import *
 
 # FORMS
-from .forms import RegistroForm,  ChangePasswordForm
+from .forms import RegistroForm,  ChangePasswordForm, CreateUserForm
 
 # UTILS
-from .utils import breadcrumb_usuarios,breadcrumb_estudiante,breadcrumb_docente,breadcrumb_puesto
+from .utils import breadcrumb_usuarios, breadcrumb_estudiante, breadcrumb_docente, breadcrumb_puesto
 
 # Paginacion
 from django.core.paginator import Paginator
@@ -180,104 +181,122 @@ def listDocente(request):
     template_name = 'users/Docente/docente.html'
     listado_docente = User.objects.all().filter(tipo_usuario='Docente')
 
-    paginator = Paginator(listado_docente,5)
+    paginator = Paginator(listado_docente, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    
-    context={
-        'title':'Listado De Docentes',
-        'docente_list':listado_docente,
-        'breadcrumb':breadcrumb_docente(),
-        'page_obj':page_obj
+
+    context = {
+        'title': 'Listado De Docentes',
+        'docente_list': listado_docente,
+        'breadcrumb': breadcrumb_docente(),
+        'page_obj': page_obj
     }
-    return render(request,template_name,context)
+    return render(request, template_name, context)
+
 
 def listEstudiante(request):
     template_name = 'users/Estudiante/estudiante.html'
     listado_estudiante = User.objects.all().filter(tipo_usuario='Estudiante')
 
-    paginator = Paginator(listado_estudiante,5)
+    paginator = Paginator(listado_estudiante, 5)
     page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)   
-    
-    context={
-        'title':'Listado De Estudiantes',
-        'estudiante_list':listado_estudiante,
-        'message':'Estudiantes',
-        'breadcrumb':breadcrumb_estudiante(),
-        'page_obj':page_obj
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'title': 'Listado De Estudiantes',
+        'estudiante_list': listado_estudiante,
+        'message': 'Estudiantes',
+        'breadcrumb': breadcrumb_estudiante(),
+        'page_obj': page_obj
     }
-    return render(request,template_name,context)
+    return render(request, template_name, context)
+
 
 def listUsuario(request):
     template_name = 'users/Usuarios/usuario.html'
     listado_usuario = User.objects.all().filter(tipo_usuario='Usuario')
-    paginator = Paginator(listado_usuario,5)
+    paginator = Paginator(listado_usuario, 5)
 
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     print(page_obj)
 
-    context={
-        'title':'Listado De Usuarios',
+    context = {
+        'title': 'Listado De Usuarios',
         'usuario_list': listado_usuario,
-        'message':'Usuarios',
-        'breadcrumb':breadcrumb_usuarios(),
-        'page_obj':page_obj
+        'message': 'Usuarios',
+        'breadcrumb': breadcrumb_usuarios(),
+        'page_obj': page_obj
     }
-    return render(request,template_name,context)
-
+    return render(request, template_name, context)
 
 
 def listPermiso(request):
     template_name = 'users/RolPermiso/listPermisoRol.html'
     permiso = Permiso.objects.all().order_by('id')
 
-    paginator = Paginator(permiso,5)
+    paginator = Paginator(permiso, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    context={
-        'title':'Listado De Roles y Permiso',
-        'permisos':request.path,
-        'permiso_list':permiso,
-        'page_obj':page_obj
-        
+    context = {
+        'title': 'Listado De Roles y Permiso',
+        'permisos': request.path,
+        'permiso_list': permiso,
+        'page_obj': page_obj
+
     }
-    return render(request,template_name,context)
+    return render(request, template_name, context)
+
 
 def listRol(request):
-    
+
     template_name = 'users/RolPermiso/listPermisoRol.html'
     rol = Rol.objects.all().order_by('id')
 
-    paginator = Paginator(rol,5)
+    paginator = Paginator(rol, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    
-    context={
-        'title':'Listado De Roles y Permiso',
-        'roles':request.path,
-        'rol_list':rol,
-        'page_obj':page_obj
+
+    context = {
+        'title': 'Listado De Roles y Permiso',
+        'roles': request.path,
+        'rol_list': rol,
+        'page_obj': page_obj
     }
-    return render(request,template_name,context)
+    return render(request, template_name, context)
+
 
 def listPuesto(request):
     template_name = 'puesto/puesto.html'
     puesto = Puesto.objects.all().order_by('id')
 
-    paginator = Paginator(puesto,5)
+    paginator = Paginator(puesto, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    context={
-        'title':'Puestos',
-        'puesto_list':puesto,
-        'page_obj':page_obj,
-        'message':'Puestos',
-        'breadcrumb':breadcrumb_puesto(),
+    context = {
+        'title': 'Puestos',
+        'puesto_list': puesto,
+        'page_obj': page_obj,
+        'message': 'Puestos',
+        'breadcrumb': breadcrumb_puesto(),
     }
 
-    return render(request, template_name,context)
+    return render(request, template_name, context)
 
+
+class crearUsuario(CreateView):
+    model= User
+    template_name = 'users/create.html'
+    form_class = CreateUserForm   
+    creandoUsuario = False
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Agregar'        
+        context['info'] = 'Agregar'
+        return context
+
+
+ 

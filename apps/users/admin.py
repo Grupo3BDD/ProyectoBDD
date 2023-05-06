@@ -10,7 +10,7 @@ class UserAdmin(admin.ModelAdmin):
             'tipo_usuario','profesion','acronimo',
             'tipoDocumento','noDocumentoIdentificacion',
             'certificado_nacimiento','telefono','pais_origen',
-            'estado','imagen','rol','puesto'
+            'estado','imagen',
             )
     list_display=('__str__','fecha_creacion', 'noPersonal')
 
