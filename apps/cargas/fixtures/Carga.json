@@ -1,2 +1,14 @@
 [
+{
+    "model": "cargas.carga",
+    "pk": 1,
+    "fields": {
+        "year": 2023,
+        "ciclo_acad": "Primer Ciclo",
+        "carreraId": 1,
+        "estado": "En proceso",
+        "fecha_envio": "2023-05-06",
+        "fecha_aprob": null
+    }
+}
 ]
