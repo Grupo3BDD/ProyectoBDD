@@ -1,2 +1,24 @@
 [
+{
+    "model": "edificios.edificio",
+    "pk": 1,
+    "fields": {
+        "nombreEdificio": "H",
+        "cantidadSalones": 12,
+        "niveles": 1,
+        "estado": true,
+        "fecha_creacion": "2023-05-06T16:14:31.842Z"
+    }
+},
+{
+    "model": "edificios.edificio",
+    "pk": 2,
+    "fields": {
+        "nombreEdificio": "J",
+        "cantidadSalones": 5,
+        "niveles": 1,
+        "estado": true,
+        "fecha_creacion": "2023-05-06T16:15:55.410Z"
+    }
+}
 ]

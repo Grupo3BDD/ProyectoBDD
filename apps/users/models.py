@@ -152,8 +152,11 @@ class User(AbstractUser):
 
 class UsuarioRol(models.Model):
     userId=models.ForeignKey(User,on_delete=models.CASCADE)
-    puestoId=models.ForeignKey(Puesto, on_delete=models.CASCADE)
+    rolid=models.ForeignKey(Rol, on_delete=models.CASCADE)
     estado = models.BooleanField(default=True)
+
+    def __str__(self):
+        return '{}'.format(self.userId)
 
 class EncargadoArea(models.Model):
     user = models.ForeignKey(User, blank=False,null=False,on_delete=models.CASCADE)

@@ -1,2 +1,42 @@
 [
+{
+    "model": "pensum.tipojornada",
+    "pk": 1,
+    "fields": {
+        "plan_t": 1,
+        "clasificacion_jorn": "Matutino"
+    }
+},
+{
+    "model": "pensum.tipojornada",
+    "pk": 2,
+    "fields": {
+        "plan_t": 1,
+        "clasificacion_jorn": "Vespertina"
+    }
+},
+{
+    "model": "pensum.tipojornada",
+    "pk": 3,
+    "fields": {
+        "plan_t": 1,
+        "clasificacion_jorn": "Nocturna"
+    }
+},
+{
+    "model": "pensum.tipojornada",
+    "pk": 4,
+    "fields": {
+        "plan_t": 2,
+        "clasificacion_jorn": "Sabado"
+    }
+},
+{
+    "model": "pensum.tipojornada",
+    "pk": 5,
+    "fields": {
+        "plan_t": 2,
+        "clasificacion_jorn": "Domingo"
+    }
+}
 ]

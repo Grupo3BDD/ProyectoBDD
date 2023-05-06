@@ -1,2 +1,11 @@
 [
+{
+    "model": "users.usuariorol",
+    "pk": 1,
+    "fields": {
+        "userId": 1,
+        "rolid": 1,
+        "estado": true
+    }
+}
 ]

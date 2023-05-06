@@ -1,2 +1,12 @@
 [
+{
+    "model": "users.rol",
+    "pk": 1,
+    "fields": {
+        "rol": "Administrador",
+        "Descripcion": "Administrar",
+        "estado": true,
+        "fecha_creacion": "2023-05-06T15:49:13.712Z"
+    }
+}
 ]

@@ -1,2 +1,26 @@
 [
+{
+    "model": "edificios.salon",
+    "pk": 1,
+    "fields": {
+        "edificio": 1,
+        "clasificacion": 1,
+        "nombreSalon": "1",
+        "capacidadEstudiantes": 50,
+        "estado": true,
+        "fecha_creacion": "2023-05-06T16:14:51.864Z"
+    }
+},
+{
+    "model": "edificios.salon",
+    "pk": 2,
+    "fields": {
+        "edificio": 1,
+        "clasificacion": 1,
+        "nombreSalon": "2",
+        "capacidadEstudiantes": 50,
+        "estado": true,
+        "fecha_creacion": "2023-05-06T16:15:08.018Z"
+    }
+}
 ]

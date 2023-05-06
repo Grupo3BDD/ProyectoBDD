@@ -1,2 +1,17 @@
 [
+{
+    "model": "pensum.curso",
+    "pk": 1,
+    "fields": {
+        "codigoCurso": "25",
+        "nombreCurso": "Matematicas Basica 1",
+        "horasSemana": 50,
+        "creditos": 5,
+        "creditosObligatorios": 0,
+        "with_laboratorio": false,
+        "obligatorio": true,
+        "areaTecnica": true,
+        "habilitado": true
+    }
+}
 ]
