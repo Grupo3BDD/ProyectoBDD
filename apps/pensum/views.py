@@ -224,6 +224,9 @@ class CarreraSearch(ListView):
 
 
 ###-- MODULO QUE ENLISTA PENSUM--###
+
+
+
 class PensumList(ListView):
     template_name = 'pensums/pensum/pensum.html'
     queryset = Pensum.objects.all().order_by('-id')
@@ -283,11 +286,9 @@ class PensumDelete(DeleteView):
     success_url = reverse_lazy('pensums:Pensum')
 
 def pensumDelete(request, pk):
-    pensum = get_object_or_404(Pensum,pk=pk)
-    print(pk)
-    print(pensum)
-    #if pensum:
-        #pensum.delete()
+    pensum = Pensum.objects.get(pk=pk)
+    if pensum:
+        pensum.delete()
     return redirect('pensums:Pensum')
 
 ###-- MODULO QUE DETALLA ALGUN PENSUM--###

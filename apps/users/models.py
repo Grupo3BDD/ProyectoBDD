@@ -22,6 +22,7 @@ from django.shortcuts import  get_object_or_404
 class Rol(models.Model):
     rol = models.CharField(max_length=75, null=False, blank=False, unique=True)
     Descripcion = models.TextField()
+    estado = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -32,6 +33,7 @@ class Permiso(models.Model):
     permiso = models.CharField(max_length=75, null=False, blank=False, unique=True)
     Descripcion = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    estado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.permiso
@@ -75,7 +77,7 @@ class User(AbstractUser):
         ('Acta', 'Acta'),
         ('Folio', 'Folio')
     ]
-    email = models.EmailField(unique=True)
+    
     tipo_usuario = models.CharField(
         choices=tipo_usuario, default='Usuario', null=True, blank=True, max_length=100)
     profesion = models.CharField(max_length=75, null=True, blank=True)
@@ -92,9 +94,7 @@ class User(AbstractUser):
     pais_origen = models.ForeignKey(
         PaisOrigen, blank=True, null=True, on_delete=models.CASCADE)
     estado = models.BooleanField(default=True)
-    imagen = models.ImageField(upload_to='users/', null=True, blank=True)
-    rol = models.ManyToManyField(Rol, blank=True)
-    puesto = models.ManyToManyField(Puesto, blank=True)
+    imagen = models.ImageField(upload_to='users/', null=True, blank=True)    
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -110,23 +110,32 @@ class User(AbstractUser):
     def get_username(self):
         return '{}'.format(self.username)
 
+class UsuarioRol(models.Model):
+    userId=models.ForeignKey(User,on_delete=models.CASCADE)
+    puestoId=models.ForeignKey(Puesto, on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
+
 class EncargadoArea(models.Model):
     user = models.ForeignKey(User, blank=False,null=False,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
 
 class CoordinadorAcademico(models.Model):
     user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
     
 class Estudiante(models.Model):
     user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
 
 class Docente(models.Model):
     user = models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
 

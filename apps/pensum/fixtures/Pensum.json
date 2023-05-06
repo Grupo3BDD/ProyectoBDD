@@ -1,0 +1,16 @@
+[
+{
+    "model": "pensum.pensum",
+    "pk": 1,
+    "fields": {
+        "codigo_pensum": "44",
+        "carreraId": 1,
+        "year_inicio_vigencia": 2023,
+        "descripcion": "dsads",
+        "cantidad_ciclo": 3,
+        "examen_final": "25.00",
+        "estado": true,
+        "fecha_creacion": "2023-05-06T05:59:20.424Z"
+    }
+}
+]
